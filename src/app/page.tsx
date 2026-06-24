@@ -4,7 +4,7 @@ import { getTranslations } from "next-intl/server";
 import { getCatalogo, getConfig } from "@/lib/datos";
 import { mxn } from "@/lib/format";
 import { motivoLicencia } from "@/lib/licencias";
-import { Badge, Card } from "@/components/ui";
+import { Badge, Card, Kpi, EstadoVacio, btnPrimary } from "@/components/ui";
 import { getBranding } from "@/lib/branding";
 
 export const dynamic = "force-dynamic";
@@ -31,11 +31,11 @@ export default async function Dashboard() {
     .slice(0, 5);
 
   const kpis = [
-    { id: "total", valor: total, href: "/modelos", color: "text-slate-900", borde: "border-slate-300" },
-    { id: "aptos", valor: aptos, href: "/modelos?vista=todos", color: "text-emerald-600", borde: "border-emerald-400" },
-    { id: "listos", valor: listos, href: "/modelos?vista=listos", color: "text-cyan-600", borde: "border-cyan-400" },
-    { id: "riesgo", valor: riesgo.length, href: "/modelos?vista=riesgo", color: "text-rose-600", borde: "border-rose-400" },
-    { id: "publicados", valor: publicados, href: "/modelos", color: "text-sky-600", borde: "border-sky-400" },
+    { id: "total", valor: total, href: "/modelos", icon: "box", tone: "slate" },
+    { id: "aptos", valor: aptos, href: "/modelos?vista=todos", icon: "check", tone: "emerald" },
+    { id: "listos", valor: listos, href: "/modelos?vista=listos", icon: "rocket", tone: "sky" },
+    { id: "riesgo", valor: riesgo.length, href: "/modelos?vista=riesgo", icon: "alert", tone: "rose" },
+    { id: "publicados", valor: publicados, href: "/modelos", icon: "printer", tone: "amber" },
   ] as const;
 
   return (
@@ -45,10 +45,7 @@ export default async function Dashboard() {
           <h1 className="text-2xl font-bold tracking-tight">{t("titulo")}</h1>
           <p className="text-sm text-slate-500">{getBranding().appDescription}</p>
         </div>
-        <Link
-          href="/modelos/nuevo"
-          className="rounded-md bg-cyan-600 px-4 py-2 text-sm font-medium text-white hover:bg-cyan-700"
-        >
+        <Link href="/modelos/nuevo" className={btnPrimary}>
           + {t("nuevoModelo")}
         </Link>
       </div>
@@ -56,10 +53,7 @@ export default async function Dashboard() {
       <div className="grid grid-cols-2 gap-4 md:grid-cols-5">
         {kpis.map((k) => (
           <Link key={k.id} href={k.href}>
-            <Card className={`border-t-4 ${k.borde} transition-shadow hover:shadow-md`}>
-              <div className={`text-3xl font-bold tabular-nums ${k.color}`}>{k.valor}</div>
-              <div className="mt-1 text-xs text-slate-500">{t(`kpi.${k.id}`)}</div>
-            </Card>
+            <Kpi icon={k.icon} valor={k.valor} label={t(`kpi.${k.id}`)} tone={k.tone} />
           </Link>
         ))}
       </div>
@@ -67,7 +61,7 @@ export default async function Dashboard() {
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
         <Card title={t("topTitulo")}>
           {topRentables.length === 0 ? (
-            <p className="text-sm text-slate-500">{t("sinAptos")}</p>
+            <EstadoVacio icon="rocket">{t("sinAptos")}</EstadoVacio>
           ) : (
             <table className="w-full text-sm">
               <thead>
@@ -97,7 +91,7 @@ export default async function Dashboard() {
 
         <Card title={t("riesgoTitulo")}>
           {riesgo.length === 0 ? (
-            <p className="text-sm text-slate-500">{t("sinRiesgo")}</p>
+            <EstadoVacio icon="check">{t("sinRiesgo")}</EstadoVacio>
           ) : (
             <ul className="space-y-2 text-sm">
               {riesgo.map((f) => (
