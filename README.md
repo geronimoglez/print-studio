@@ -1,95 +1,96 @@
-<!-- El nombre "Taller 3D" es un placeholder de marca: es 100% personalizable (white-label) en el
-     asistente /setup, sin tocar código. Renómbralo libremente. -->
-# Taller 3D — Catálogo, costeo y venta para impresión 3D
+<!-- "Print Studio" is a placeholder brand name: it's fully customizable (white-label) in the /setup
+     wizard, with no code changes. Rename it freely. -->
+# Print Studio — 3D printing catalog, costing & selling
 
-Plataforma web **open source** para un taller de **impresión 3D bajo demanda**: importa modelos, calcula
-su **costeo** real, controla el **riesgo legal (IP + licencia)** con un semáforo 🟢🟡🔴, publica en
-**Mercado Libre** con descripciones generadas por IA, y monitorea la **salud** de los anuncios — todo
-operable por una persona no técnica, desde el navegador o por un bot.
+[![License: AGPL v3](https://img.shields.io/badge/License-AGPL_v3-blue.svg)](LICENSE)
 
-✨ **White-label de fábrica:** al primer arranque, un asistente (`/setup`) te deja poner tu **nombre,
-logo y colores** — a mano o **generados con IA** (fal.ai, OpenAI o Claude, con tu propio token). Sin tocar código.
+Open-source web platform to run an **on-demand 3D printing** business: import models, compute their real
+**cost & pricing**, manage **legal risk (IP + license)** with a 🟢🟡🔴 traffic light, publish to
+**marketplaces (Mercado Libre)** with AI-generated descriptions, and monitor listing **health** — all
+operable by a non-technical person, from the browser or a bot.
 
-> ⚠️ Este repositorio contiene **solo el software**. No incluye modelos 3D, mallas ni imágenes de
-> catálogo. No está afiliado a Mercado Libre, BambuLab/MakerWorld ni a ninguna marca mencionada.
+✨ **White-label out of the box:** on first run, a wizard (`/setup`) lets you set your **name, logo and
+colors** — by hand or **generated with AI** (fal.ai, OpenAI or Claude, with your own token). No code changes.
 
----
+🔗 **Live demo:** https://print-studio-sable.vercel.app
 
-## Qué hace
+> ⚠️ This repository contains **only the software**. It does **not** include 3D models, meshes, or catalog
+> images. Not affiliated with Mercado Libre, BambuLab/MakerWorld, or any trademark mentioned.
 
-- **Catálogo + costeo en vivo.** Cada modelo calcula costo (filamento + luz + depreciación + mano de
-  obra + post-proceso + tasa de fallos), precio (markup + comisión + envío), margen y **rentabilidad por
-  hora-impresora**. Cambiar la config recalcula todo el catálogo.
-- **Semáforo de riesgo legal (pieza central).** Capa 1 — **IP**: ¿marca/personaje de terceros? (por
-  nombre en `lib/riesgo.ts` y por **visión** con un VLM). Capa 2 — **Licencia** del archivo
-  (`lib/licencias.ts`). Combinadas: 🟢 limpio + licencia comercial · 🟡 limpio, licencia restringida ·
-  🔴 marca/IP (bloqueado, _fail-closed_).
-- **Publicación a Mercado Libre** con auto-atributos, predicción de categoría, fotos/video y
-  descripciones de venta generadas por IA que mira la foto.
-- **Aprobación por lote** (`/revision`) por UI o por bot (mismo backend).
-- **Salud de anuncios** (`/salud`) + notificaciones tipo digest.
-- **Importador self-serve** (`/importar`): subes un ZIP → crea los modelos solos.
-- **Marca personalizable (white-label)** + asistente de configuración con IA opcional.
+## Deploy your own
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fgeronimoglez%2Fprint-studio&project-name=print-studio&repository-name=print-studio&stores=%5B%7B%22type%22%3A%22postgres%22%7D%2C%7B%22type%22%3A%22blob%22%7D%5D)
+
+The button provisions a **Postgres** database and a **Blob** store automatically, and the build applies the
+DB migrations for you — so the first deploy lands on the `/setup` wizard with nothing else to configure.
+
+## What it does
+
+- **Catalog + live costing.** Each model computes cost (filament + power + depreciation + labor +
+  post-processing + failure rate), price (markup + marketplace fee + shipping), margin and **profit per
+  printer-hour**. Changing the config recalculates the whole catalog.
+- **Legal-risk traffic light (the core).** Layer 1 — **IP**: is it a third-party brand/character? (by name
+  in `lib/riesgo.ts` and by **vision** with a VLM). Layer 2 — file **license** (`lib/licencias.ts`).
+  Combined: 🟢 clean + commercial license · 🟡 clean, restricted license · 🔴 brand/IP (blocked, fail-closed).
+- **Marketplace publishing** with auto-attributes, category prediction, photos/video, and AI sales copy.
+- **Batch approval**, **listing health** dashboard, **self-serve importer**.
+- **White-label branding** + AI setup assistant (BYOK).
 
 ## Stack
 
-| Capa | Tecnología |
+| Layer | Tech |
 |---|---|
 | Web + API | **Next.js 16** (App Router, Server Actions) |
-| Datos | **Prisma 7** (driver adapter `pg`) + **PostgreSQL** |
-| Assets | **Vercel Blob** o **filesystem local** (`public/`) — intercambiable |
-| IA / Visión | **OpenRouter / OpenAI / Anthropic** (texto) · **fal.ai / OpenAI** (imágenes) — todo opcional |
+| Data | **Prisma 7** (driver adapter `pg`) + **PostgreSQL** |
+| Assets | **Vercel Blob** or **local filesystem** (`public/`) — interchangeable |
+| AI / Vision | **OpenRouter / OpenAI / Anthropic** (text) · **fal.ai / OpenAI** (images) — all optional |
 | Marketplace | **Mercado Libre API** |
-| Bot | gateway HTTP externo (header `x-bot-key`) — ver [`docs/BOT_API.md`](./docs/BOT_API.md) |
-| UI | Tailwind CSS v4 |
+| Bot | external HTTP gateway (`x-bot-key` header) — see [`docs/BOT_API.md`](./docs/BOT_API.md) |
+| UI | Tailwind CSS v4 · i18n with next-intl (English / Spanish) |
 
----
-
-## Arranque rápido (Docker)
+## Quick start (Docker)
 
 ```bash
-cp .env.example .env        # rellena lo que uses (solo DATABASE_URL es obligatoria si NO usas Docker)
-docker compose up --build   # levanta Postgres + la app, aplica migraciones
-# abre http://localhost:3000  → te lleva al asistente /setup
+cp .env.example .env        # fill in what you use (only DATABASE_URL is required if NOT using Docker)
+docker compose up --build   # starts Postgres + the app and applies migrations
+# open http://localhost:3000  → it takes you to the /setup wizard
 ```
 
-## Desarrollo local (sin Docker)
+## Local development (no Docker)
 
-Necesitas un **PostgreSQL** accesible (local o en la nube).
+You need a reachable **PostgreSQL** (local or cloud).
 
 ```bash
 npm install
-cp .env.example .env                 # define DATABASE_URL (local: ...?sslmode=disable)
-npx prisma migrate deploy            # crea/actualiza el esquema
+cp .env.example .env                 # set DATABASE_URL (local: ...?sslmode=disable)
+npx prisma migrate deploy            # create/update the schema
 npm run dev                          # http://localhost:3000
-npm run build                        # build de producción + chequeo de tipos
-npm test                             # test del motor de costeo
+npm run build                        # production build + type check
+npm test                             # costing engine test
 ```
 
-### Variables de entorno
+### Environment variables
+All documented in [`.env.example`](./.env.example). Only `DATABASE_URL` is required; everything else is
+per-integration and **degrades gracefully** (no AI → manual/templates; no Blob → `public/`; no Telegram →
+no alerts). The **brand** (`BRAND_*`) can be set via env or edited in `/setup`.
 
-Todas están documentadas en [`.env.example`](./.env.example). Solo `DATABASE_URL` es obligatoria; el
-resto es por integración y **degrada con gracia** (sin IA → manual/plantillas; sin Blob → `public/`; sin
-Telegram → no alerta). La **marca** (`BRAND_*`) puede fijarse por env o editarse en `/setup`.
+## Documentation
+- [`DEPLOY.md`](./DEPLOY.md) — deployment (Docker self-host and Vercel) + migrating an existing instance.
+- [`docs/BOT_API.md`](./docs/BOT_API.md) — bot HTTP contract (`/api/bot/*`).
+- [`CONTRIBUTING.md`](./CONTRIBUTING.md) — how to contribute (includes the CLA).
+- [`SECURITY.md`](./SECURITY.md) — vulnerability reporting and a self-host security note.
+- [`docs/legal/`](./docs/legal/) — Terms, Acceptable Use, Disclaimer and Privacy templates.
 
----
+## Internationalization
+The UI ships in **English and Spanish** (switch in the header) and is built to add more languages. The
+marketplace **content** language (e.g. listing descriptions) is configurable separately from the UI language.
 
-## Documentación
+## Open-core architecture
+This public repo is the **single-tenant, self-hostable** app. The **multi-tenant, authentication and
+billing** (SaaS) layers mount on top via seams (`src/lib/{tenant,auth,bot-auth,secretos,db}.ts`) without
+modifying this code. Convention: data access goes through `@/lib/db` / `@/lib/datos` (see `CONTRIBUTING.md`).
 
-- [`DEPLOY.md`](./DEPLOY.md) — despliegue (Docker self-host y Vercel).
-- [`docs/BOT_API.md`](./docs/BOT_API.md) — contrato HTTP del bot (`/api/bot/*`).
-- [`CONTRIBUTING.md`](./CONTRIBUTING.md) — cómo contribuir (incluye el CLA).
-- [`SECURITY.md`](./SECURITY.md) — reporte de vulnerabilidades y nota de seguridad del modo self-host.
-- [`docs/legal/`](./docs/legal/) — plantillas de Términos, Uso Aceptable y Descargo.
-
-## Arquitectura open-core
-
-El repo público es la app **single-tenant auto-hospedable**. Las capas de **multi-tenant, autenticación
-y cobros** (SaaS) se montan aparte sobre "costuras" (`src/lib/{tenant,auth,bot-auth,secretos,db}.ts`) sin
-modificar este código. Convención: el acceso a datos pasa por `@/lib/db` / `@/lib/datos` (ver `CONTRIBUTING.md`).
-
-## Licencia
-
-**GNU AGPL-3.0** (ver [`LICENSE`](./LICENSE) y [`NOTICE`](./NOTICE)). Si modificas el software y lo ofreces
-como servicio de red, debes publicar el código fuente correspondiente (AGPL §13). Las marcas, productos de
-terceros y datos de catálogo **no** forman parte de este repositorio.
+## License
+**GNU AGPL-3.0** (see [`LICENSE`](./LICENSE) and [`NOTICE`](./NOTICE)). If you modify the software and offer
+it as a network service, you must publish the corresponding source (AGPL §13). Third-party trademarks,
+products and catalog data are **not** part of this repository.
