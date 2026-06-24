@@ -60,3 +60,5 @@ scripts/_tmp*
 # Base SQLite local (datos)
 *.db
 dev.db
+
+.vercel
