@@ -97,5 +97,325 @@
     "colEstado": "Estado",
     "procesado": "Procesado",
     "pendiente": "Pendiente"
+  },
+  "modelos": {
+    "titulo": "Catálogo de modelos",
+    "nuevoModelo": "Nuevo modelo",
+    "nicho": "Nicho:",
+    "vistas": {
+      "todos": {
+        "label": "Todos",
+        "desc": "Todo el catálogo, ordenado por rentabilidad/hora."
+      },
+      "listos": {
+        "label": "Listos para publicar",
+        "desc": "Aptos legalmente + validados + aún no publicados en ML."
+      },
+      "rentabilidad": {
+        "label": "Alta rentabilidad/hora",
+        "desc": "Los que más rinden por hora de impresora."
+      },
+      "rapidos": {
+        "label": "Rápidos (<3h)",
+        "desc": "Impresión menor a 3 horas: más rotación, menos riesgo."
+      },
+      "riesgo": {
+        "label": "Riesgo legal",
+        "desc": "🔴 MARCA/IP de terceros — no publicar sin decisión explícita."
+      },
+      "nicho": {
+        "label": "Por nicho",
+        "desc": "Filtrar por nicho / estacionalidad para campañas."
+      }
+    }
+  },
+  "tabla": {
+    "buscarPlaceholder": "Buscar modelo, nicho…",
+    "filtroRiesgoTodos": "Riesgo: todos",
+    "riesgoVerde": "🟢 Limpio",
+    "riesgoAmarillo": "🟡 Riesgo licencia",
+    "riesgoRojo": "🔴 Marca/IP",
+    "filtroLicenciaTodas": "Licencia: todas",
+    "filtroCategoriaTodas": "Categoría: todas",
+    "filtroFilamentoTodos": "Filamento: todos",
+    "filtroEstadoTodos": "Estado: todos",
+    "soloAptos": "Solo aptos",
+    "limpiar": "Limpiar",
+    "resultados": "{n} resultado(s)",
+    "col": {
+      "nombre": "Modelo",
+      "riesgo": "Riesgo",
+      "licencia": "Licencia",
+      "categoria": "Categoría",
+      "tiempoMin": "t. impr.",
+      "gramos": "Filamento",
+      "costoTotal": "Costo",
+      "precioVenta": "Precio ML",
+      "margenPct": "Margen",
+      "rentabilidadHora": "$/hora ★",
+      "tiempoEntregaDias": "Entrega",
+      "estadoValidacion": "Estado"
+    },
+    "riesgoLabel": {
+      "verde": "Limpio",
+      "amarillo": "Riesgo licencia",
+      "rojo": "Marca/IP"
+    },
+    "riesgoTitulo": {
+      "verde": "IP-limpio + licencia que permite venta (CC-BY/CC0/Comercial/Propia).",
+      "amarillo": "IP-limpio, pero la licencia del archivo es restringida (Personal/NC). Publicable a riesgo (capa 2).",
+      "rojo": "Tiene MARCA o PERSONAJE de terceros. No publicar sin decisión explícita."
+    },
+    "sinFoto": "sin foto",
+    "gramosFilamento": "{g} g · {filamento}",
+    "dias": "{d} d",
+    "abrirAnuncio": "Abrir el anuncio en Mercado Libre",
+    "enMlLink": "En ML ↗",
+    "enMl": "En ML",
+    "estatusMl": "Estatus en ML: {estado} (no visible públicamente)",
+    "publicado": "Publicado",
+    "mlEnRevision": "en revisión",
+    "mlPausado": "pausado",
+    "editar": "Editar",
+    "vacio": "No hay modelos que coincidan con los filtros."
+  },
+  "salud": {
+    "titulo": "Salud de Mercado Libre",
+    "resumen": "{anuncios} anuncios publicados · {pedidos} pedido(s).",
+    "ultimaSync": "Última sincronización: {fecha}.",
+    "sinSync": "Aún sin sincronizar.",
+    "buscarPlaceholder": "Buscar anuncio…",
+    "buscar": "Buscar",
+    "limpiar": "Limpiar",
+    "refrescar": "Refrescar",
+    "vendidosPedidos": "Vendidos / Pedidos",
+    "abrirEnMl": "Abrir en Mercado Libre",
+    "verMotivo": "ver motivo / editar",
+    "verMotivoTitle": "Abrir en Mercado Libre para ver el motivo exacto y editar el anuncio",
+    "noVisible": "no visible",
+    "noVisibleTitle": "No visible en ML hasta que esté activo",
+    "vacio": "No hay anuncios publicados todavía.",
+    "guia": {
+      "titulo": "📘 ¿Qué es esto y qué hago? (guía rápida)",
+      "intro": "Aquí ves cómo están tus anuncios en Mercado Libre. Ábrela cuando tengas un rato y revísalos en lote. Dale <b>“Refrescar estatus”</b> para ver lo más reciente. Toca cualquier anuncio para abrir su ficha y manejarlo.",
+      "problema": "🛑 <b>Con problema:</b> Mercado Libre los rechazó. Ábrelos y corrige (a veces es una palabra de marca en el título, ej. “Durlock”) o pausa el anuncio.",
+      "revision": "🟠 <b>En revisión de ML:</b> ML los está checando. Normalmente se activan solos en unas horas — <b>no hagas nada</b>, solo espera.",
+      "pausado": "⏸️ <b>Pausados:</b> no se están vendiendo (porque los pausaste tú o ML).",
+      "activo": "🟢 <b>Activos:</b> vivos y vendibles. Todo bien.",
+      "vendidos": "🛒 <b>Vendidos / Pedidos:</b> lo que ya se vendió — ahí ves los pedidos por imprimir y entregar.",
+      "nota": "No tienes que estar aquí a cada rato: entra cuando tengas tiempo libre y atiende varios de una."
+    },
+    "cat": {
+      "problema": {
+        "titulo": "Con problema",
+        "desc": "ML los rechazó (forbidden/closed) — hay que corregir o pausar."
+      },
+      "revision": {
+        "titulo": "En revisión de ML",
+        "desc": "ML los está moderando/procesando — suelen resolverse solos."
+      },
+      "pausado": {
+        "titulo": "Pausados",
+        "desc": "No visibles para vender (pausados por nosotros o por ML)."
+      },
+      "activo": {
+        "titulo": "Activos",
+        "desc": "Vivos y vendibles."
+      },
+      "sin": {
+        "titulo": "Sin sincronizar",
+        "desc": "Aún no consultamos su estado — dale a Refrescar."
+      }
+    },
+    "razon": {
+      "forbidden": "ML lo prohibió. Casi siempre es: una marca de terceros en el título, una categoría no permitida, o un anuncio casi duplicado. Ábrelo en ML para ver el motivo exacto y corregir.",
+      "fichaYFotos": "Falta completar la ficha y ML aún está procesando las fotos. Ábrelo en ML y completa lo que pida.",
+      "fichaTecnica": "Falta completar la ficha técnica (un dato obligatorio de la categoría). Ábrelo en ML y completa lo que marque.",
+      "fotos": "ML aún está descargando/validando las fotos. Suele resolverse solo.",
+      "denuncia": "Recibió una denuncia. Revisa el motivo en ML.",
+      "sinStock": "Sin stock: súbelo a 1 o más para reactivar.",
+      "pausado": "Pausado (por ti o por ML)."
+    }
+  },
+  "pedidos": {
+    "titulo": "Pedidos",
+    "subtitulo": "Avanza el estado conforme imprimes y entregas; el tablero se actualiza solo.",
+    "kpi": {
+      "activos": "Activos",
+      "total": "En total",
+      "entregados": "Entregados"
+    },
+    "vacio": "Aún no hay pedidos. Entran solos al sincronizar las ventas de Mercado Libre.",
+    "vendidoEl": "Vendido {fecha}",
+    "entregarAntes": "entregar antes del {fecha}",
+    "clienteAtendido": "Cliente atendido",
+    "sinAtender": "Sin atender",
+    "marcarAtendido": "Marcar atendido",
+    "estado": {
+      "Vendido": "Vendido",
+      "EnCola": "En cola",
+      "Imprimiendo": "Imprimiendo",
+      "Impreso": "Impreso",
+      "Entregado": "Entregado"
+    },
+    "paso": {
+      "Vendido": "Mandar a imprimir",
+      "EnCola": "En cola",
+      "Imprimiendo": "Imprimiendo",
+      "Impreso": "Impreso",
+      "Entregado": "Entregado"
+    }
+  },
+  "tablero": {
+    "estadoGeneral": "Estado general",
+    "etiqueta": {
+      "verde": "VERDE · sin prisa",
+      "amarillo": "AMARILLO · a moverse",
+      "rojo": "ROJO · actuar ya"
+    },
+    "impresionTitulo": "🖨️ Impresión",
+    "porImprimir": "por imprimir",
+    "impresionResumen": "{enProceso} en proceso · {horasRequeridas} h requeridas / {capacidad} h disponibles ({dias} días)",
+    "faltanImpresoras": "⚠️ Falta(n) {n} impresora(s)",
+    "clientesTitulo": "🙋 Clientes",
+    "porAtender": "por atender",
+    "urgentes": "{n} urgente(s)",
+    "ayuda": "Verde = vas a tiempo (aunque tengas varios). Amarillo = hay que moverse. Rojo = actuar ya. Se actualiza solo. Para foco/pantalla inteligente:",
+    "ayudaCola": "devuelve el color."
+  },
+  "importar": {
+    "titulo": "Importar un pack",
+    "subtitulo": "Sube el ZIP de un pack (carpetas por modelo, con fotos). El sistema crea los modelos solo y los deja en <revision>Revisión</revision> para aprobar. No necesitas instalar nada.",
+    "guiaTitulo": "📘 ¿Cómo importar un pack? (guía rápida)",
+    "guiaPaso1": "Ten a la mano el <b>ZIP del pack</b> (debe tener una carpeta por modelo, y dentro las fotos).",
+    "guiaPaso2": "Dale a <b>“Archivo ZIP del pack”</b> y elígelo.",
+    "guiaPaso3": "Escribe la <b>Categoría</b> (ej. Macetas, Lámparas, Organizadores) y la <b>Fuente</b> (de dónde salió el pack).",
+    "guiaPaso4": "Clic en <b>“Importar pack”</b> y espera. Los packs grandes tardan un poco — no cierres la página.",
+    "guiaPaso5": "Listo: los modelos aparecen en <revision>Revisión</revision> en 🟡 amarillo. Ahí tú decides cuáles publicar.",
+    "guiaNota": "Se crean como <b>🟡 “por revisar”</b> a propósito, para que tú elijas. El sistema revisa marca/IP por la foto después. Si un pack es muy grande (> 1.2 GB), pártelo en menos categorías y súbelo por partes.",
+    "campoArchivo": "Archivo ZIP del pack",
+    "campoCategoria": "Categoría",
+    "campoFuente": "Fuente / pack",
+    "trabajando": "Trabajando…",
+    "importarPack": "Importar pack",
+    "subiendoArchivo": "Subiendo {nombre} ({mb} MB)…",
+    "procesandoPack": "Procesando el pack (extrayendo fotos y creando modelos)…",
+    "errorProcesando": "Error procesando",
+    "errorSubiendo": "Error subiendo el archivo",
+    "listo": "✅ Listo",
+    "resumenCreados": "{creados} modelo(s) creado(s) de {encontrados} encontrado(s)",
+    "resumenSaltados": "({saltados} ya existían/sin foto)",
+    "irRevision": "Ir a Revisión →",
+    "notaPie": "Nota: se crean en 🟡 amarillo (licencia «por revisar») para que tú decidas. La detección de marca/IP por foto y la malla 3D para imprimir se procesan después. Packs muy grandes (>1.2 GB) conviene partirlos por categoría."
+  },
+  "revision": {
+    "titulo": "Sala de revisión",
+    "subtitulo": "Lote pendiente de aprobar · {n} modelos ({verde} {verdes} verde · {amarillo} {amarillos} amarillo).",
+    "subtituloAccion": {
+      "antes": "Selecciona y",
+      "publica": "Publica",
+      "o": "o",
+      "descarta": "Descarta",
+      "despues": "; o apruébalos por Telegram con el bot."
+    },
+    "nivel": {
+      "verde": "Verde · publicable",
+      "amarillo": "Amarillo · con tu OK",
+      "rojo": "Rojo · IP"
+    },
+    "resultado": {
+      "publicados": "✅ {n} publicado(s)",
+      "descartados": "🗑 {n} descartado(s)",
+      "fallidos": "⚠️ {n} no se pudo(eron) publicar (revisa el modelo)",
+      "ninguno": "No se seleccionó ningún modelo."
+    },
+    "vacio": "No hay modelos pendientes de revisión. Importa un lote para que aparezca aquí.",
+    "barra": {
+      "instruccion": "Marca los que quieras y elige una acción:",
+      "publicar": "✅ Publicar seleccionados",
+      "descartar": "🗑 Descartar seleccionados"
+    },
+    "sinFoto": "sin foto",
+    "licenciaTitle": "Licencia del archivo"
+  },
+  "notificaciones": {
+    "titulo": "Notificaciones",
+    "subtitulo": "A qué correos avisamos y qué avisos de Mercado Libre van llegando.",
+    "kpi": {
+      "recientes": "Avisos recientes",
+      "sinLeer": "Sin leer"
+    },
+    "guia": {
+      "titulo": "📘 ¿Cómo funciona? (guía rápida)",
+      "parte1": "Mercado Libre manda los avisos (rechazos, ventas, preguntas) por correo a la cuenta. Ese correo se reenvía a tu Gmail y un pequeño script lo manda aquí, que extrae el motivo y el anuncio y lo muestra. Así el motivo del rechazo aparece también en ",
+      "enlaceSalud": "Salud ML",
+      "parte2": ", no solo el código.",
+      "nota": "Abajo administras a qué correos avisamos (para monitoreo). La config de qué correos recibe Mercado Libre se ajusta en la cuenta de ML; aquí solo lo registramos y vemos qué llega."
+    },
+    "destinos": {
+      "titulo": "📤 Correos que avisamos / monitoreamos",
+      "vacio": "Aún no hay correos registrados."
+    },
+    "estado": {
+      "activo": "activo",
+      "pausado": "pausado"
+    },
+    "accion": {
+      "pausar": "pausar",
+      "activar": "activar"
+    },
+    "tipo": {
+      "adicional": "adicional",
+      "cuentaMl": "cuenta-ml",
+      "reenvio": "reenvío"
+    },
+    "form": {
+      "emailPlaceholder": "correo@dominio.com",
+      "etiquetaPlaceholder": "etiqueta (ej. equipo)",
+      "agregar": "Agregar"
+    },
+    "avisos": {
+      "titulo": "📥 Avisos de Mercado Libre recibidos",
+      "vacio": "Aún no llega ningún aviso. Cuando ML mande un correo (rechazo, venta…) y el reenvío esté configurado, aparecerá aquí con su motivo."
+    }
+  },
+  "filamentos": {
+    "titulo": "Filamentos",
+    "subtitulo": "El costo por kg alimenta el costeo de cada modelo (se cruza por tipo de filamento).",
+    "colTipo": "Tipo",
+    "colMarca": "Marca",
+    "colColor": "Color",
+    "colCostoKg": "Costo/kg",
+    "colStock": "Stock (g)",
+    "editar": "Editar",
+    "eliminar": "Eliminar",
+    "vacio": "Sin filamentos.",
+    "agregarTitulo": "Agregar filamento",
+    "agregarBoton": "Agregar"
+  },
+  "impresoras": {
+    "titulo": "Impresoras",
+    "subtitulo": "Potencia y depreciación alimentan el costeo; la capacidad decide cuándo comprar más máquinas.",
+    "kpi": {
+      "horasDiaTotal": "horas-impresora / día",
+      "disponibles": "impresoras disponibles",
+      "horasDiaAms": "h/día con AMS (multicolor)",
+      "horasDiaSinAms": "h/día sin AMS"
+    },
+    "notaCapacidad": "Capacidad = impresoras disponibles × {horas} h/día (de Configuración). En la Fase D se cruza con la demanda pronosticada para avisarte cuándo conviene comprar otra impresora.",
+    "listaTitulo": "Tus impresoras",
+    "colModelo": "Modelo",
+    "colPotencia": "Potencia (W)",
+    "colCostoEquipo": "Costo equipo",
+    "colDepreciacion": "Deprec./h",
+    "colHorasUso": "Horas uso",
+    "colEstado": "Estado",
+    "disponible": "Disponible",
+    "noDisponible": "No disponible",
+    "editar": "Editar",
+    "eliminar": "Eliminar",
+    "vacio": "Aún no hay impresoras.",
+    "agregarTitulo": "Agregar impresora",
+    "agregar": "Agregar"
   }
 }

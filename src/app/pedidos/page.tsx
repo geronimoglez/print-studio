@@ -1,17 +1,12 @@
+import { getTranslations, getLocale } from "next-intl/server";
 import { prisma } from "@/lib/prisma";
 import { avanzarPedido, marcarAtendido } from "@/app/actions";
-import { Badge, Card } from "@/components/ui";
+import { Badge, Card, Kpi, EstadoVacio } from "@/components/ui";
 
 export const dynamic = "force-dynamic";
 
 const PIPELINE = ["Vendido", "EnCola", "Imprimiendo", "Impreso", "Entregado"] as const;
-const ETIQUETA: Record<string, string> = {
-  Vendido: "Mandar a imprimir",
-  EnCola: "En cola",
-  Imprimiendo: "Imprimiendo",
-  Impreso: "Impreso",
-  Entregado: "Entregado",
-};
+
 function tono(estado: string): "amber" | "blue" | "green" | "slate" {
   if (estado === "Vendido") return "amber";
   if (estado === "EnCola" || estado === "Imprimiendo") return "blue";
@@ -21,44 +16,50 @@ function tono(estado: string): "amber" | "blue" | "green" | "slate" {
 }
 
 export default async function PedidosPage() {
+  const t = await getTranslations("pedidos");
+  const locale = await getLocale();
+
   const pedidos = await prisma.pedido.findMany({ orderBy: { fechaVenta: "desc" } });
   const activos = pedidos.filter((p) => p.estado !== "Entregado");
   const ordenados = [...activos, ...pedidos.filter((p) => p.estado === "Entregado")];
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-bold tracking-tight">Pedidos</h1>
-        <p className="text-sm text-slate-500">
-          {activos.length} activo(s) · {pedidos.length} en total. Avanza el estado conforme imprimes y
-          entregas; el tablero se actualiza solo.
-        </p>
+        <h1 className="text-2xl font-bold tracking-tight">{t("titulo")}</h1>
+        <p className="text-sm text-slate-500">{t("subtitulo")}</p>
+      </div>
+
+      <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
+        <Kpi icon="rocket" valor={activos.length} label={t("kpi.activos")} tone="sky" />
+        <Kpi icon="box" valor={pedidos.length} label={t("kpi.total")} tone="slate" />
+        <Kpi icon="check" valor={pedidos.length - activos.length} label={t("kpi.entregados")} tone="emerald" />
       </div>
 
       {pedidos.length === 0 ? (
         <Card>
-          <p className="text-sm text-slate-500">
-            Aún no hay pedidos. Entran solos al sincronizar las ventas de Mercado Libre.
-          </p>
+          <EstadoVacio icon="sparkles">{t("vacio")}</EstadoVacio>
         </Card>
       ) : (
-        <div className="space-y-2">
+        <div className="space-y-3">
           {ordenados.map((p) => (
             <Card key={p.id}>
               <div className="flex flex-wrap items-center justify-between gap-3">
                 <div className="min-w-[200px]">
                   <div className="font-medium text-slate-900">{p.modeloNombre}</div>
                   <div className="text-xs text-slate-400">
-                    Vendido {p.fechaVenta.toLocaleDateString("es-MX")}
-                    {p.fechaLimite ? ` · entregar antes del ${p.fechaLimite.toLocaleDateString("es-MX")}` : ""}
+                    {t("vendidoEl", { fecha: p.fechaVenta.toLocaleDateString(locale) })}
+                    {p.fechaLimite
+                      ? ` · ${t("entregarAntes", { fecha: p.fechaLimite.toLocaleDateString(locale) })}`
+                      : ""}
                   </div>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Badge tone={tono(p.estado)}>{p.estado}</Badge>
+                  <Badge tone={tono(p.estado)}>{t(`estado.${p.estado}`)}</Badge>
                   {p.clienteAtendido ? (
-                    <Badge tone="green">Cliente atendido</Badge>
+                    <Badge tone="green">{t("clienteAtendido")}</Badge>
                   ) : (
-                    <Badge tone="amber">Sin atender</Badge>
+                    <Badge tone="amber">{t("sinAtender")}</Badge>
                   )}
                 </div>
               </div>
@@ -71,21 +72,24 @@ export default async function PedidosPage() {
                     <button
                       type="submit"
                       disabled={p.estado === e}
-                      className={`rounded-md px-2.5 py-1 text-xs font-medium ${
+                      className={`rounded-full px-3 py-1 text-xs font-medium transition disabled:cursor-default ${
                         p.estado === e
-                          ? "bg-slate-900 text-white"
-                          : "border border-slate-300 bg-white text-slate-600 hover:bg-slate-50"
-                      } disabled:cursor-default`}
+                          ? "bg-brand text-white"
+                          : "border border-slate-300 bg-white text-slate-700 hover:bg-slate-50"
+                      }`}
                     >
-                      {ETIQUETA[e]}
+                      {t(`paso.${e}`)}
                     </button>
                   </form>
                 ))}
                 {!p.clienteAtendido && (
                   <form action={marcarAtendido}>
                     <input type="hidden" name="id" defaultValue={p.id} />
-                    <button type="submit" className="rounded-md bg-emerald-600 px-2.5 py-1 text-xs font-medium text-white hover:bg-emerald-700">
-                      ✓ Marcar atendido
+                    <button
+                      type="submit"
+                      className="rounded-full bg-emerald-600 px-3 py-1 text-xs font-medium text-white transition hover:bg-emerald-700"
+                    >
+                      ✓ {t("marcarAtendido")}
                     </button>
                   </form>
                 )}

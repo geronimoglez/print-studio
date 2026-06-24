@@ -3,9 +3,10 @@
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 import { mxn, horas } from "@/lib/format";
 import { motivoLicencia } from "@/lib/licencias";
-import { Badge, inputClass, selectClass } from "@/components/ui";
+import { Badge, Card, EstadoVacio, inputClass, selectClass } from "@/components/ui";
 
 export type FilaUI = {
   id: string;
@@ -47,19 +48,19 @@ type SortKey =
   | "estadoValidacion";
 
 // hide = clases para ocultar columnas no esenciales en móvil (se ven al ampliar / en escritorio).
-const COLS: { key: SortKey; label: string; right?: boolean; hide?: string }[] = [
-  { key: "nombre", label: "Modelo" },
-  { key: "riesgo", label: "Riesgo" },
-  { key: "licencia", label: "Licencia" },
-  { key: "categoria", label: "Categoría", hide: "hidden lg:table-cell" },
-  { key: "tiempoMin", label: "t. impr.", right: true, hide: "hidden xl:table-cell" },
-  { key: "gramos", label: "Filamento", right: true, hide: "hidden xl:table-cell" },
-  { key: "costoTotal", label: "Costo", right: true, hide: "hidden lg:table-cell" },
-  { key: "precioVenta", label: "Precio ML", right: true },
-  { key: "margenPct", label: "Margen", right: true, hide: "hidden lg:table-cell" },
-  { key: "rentabilidadHora", label: "$/hora ★", right: true },
-  { key: "tiempoEntregaDias", label: "Entrega", right: true, hide: "hidden xl:table-cell" },
-  { key: "estadoValidacion", label: "Estado" },
+const COLS: { key: SortKey; right?: boolean; hide?: string }[] = [
+  { key: "nombre" },
+  { key: "riesgo" },
+  { key: "licencia" },
+  { key: "categoria", hide: "hidden lg:table-cell" },
+  { key: "tiempoMin", right: true, hide: "hidden xl:table-cell" },
+  { key: "gramos", right: true, hide: "hidden xl:table-cell" },
+  { key: "costoTotal", right: true, hide: "hidden lg:table-cell" },
+  { key: "precioVenta", right: true },
+  { key: "margenPct", right: true, hide: "hidden lg:table-cell" },
+  { key: "rentabilidadHora", right: true },
+  { key: "tiempoEntregaDias", right: true, hide: "hidden xl:table-cell" },
+  { key: "estadoValidacion" },
 ];
 
 const NUM: Set<SortKey> = new Set([
@@ -77,19 +78,15 @@ function distinct(arr: (string | null)[]): string[] {
 }
 
 // Nivel de riesgo (capa IP + licencia): 🟢 100% limpio · 🟡 IP-limpio, licencia restringida · 🔴 MARCA/IP.
-const RIESGO_META: Record<FilaUI["riesgo"], { emoji: string; label: string; tone: "green" | "amber" | "red" }> = {
-  verde: { emoji: "🟢", label: "Limpio", tone: "green" },
-  amarillo: { emoji: "🟡", label: "Riesgo licencia", tone: "amber" },
-  rojo: { emoji: "🔴", label: "Marca/IP", tone: "red" },
+const RIESGO_META: Record<FilaUI["riesgo"], { emoji: string; tone: "green" | "amber" | "red" }> = {
+  verde: { emoji: "🟢", tone: "green" },
+  amarillo: { emoji: "🟡", tone: "amber" },
+  rojo: { emoji: "🔴", tone: "red" },
 };
 const RIESGO_RANK: Record<FilaUI["riesgo"], number> = { verde: 0, amarillo: 1, rojo: 2 };
-const RIESGO_TITULO: Record<FilaUI["riesgo"], string> = {
-  verde: "IP-limpio + licencia que permite venta (CC-BY/CC0/Comercial/Propia).",
-  amarillo: "IP-limpio, pero la licencia del archivo es restringida (Personal/NC). Publicable a riesgo (capa 2).",
-  rojo: "Tiene MARCA o PERSONAJE de terceros. No publicar sin decisión explícita.",
-};
 
 export function TablaModelos({ filas }: { filas: FilaUI[] }) {
+  const t = useTranslations("tabla");
   const [q, setQ] = useState("");
   const [fLic, setFLic] = useState("");
   const [fCat, setFCat] = useState("");
@@ -154,54 +151,54 @@ export function TablaModelos({ filas }: { filas: FilaUI[] }) {
   return (
     <div className="space-y-3">
       {/* Toolbar de filtros por columna */}
-      <div className="flex flex-wrap items-center gap-2 rounded-xl border border-slate-200 bg-white p-3 shadow-sm">
+      <Card className="flex flex-wrap items-center gap-2 p-3">
         <input
           value={q}
           onChange={(e) => setQ(e.target.value)}
-          placeholder="Buscar modelo, nicho…"
+          placeholder={t("buscarPlaceholder")}
           className={`${inputClass} w-56`}
         />
         <select value={fRiesgo} onChange={(e) => setFRiesgo(e.target.value)} className={`${selectClass} w-auto`}>
-          <option value="">Riesgo: todos</option>
-          <option value="verde">🟢 Limpio</option>
-          <option value="amarillo">🟡 Riesgo licencia</option>
-          <option value="rojo">🔴 Marca/IP</option>
+          <option value="">{t("filtroRiesgoTodos")}</option>
+          <option value="verde">{t("riesgoVerde")}</option>
+          <option value="amarillo">{t("riesgoAmarillo")}</option>
+          <option value="rojo">{t("riesgoRojo")}</option>
         </select>
         <select value={fLic} onChange={(e) => setFLic(e.target.value)} className={`${selectClass} w-auto`}>
-          <option value="">Licencia: todas</option>
+          <option value="">{t("filtroLicenciaTodas")}</option>
           {opcLic.map((o) => (
             <option key={o}>{o}</option>
           ))}
         </select>
         <select value={fCat} onChange={(e) => setFCat(e.target.value)} className={`${selectClass} w-auto`}>
-          <option value="">Categoría: todas</option>
+          <option value="">{t("filtroCategoriaTodas")}</option>
           {opcCat.map((o) => (
             <option key={o}>{o}</option>
           ))}
         </select>
         <select value={fFil} onChange={(e) => setFFil(e.target.value)} className={`${selectClass} w-auto`}>
-          <option value="">Filamento: todos</option>
+          <option value="">{t("filtroFilamentoTodos")}</option>
           {opcFil.map((o) => (
             <option key={o}>{o}</option>
           ))}
         </select>
         <select value={fEst} onChange={(e) => setFEst(e.target.value)} className={`${selectClass} w-auto`}>
-          <option value="">Estado: todos</option>
+          <option value="">{t("filtroEstadoTodos")}</option>
           {opcEst.map((o) => (
             <option key={o}>{o}</option>
           ))}
         </select>
         <label className="flex items-center gap-2 text-sm text-slate-600">
           <input type="checkbox" checked={soloAptos} onChange={(e) => setSoloAptos(e.target.checked)} />
-          Solo aptos
+          {t("soloAptos")}
         </label>
         <button onClick={limpiar} className="ml-auto text-sm text-slate-500 hover:text-slate-800">
-          Limpiar
+          {t("limpiar")}
         </button>
-        <span className="text-sm font-medium text-slate-500">{vista.length} resultado(s)</span>
-      </div>
+        <span className="text-sm font-medium text-slate-500">{t("resultados", { n: vista.length })}</span>
+      </Card>
 
-      <div className="overflow-x-auto rounded-xl border border-slate-200 bg-white shadow-sm">
+      <div className="overflow-x-auto rounded-2xl border border-slate-200 bg-white shadow-sm">
         <table className="w-full text-sm">
           <thead className="bg-slate-50 text-left text-xs uppercase tracking-wide text-slate-500">
             <tr>
@@ -210,10 +207,10 @@ export function TablaModelos({ filas }: { filas: FilaUI[] }) {
                   <button
                     onClick={() => ordenarPor(c.key)}
                     className={`inline-flex items-center font-semibold uppercase hover:text-slate-900 ${
-                      c.key === sortKey ? "text-cyan-700" : ""
+                      c.key === sortKey ? "text-brand" : ""
                     }`}
                   >
-                    {c.label}
+                    {t(`col.${c.key}`)}
                     {flecha(c.key)}
                   </button>
                 </th>
@@ -237,7 +234,7 @@ export function TablaModelos({ filas }: { filas: FilaUI[] }) {
                       />
                     ) : (
                       <div className="flex h-12 w-12 flex-none items-center justify-center rounded-md border border-dashed border-slate-300 text-[10px] text-slate-400">
-                        sin foto
+                        {t("sinFoto")}
                       </div>
                     )}
                     <div>
@@ -250,8 +247,8 @@ export function TablaModelos({ filas }: { filas: FilaUI[] }) {
                   </div>
                 </td>
                 <td className="px-3 py-2.5">
-                  <Badge tone={RIESGO_META[f.riesgo].tone} title={RIESGO_TITULO[f.riesgo]}>
-                    {RIESGO_META[f.riesgo].emoji} {RIESGO_META[f.riesgo].label}
+                  <Badge tone={RIESGO_META[f.riesgo].tone} title={t(`riesgoTitulo.${f.riesgo}`)}>
+                    {RIESGO_META[f.riesgo].emoji} {t(`riesgoLabel.${f.riesgo}`)}
                   </Badge>
                 </td>
                 <td className="px-3 py-2.5">
@@ -263,7 +260,7 @@ export function TablaModelos({ filas }: { filas: FilaUI[] }) {
                 <td className="px-3 py-2.5 text-slate-600 hidden lg:table-cell">{f.categoria}</td>
                 <td className="px-3 py-2.5 text-right tabular-nums hidden xl:table-cell">{horas(f.tiempoMin)}</td>
                 <td className="px-3 py-2.5 text-right tabular-nums text-slate-600 hidden xl:table-cell">
-                  {f.gramos} g · {f.tipoFilamento}
+                  {t("gramosFilamento", { g: f.gramos, filamento: f.tipoFilamento })}
                 </td>
                 <td className="px-3 py-2.5 text-right tabular-nums hidden lg:table-cell">{mxn(f.costoTotal)}</td>
                 <td className="px-3 py-2.5 text-right font-medium tabular-nums">{mxn(f.precioVenta)}</td>
@@ -271,7 +268,9 @@ export function TablaModelos({ filas }: { filas: FilaUI[] }) {
                 <td className="px-3 py-2.5 text-right font-semibold tabular-nums text-emerald-700">
                   {mxn(f.rentabilidadHora)}
                 </td>
-                <td className="px-3 py-2.5 text-right tabular-nums hidden xl:table-cell">{f.tiempoEntregaDias} d</td>
+                <td className="px-3 py-2.5 text-right tabular-nums hidden xl:table-cell">
+                  {t("dias", { d: f.tiempoEntregaDias })}
+                </td>
                 <td className="px-3 py-2.5">
                   <div className="flex flex-col gap-1">
                     <Badge
@@ -292,28 +291,40 @@ export function TablaModelos({ filas }: { filas: FilaUI[] }) {
                           target="_blank"
                           rel="noopener noreferrer"
                           className="inline-block rounded-full bg-sky-100 px-2 py-0.5 text-xs font-medium text-sky-800 hover:bg-sky-200"
-                          title="Abrir el anuncio en Mercado Libre"
+                          title={t("abrirAnuncio")}
                         >
-                          En ML ↗
+                          {t("enMlLink")}
                         </a>
                       ) : (
-                        <Badge tone="slate" title={f.mlEstado ? `Estatus en ML: ${f.mlEstado} (no visible públicamente)` : "Publicado"}>
-                          En ML{f.mlEstado && f.mlEstado !== "active" ? ` · ${f.mlEstado === "under_review" ? "en revisión" : f.mlEstado === "paused" ? "pausado" : f.mlEstado}` : ""}
+                        <Badge
+                          tone="slate"
+                          title={f.mlEstado ? t("estatusMl", { estado: f.mlEstado }) : t("publicado")}
+                        >
+                          {t("enMl")}
+                          {f.mlEstado && f.mlEstado !== "active"
+                            ? ` · ${
+                                f.mlEstado === "under_review"
+                                  ? t("mlEnRevision")
+                                  : f.mlEstado === "paused"
+                                    ? t("mlPausado")
+                                    : f.mlEstado
+                              }`
+                            : ""}
                         </Badge>
                       ))}
                   </div>
                 </td>
                 <td className="px-3 py-2.5 text-right">
-                  <Link href={`/modelos/${f.id}`} className="text-cyan-700 hover:underline">
-                    Editar
+                  <Link href={`/modelos/${f.id}`} className="font-medium text-brand hover:underline">
+                    {t("editar")}
                   </Link>
                 </td>
               </tr>
             ))}
             {vista.length === 0 && (
               <tr>
-                <td colSpan={13} className="px-3 py-8 text-center text-slate-400">
-                  No hay modelos que coincidan con los filtros.
+                <td colSpan={13} className="px-3 py-8">
+                  <EstadoVacio icon="box">{t("vacio")}</EstadoVacio>
                 </td>
               </tr>
             )}

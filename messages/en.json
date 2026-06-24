@@ -97,5 +97,325 @@
     "colEstado": "Status",
     "procesado": "Processed",
     "pendiente": "Pending"
+  },
+  "modelos": {
+    "titulo": "Model catalog",
+    "nuevoModelo": "New model",
+    "nicho": "Niche:",
+    "vistas": {
+      "todos": {
+        "label": "All",
+        "desc": "The full catalog, sorted by profitability/hour."
+      },
+      "listos": {
+        "label": "Ready to publish",
+        "desc": "Legally eligible + validated + not yet published on ML."
+      },
+      "rentabilidad": {
+        "label": "High profitability/hour",
+        "desc": "The ones that yield the most per printer hour."
+      },
+      "rapidos": {
+        "label": "Fast (<3h)",
+        "desc": "Printing under 3 hours: more turnover, less risk."
+      },
+      "riesgo": {
+        "label": "Legal risk",
+        "desc": "🔴 Third-party BRAND/IP — do not publish without an explicit decision."
+      },
+      "nicho": {
+        "label": "By niche",
+        "desc": "Filter by niche / seasonality for campaigns."
+      }
+    }
+  },
+  "tabla": {
+    "buscarPlaceholder": "Search model, niche…",
+    "filtroRiesgoTodos": "Risk: all",
+    "riesgoVerde": "🟢 Clean",
+    "riesgoAmarillo": "🟡 License risk",
+    "riesgoRojo": "🔴 Brand/IP",
+    "filtroLicenciaTodas": "License: all",
+    "filtroCategoriaTodas": "Category: all",
+    "filtroFilamentoTodos": "Filament: all",
+    "filtroEstadoTodos": "Status: all",
+    "soloAptos": "Eligible only",
+    "limpiar": "Clear",
+    "resultados": "{n} result(s)",
+    "col": {
+      "nombre": "Model",
+      "riesgo": "Risk",
+      "licencia": "License",
+      "categoria": "Category",
+      "tiempoMin": "print t.",
+      "gramos": "Filament",
+      "costoTotal": "Cost",
+      "precioVenta": "ML price",
+      "margenPct": "Margin",
+      "rentabilidadHora": "$/hour ★",
+      "tiempoEntregaDias": "Delivery",
+      "estadoValidacion": "Status"
+    },
+    "riesgoLabel": {
+      "verde": "Clean",
+      "amarillo": "License risk",
+      "rojo": "Brand/IP"
+    },
+    "riesgoTitulo": {
+      "verde": "IP-clean + license that allows sale (CC-BY/CC0/Commercial/Own).",
+      "amarillo": "IP-clean, but the file license is restricted (Personal/NC). Publishable at your own risk (layer 2).",
+      "rojo": "Contains a third-party BRAND or CHARACTER. Do not publish without an explicit decision."
+    },
+    "sinFoto": "no photo",
+    "gramosFilamento": "{g} g · {filamento}",
+    "dias": "{d} d",
+    "abrirAnuncio": "Open the listing on Mercado Libre",
+    "enMlLink": "On ML ↗",
+    "enMl": "On ML",
+    "estatusMl": "Status on ML: {estado} (not publicly visible)",
+    "publicado": "Published",
+    "mlEnRevision": "under review",
+    "mlPausado": "paused",
+    "editar": "Edit",
+    "vacio": "No models match the filters."
+  },
+  "salud": {
+    "titulo": "Mercado Libre health",
+    "resumen": "{anuncios} published listings · {pedidos} order(s).",
+    "ultimaSync": "Last sync: {fecha}.",
+    "sinSync": "Not synced yet.",
+    "buscarPlaceholder": "Search listing…",
+    "buscar": "Search",
+    "limpiar": "Clear",
+    "refrescar": "Refresh",
+    "vendidosPedidos": "Sold / Orders",
+    "abrirEnMl": "Open in Mercado Libre",
+    "verMotivo": "see reason / edit",
+    "verMotivoTitle": "Open in Mercado Libre to see the exact reason and edit the listing",
+    "noVisible": "not visible",
+    "noVisibleTitle": "Not visible on ML until it's active",
+    "vacio": "No published listings yet.",
+    "guia": {
+      "titulo": "📘 What is this and what do I do? (quick guide)",
+      "intro": "Here you see how your listings are doing on Mercado Libre. Open it when you have a moment and review them in batches. Hit <b>“Refresh status”</b> to see the latest. Tap any listing to open its page and manage it.",
+      "problema": "🛑 <b>With a problem:</b> Mercado Libre rejected them. Open them and fix the issue (sometimes it's a brand word in the title, e.g. “Durlock”) or pause the listing.",
+      "revision": "🟠 <b>Under ML review:</b> ML is checking them. They usually go live on their own within a few hours — <b>do nothing</b>, just wait.",
+      "pausado": "⏸️ <b>Paused:</b> they're not selling (because you or ML paused them).",
+      "activo": "🟢 <b>Active:</b> live and sellable. All good.",
+      "vendidos": "🛒 <b>Sold / Orders:</b> what already sold — there you see the orders to print and deliver.",
+      "nota": "You don't have to be here all the time: come in when you have free time and handle several at once."
+    },
+    "cat": {
+      "problema": {
+        "titulo": "With a problem",
+        "desc": "ML rejected them (forbidden/closed) — fix or pause them."
+      },
+      "revision": {
+        "titulo": "Under ML review",
+        "desc": "ML is moderating/processing them — they usually resolve on their own."
+      },
+      "pausado": {
+        "titulo": "Paused",
+        "desc": "Not visible for sale (paused by us or by ML)."
+      },
+      "activo": {
+        "titulo": "Active",
+        "desc": "Live and sellable."
+      },
+      "sin": {
+        "titulo": "Not synced",
+        "desc": "We haven't checked their status yet — hit Refresh."
+      }
+    },
+    "razon": {
+      "forbidden": "ML banned it. It's almost always: a third-party brand in the title, a disallowed category, or a near-duplicate listing. Open it in ML to see the exact reason and fix it.",
+      "fichaYFotos": "The listing details are incomplete and ML is still processing the photos. Open it in ML and complete what it asks for.",
+      "fichaTecnica": "The technical details are incomplete (a required field for the category). Open it in ML and fill in what it flags.",
+      "fotos": "ML is still downloading/validating the photos. It usually resolves on its own.",
+      "denuncia": "It received a report. Check the reason in ML.",
+      "sinStock": "Out of stock: set it to 1 or more to reactivate.",
+      "pausado": "Paused (by you or by ML)."
+    }
+  },
+  "pedidos": {
+    "titulo": "Orders",
+    "subtitulo": "Move the status forward as you print and deliver; the board updates on its own.",
+    "kpi": {
+      "activos": "Active",
+      "total": "Total",
+      "entregados": "Delivered"
+    },
+    "vacio": "No orders yet. They come in automatically when you sync your Mercado Libre sales.",
+    "vendidoEl": "Sold {fecha}",
+    "entregarAntes": "deliver before {fecha}",
+    "clienteAtendido": "Customer handled",
+    "sinAtender": "Not handled",
+    "marcarAtendido": "Mark handled",
+    "estado": {
+      "Vendido": "Sold",
+      "EnCola": "Queued",
+      "Imprimiendo": "Printing",
+      "Impreso": "Printed",
+      "Entregado": "Delivered"
+    },
+    "paso": {
+      "Vendido": "Send to print",
+      "EnCola": "Queue",
+      "Imprimiendo": "Printing",
+      "Impreso": "Printed",
+      "Entregado": "Delivered"
+    }
+  },
+  "tablero": {
+    "estadoGeneral": "Overall status",
+    "etiqueta": {
+      "verde": "GREEN · no rush",
+      "amarillo": "AMBER · get moving",
+      "rojo": "RED · act now"
+    },
+    "impresionTitulo": "🖨️ Printing",
+    "porImprimir": "to print",
+    "impresionResumen": "{enProceso} in progress · {horasRequeridas} h required / {capacidad} h available ({dias} days)",
+    "faltanImpresoras": "⚠️ {n} printer(s) short",
+    "clientesTitulo": "🙋 Customers",
+    "porAtender": "to handle",
+    "urgentes": "{n} urgent",
+    "ayuda": "Green = you're on time (even with several). Amber = time to get moving. Red = act now. It refreshes on its own. For a focus/smart screen:",
+    "ayudaCola": "returns the color."
+  },
+  "importar": {
+    "titulo": "Import a pack",
+    "subtitulo": "Upload a pack's ZIP (one folder per model, with photos). The system creates the models on its own and leaves them in <revision>Review</revision> for approval. You don't need to install anything.",
+    "guiaTitulo": "📘 How do I import a pack? (quick guide)",
+    "guiaPaso1": "Have the <b>pack's ZIP</b> ready (it should have one folder per model, with the photos inside).",
+    "guiaPaso2": "Click <b>“Pack ZIP file”</b> and pick it.",
+    "guiaPaso3": "Enter the <b>Category</b> (e.g. Planters, Lamps, Organizers) and the <b>Source</b> (where the pack came from).",
+    "guiaPaso4": "Click <b>“Import pack”</b> and wait. Large packs take a while — don't close the page.",
+    "guiaPaso5": "Done: the models show up in <revision>Review</revision> in 🟡 yellow. There you decide which ones to publish.",
+    "guiaNota": "They're created as <b>🟡 “to review”</b> on purpose, so you can choose. The system checks brand/IP from the photo afterward. If a pack is very large (> 1.2 GB), split it into fewer categories and upload it in parts.",
+    "campoArchivo": "Pack ZIP file",
+    "campoCategoria": "Category",
+    "campoFuente": "Source / pack",
+    "trabajando": "Working…",
+    "importarPack": "Import pack",
+    "subiendoArchivo": "Uploading {nombre} ({mb} MB)…",
+    "procesandoPack": "Processing the pack (extracting photos and creating models)…",
+    "errorProcesando": "Error processing",
+    "errorSubiendo": "Error uploading the file",
+    "listo": "✅ Done",
+    "resumenCreados": "{creados} model(s) created out of {encontrados} found",
+    "resumenSaltados": "({saltados} already existed/no photo)",
+    "irRevision": "Go to Review →",
+    "notaPie": "Note: they're created in 🟡 yellow (license “to review”) so you can decide. Brand/IP detection from the photo and the 3D mesh for printing are processed afterward. Very large packs (>1.2 GB) are best split by category."
+  },
+  "revision": {
+    "titulo": "Review room",
+    "subtitulo": "Batch pending approval · {n} models ({verde} {verdes} green · {amarillo} {amarillos} amber).",
+    "subtituloAccion": {
+      "antes": "Select and",
+      "publica": "Publish",
+      "o": "or",
+      "descarta": "Discard",
+      "despues": "; or approve them on Telegram with the bot."
+    },
+    "nivel": {
+      "verde": "Green · publishable",
+      "amarillo": "Amber · with your OK",
+      "rojo": "Red · IP"
+    },
+    "resultado": {
+      "publicados": "✅ {n} published",
+      "descartados": "🗑 {n} discarded",
+      "fallidos": "⚠️ {n} could not be published (check the model)",
+      "ninguno": "No model was selected."
+    },
+    "vacio": "No models pending review. Import a batch so it shows up here.",
+    "barra": {
+      "instruccion": "Check the ones you want and choose an action:",
+      "publicar": "✅ Publish selected",
+      "descartar": "🗑 Discard selected"
+    },
+    "sinFoto": "no photo",
+    "licenciaTitle": "File license"
+  },
+  "notificaciones": {
+    "titulo": "Notifications",
+    "subtitulo": "Which emails we notify and what Mercado Libre alerts are coming in.",
+    "kpi": {
+      "recientes": "Recent alerts",
+      "sinLeer": "Unread"
+    },
+    "guia": {
+      "titulo": "📘 How does it work? (quick guide)",
+      "parte1": "Mercado Libre sends alerts (rejections, sales, questions) by email to the account. That email is forwarded to your Gmail and a small script sends it here, which extracts the reason and the listing and displays it. This way the rejection reason also appears in ",
+      "enlaceSalud": "ML Health",
+      "parte2": ", not just the code.",
+      "nota": "Below you manage which emails we notify (for monitoring). The config for which emails Mercado Libre sends to is set in the ML account; here we only record it and see what comes in."
+    },
+    "destinos": {
+      "titulo": "📤 Emails we notify / monitor",
+      "vacio": "No emails registered yet."
+    },
+    "estado": {
+      "activo": "active",
+      "pausado": "paused"
+    },
+    "accion": {
+      "pausar": "pause",
+      "activar": "activate"
+    },
+    "tipo": {
+      "adicional": "additional",
+      "cuentaMl": "ml-account",
+      "reenvio": "forwarding"
+    },
+    "form": {
+      "emailPlaceholder": "email@domain.com",
+      "etiquetaPlaceholder": "label (e.g. team)",
+      "agregar": "Add"
+    },
+    "avisos": {
+      "titulo": "📥 Mercado Libre alerts received",
+      "vacio": "No alerts have arrived yet. When ML sends an email (rejection, sale…) and forwarding is set up, it will appear here with its reason."
+    }
+  },
+  "filamentos": {
+    "titulo": "Filaments",
+    "subtitulo": "The cost per kg feeds into the costing of each model (matched by filament type).",
+    "colTipo": "Type",
+    "colMarca": "Brand",
+    "colColor": "Color",
+    "colCostoKg": "Cost/kg",
+    "colStock": "Stock (g)",
+    "editar": "Edit",
+    "eliminar": "Delete",
+    "vacio": "No filaments yet.",
+    "agregarTitulo": "Add filament",
+    "agregarBoton": "Add"
+  },
+  "impresoras": {
+    "titulo": "Printers",
+    "subtitulo": "Power and depreciation feed the cost model; capacity decides when to buy more machines.",
+    "kpi": {
+      "horasDiaTotal": "printer-hours / day",
+      "disponibles": "available printers",
+      "horasDiaAms": "h/day with AMS (multicolor)",
+      "horasDiaSinAms": "h/day without AMS"
+    },
+    "notaCapacidad": "Capacity = available printers × {horas} h/day (from Settings). In Phase D it is matched against forecasted demand to tell you when it makes sense to buy another printer.",
+    "listaTitulo": "Your printers",
+    "colModelo": "Model",
+    "colPotencia": "Power (W)",
+    "colCostoEquipo": "Equipment cost",
+    "colDepreciacion": "Deprec./h",
+    "colHorasUso": "Hours used",
+    "colEstado": "Status",
+    "disponible": "Available",
+    "noDisponible": "Unavailable",
+    "editar": "Edit",
+    "eliminar": "Delete",
+    "vacio": "No printers yet.",
+    "agregarTitulo": "Add printer",
+    "agregar": "Add"
   }
 }

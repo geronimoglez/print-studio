@@ -1,3 +1,4 @@
+import { getTranslations } from "next-intl/server";
 import { prisma } from "@/lib/prisma";
 import { getConfig } from "@/lib/datos";
 import { calcularTableros, type Color } from "@/lib/semaforo";
@@ -10,80 +11,92 @@ const BG: Record<Color, string> = {
   amarillo: "bg-amber-500",
   rojo: "bg-rose-600",
 };
-const ETIQUETA: Record<Color, string> = {
-  verde: "VERDE · sin prisa",
-  amarillo: "AMARILLO · a moverse",
-  rojo: "ROJO · actuar ya",
-};
 
 export default async function TableroPage() {
+  const t = await getTranslations("tablero");
   const [pedidos, impresoras, config] = await Promise.all([
     prisma.pedido.findMany(),
     prisma.impresora.findMany(),
     getConfig(),
   ]);
-  const t = calcularTableros(pedidos, impresoras, config);
+  const tableros = calcularTableros(pedidos, impresoras, config);
+
+  const etiqueta: Record<Color, string> = {
+    verde: t("etiqueta.verde"),
+    amarillo: t("etiqueta.amarillo"),
+    rojo: t("etiqueta.rojo"),
+  };
 
   return (
     <div className="space-y-5">
       <AutoRefresh />
 
       {/* Estado global */}
-      <div className={`rounded-2xl ${BG[t.global]} px-6 py-4 text-center text-white shadow-sm`}>
-        <div className="text-sm font-medium uppercase tracking-wide opacity-90">Estado general</div>
-        <div className="text-2xl font-bold">{ETIQUETA[t.global]}</div>
+      <div
+        className={`rounded-2xl ${BG[tableros.global]} px-6 py-4 text-center text-white shadow-sm`}
+      >
+        <div className="text-sm font-medium uppercase tracking-wide opacity-90">
+          {t("estadoGeneral")}
+        </div>
+        <div className="text-2xl font-bold">{etiqueta[tableros.global]}</div>
       </div>
 
       <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
         {/* Impresión */}
-        <div className={`rounded-2xl ${BG[t.impresion.color]} p-6 text-white shadow-md`}>
+        <div className={`rounded-2xl ${BG[tableros.impresion.color]} p-6 text-white shadow-md`}>
           <div className="flex items-center justify-between">
-            <h2 className="text-lg font-semibold">🖨️ Impresión</h2>
+            <h2 className="text-lg font-semibold">{t("impresionTitulo")}</h2>
             <span className="rounded-full bg-white/20 px-3 py-1 text-xs font-medium uppercase">
-              {t.impresion.color}
+              {tableros.impresion.color}
             </span>
           </div>
           <div className="mt-4 flex items-end gap-3">
             <span className="text-7xl font-black leading-none tabular-nums">
-              {t.impresion.porImprimir}
+              {tableros.impresion.porImprimir}
             </span>
-            <span className="mb-2 text-lg opacity-90">por imprimir</span>
+            <span className="mb-2 text-lg opacity-90">{t("porImprimir")}</span>
           </div>
           <div className="mt-3 text-sm opacity-90">
-            {t.impresion.enProceso} en proceso · {t.impresion.horasRequeridas} h requeridas /{" "}
-            {t.impresion.capacidadHorizonte} h disponibles ({t.impresion.horizonteDias} días)
+            {t("impresionResumen", {
+              enProceso: tableros.impresion.enProceso,
+              horasRequeridas: tableros.impresion.horasRequeridas,
+              capacidad: tableros.impresion.capacidadHorizonte,
+              dias: tableros.impresion.horizonteDias,
+            })}
           </div>
-          {t.impresion.impresorasFaltantes > 0 && (
+          {tableros.impresion.impresorasFaltantes > 0 && (
             <div className="mt-3 inline-block rounded-lg bg-white/20 px-3 py-1.5 text-sm font-semibold">
-              ⚠️ Falta(n) {t.impresion.impresorasFaltantes} impresora(s)
+              {t("faltanImpresoras", { n: tableros.impresion.impresorasFaltantes })}
             </div>
           )}
-          <p className="mt-4 text-base font-medium">{t.impresion.mensaje}</p>
+          <p className="mt-4 text-base font-medium">{tableros.impresion.mensaje}</p>
         </div>
 
         {/* Clientes */}
-        <div className={`rounded-2xl ${BG[t.clientes.color]} p-6 text-white shadow-md`}>
+        <div className={`rounded-2xl ${BG[tableros.clientes.color]} p-6 text-white shadow-md`}>
           <div className="flex items-center justify-between">
-            <h2 className="text-lg font-semibold">🙋 Clientes</h2>
+            <h2 className="text-lg font-semibold">{t("clientesTitulo")}</h2>
             <span className="rounded-full bg-white/20 px-3 py-1 text-xs font-medium uppercase">
-              {t.clientes.color}
+              {tableros.clientes.color}
             </span>
           </div>
           <div className="mt-4 flex items-end gap-3">
             <span className="text-7xl font-black leading-none tabular-nums">
-              {t.clientes.pendientes}
+              {tableros.clientes.pendientes}
             </span>
-            <span className="mb-2 text-lg opacity-90">por atender</span>
+            <span className="mb-2 text-lg opacity-90">{t("porAtender")}</span>
           </div>
-          <div className="mt-3 text-sm opacity-90">{t.clientes.urgentes} urgente(s)</div>
-          <p className="mt-4 text-base font-medium">{t.clientes.mensaje}</p>
+          <div className="mt-3 text-sm opacity-90">
+            {t("urgentes", { n: tableros.clientes.urgentes })}
+          </div>
+          <p className="mt-4 text-base font-medium">{tableros.clientes.mensaje}</p>
         </div>
       </div>
 
       <p className="text-xs text-slate-500">
-        Verde = vas a tiempo (aunque tengas varios). Amarillo = hay que moverse. Rojo = actuar ya. Se
-        actualiza solo. Para foco/pantalla inteligente:{" "}
-        <code className="rounded bg-slate-100 px-1">/api/estado?formato=hex</code> devuelve el color.
+        {t("ayuda")}{" "}
+        <code className="rounded bg-slate-100 px-1">/api/estado?formato=hex</code>{" "}
+        {t("ayudaCola")}
       </p>
     </div>
   );
