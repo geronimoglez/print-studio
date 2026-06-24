@@ -1,0 +1,40 @@
+================================================================================
+ NOTICE
+================================================================================
+
+Copyright (C) 2026 <TITULAR DEL COPYRIGHT — reemplazar por tu nombre/organización>
+
+Este software se distribuye bajo los términos de la GNU Affero General Public
+License v3.0 (AGPL-3.0). El texto completo de la licencia está en el archivo
+LICENSE de este repositorio.
+
+Esto significa, entre otras cosas, que si modificas este software y lo ofreces
+como un servicio accesible por red (SaaS), debes poner a disposición de los
+usuarios de ese servicio el código fuente correspondiente, incluidas tus
+modificaciones (AGPL §13).
+
+--------------------------------------------------------------------------------
+ Descargo sobre marcas y contenidos de terceros
+--------------------------------------------------------------------------------
+
+- Este software es una HERRAMIENTA de gestión. NO incluye ni distribuye modelos
+  3D, mallas (STL/3MF), imágenes de catálogo ni ningún activo de diseño. Esos
+  datos pertenecen a sus respectivos autores y NO forman parte de este repositorio.
+
+- "Mercado Libre", "BambuLab", "MakerWorld", "Telegram", "OpenAI", "Anthropic",
+  "fal.ai" y cualquier otra marca mencionada son propiedad de sus respectivos
+  titulares. Este proyecto no está afiliado, patrocinado ni respaldado por ninguna
+  de esas entidades; las menciones son únicamente con fines de interoperabilidad.
+
+- La persona u organización que despliegue u opere este software es la única
+  responsable de garantizar que los modelos 3D que imprima, publique o
+  comercialice cuenten con la licencia y los derechos necesarios. Véase
+  docs/legal/DISCLAIMER.md y docs/legal/ACCEPTABLE_USE.md.
+
+--------------------------------------------------------------------------------
+ Componentes de terceros
+--------------------------------------------------------------------------------
+
+Este software usa bibliotecas open source de terceros (Next.js, React, Prisma,
+Tailwind CSS, entre otras), cada una bajo su propia licencia. Consulta el
+archivo package.json y los avisos de licencia de node_modules para el detalle.

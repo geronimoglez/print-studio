@@ -1,0 +1,28 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f1f5f9;
+  --foreground: #0f172a;
+  /* Marca (white-label). Defaults neutros; en runtime se sobreescriben con un <style>
+     inyectado desde branding (env o Config.branding). Ver src/lib/branding.ts. */
+  --brand-primary: #0891b2; /* cyan-600 */
+  --brand-accent: #22d3ee; /* cyan-400 */
+  --brand-dark: #020617; /* slate-950 */
+  --brand-dark-2: #0f172a; /* slate-900/950 */
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-brand: var(--brand-primary);
+  --color-brand-accent: var(--brand-accent);
+  --color-brand-dark: var(--brand-dark);
+  --color-brand-dark-2: var(--brand-dark-2);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+}

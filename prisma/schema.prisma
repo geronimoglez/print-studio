@@ -1,0 +1,211 @@
+// Esquema del catálogo maestro (doc 03). Base de datos: PostgreSQL.
+// Convenciones:
+//   - enums modelados como String validado en la app (lib/dominios.ts), no enums nativos
+//   - dinero como Float (se redondea en el motor de costeo)
+// DATABASE_URL define la conexión (Neon en la nube o Postgres local — ver .env.example).
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+/// Catálogo maestro: cada modelo 3D es una ficha con todo lo necesario para
+/// filtrar, clasificar y decidir qué publicar, a qué precio y en cuánto tiempo.
+model Modelo {
+  id                 String   @id @default(cuid())
+  // Identidad
+  nombre             String
+  fuente             String   @default("Propio") // MakerWorld | Propio | Otro
+  urlFuente          String?
+  creador            String?
+  // Licencia (campo crítico — doc 02). apto_venta se deriva en lib/licencias.ts
+  licencia           String   @default("Propia") // Personal | Comercial | CC-BY | CC-BY-NC | Dominio publico | Propia
+  // Riesgo capa 1 — MARCA/IP (lib/riesgo.ts). nivelRiesgo combina con la licencia (capa 2).
+  marcaIp            String   @default("no") // no | personaje | marca
+  // Clasificación
+  categoria          String   @default("Otro") // Figura | Organizador | Decoracion | Regalo | Evento | Miniatura | Refaccion | Otro
+  nicho              String?
+  // Técnicos (de Bambu Studio)
+  tiempoImpresionMin Int // minutos de impresión
+  gramosFilamento    Float // peso de filamento (g)
+  tipoFilamento      String   @default("PLA") // PLA | PETG | ABS | TPU | ...
+  multicolorAms      Boolean  @default(false)
+  requiereSoportes   Boolean  @default(false)
+  dificultad         String   @default("Media") // Baja | Media | Alta
+  // Mano de obra y post-proceso (insumos del costeo)
+  tiempoOperacionMin Int      @default(20) // slicing + retiro + post + empaque
+  costoPostproceso   Float    @default(0) // consumibles (lija, pintura, etc.)
+  costoLicencia      Float    @default(0) // prorrateo de membresía comercial, si aplica
+  // Mercado
+  rating             Float?
+  popularidad        Int? // descargas / likes en la fuente
+  // Máquina asignada (para energía y depreciación). Opcional.
+  impresoraId        String?
+  impresora          Impresora? @relation(fields: [impresoraId], references: [id])
+  // Estado
+  estadoValidacion   String   @default("Pendiente") // Pendiente | Validado | Rechazado
+  publicadoMl        Boolean  @default(false)
+  mlItemId           String?
+  // Salud del anuncio en ML (se sincroniza desde la API; alimenta el panel /salud y el digest)
+  mlEstado           String? // active | paused | under_review | closed
+  mlSubEstado        String? // sub_status: forbidden, waiting_for_patch, denounced... (unidos por coma)
+  mlEstadoAt         DateTime? // última sincronización del estado
+  mlPermalink        String? // URL pública del anuncio en Mercado Libre (para abrirlo de un clic)
+  // Publicación en ML
+  imagenes           String[] // URLs de fotos/renders (ML las recibe como pictures)
+  mlCategoriaId      String? // categoría ML (del predictor o override manual)
+  mlCatalogProductId String? // producto del catálogo de ML al que se engancha (publicación de catálogo)
+  descripcionMl      String? // descripción para ML (generada/editable)
+  mlListingType      String? // tipo de publicación (bronze/gold_special...)
+  videoYoutubeId     String? // ID de YouTube del clip 360° (ML lo muestra en la galería del anuncio)
+  // Medidas reales de la pieza impresa (cm), calculadas de la malla escalada al tamaño base (~12 cm máx).
+  // Van en la descripción y en el empaque (SELLER_PACKAGE_*) para el costo de envío de ML.
+  altoCm             Float? // alto del producto (cm)
+  anchoCm            Float? // ancho del producto (cm)
+  largoCm            Float? // largo/profundidad del producto (cm)
+  // Motivo legible del último aviso de ML (se extrae de los correos de moderación reenviados; se ve en /salud)
+  mlMotivo           String?
+  mlMotivoAt         DateTime?
+  avisos             AvisoCorreo[]
+  // Archivos del modelo (base del pipeline F3)
+  archivoUrl         String?
+  archivoTipo        String? // 3mf | stl | otro
+  notas              String?
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+}
+
+/// Avisos de Mercado Libre recibidos por CORREO (reenviados desde la cuenta de ML → Gmail → endpoint
+/// /api/ml/correo). Da trazabilidad: qué llegó, de qué anuncio y el motivo legible. Distinto del modelo
+/// Notificacion (webhooks). Multi-creador: a futuro se le agrega un tenantId para separar por creador.
+model AvisoCorreo {
+  id         String   @id @default(cuid())
+  de         String? // remitente original (ej. no-responder@mercadolibre.com)
+  paraEmail  String? // buzón al que llegó (ej. 3dlabsml@minkadigital.com)
+  asunto     String
+  motivo     String? // motivo legible extraído del correo (lo que ML pide corregir)
+  tipo       String?  @default("otro") // moderacion | venta | colaboracion | pregunta | otro
+  mlItemId   String? // MLM... si se pudo extraer del correo
+  modeloId   String?
+  modelo     Modelo?  @relation(fields: [modeloId], references: [id])
+  leido      Boolean  @default(false)
+  recibidoEn DateTime @default(now())
+
+  @@index([recibidoEn])
+}
+
+/// Destinos de notificación: a qué correos llegan/queremos que lleguen los avisos. Se administra y se
+/// MONITOREA desde la app (/notificaciones). No controla la config de ML, pero registra y da visibilidad
+/// de a quién estamos notificando además de la cuenta dueña. Multi-creador a futuro (tenantId).
+model NotificacionDestino {
+  id       String   @id @default(cuid())
+  email    String   @unique
+  etiqueta String? // "Cuenta ML (Blas)", "Simón", etc.
+  tipo     String   @default("adicional") // cuenta-ml | adicional | reenvio
+  activo   Boolean  @default(true)
+  nota     String?
+  creadoEn DateTime @default(now())
+}
+
+/// Filamentos disponibles. Alimentan el costo por gramo del costeo.
+model Filamento {
+  id          String   @id @default(cuid())
+  tipo        String // PLA | PETG | ABS | TPU | ...
+  marca       String?
+  color       String?
+  costoPorKg  Float
+  densidad    Float?   @default(1.24)
+  stockGramos Float?   @default(0)
+  createdAt   DateTime @default(now())
+}
+
+/// Impresoras. Alimentan energía (potencia) y depreciación; base de capacidad (Fase 2).
+model Impresora {
+  id                  String   @id @default(cuid())
+  modelo              String
+  potenciaW           Float // watts
+  horasUso            Float    @default(0)
+  costoEquipo         Float
+  depreciacionPorHora Float    @default(0)
+  disponible          Boolean  @default(true)
+  modelos             Modelo[]
+  createdAt           DateTime @default(now())
+}
+
+/// Ventas traídas de Mercado Libre (insumo del modelo predictivo, Fase 2). Aún sin usar.
+model Venta {
+  id       String   @id @default(cuid())
+  mlItemId String?
+  fecha    DateTime @default(now())
+  unidades Int      @default(1)
+  precio   Float
+  visitas  Int?     @default(0)
+}
+
+/// Parámetros globales de costeo. Fila única (id = 1).
+/// Valores por defecto = ejemplo del doc 04 (placeholder hasta datos reales de Blas).
+model Config {
+  id                  Int      @id @default(1)
+  tarifaKwh           Float    @default(4) // dato real de Blas
+  comisionMlPct       Float    @default(0.14) // estimado: confirmar categoría real en ML
+  costoEnvio          Float    @default(70) // estimado: confirmar
+  tasaFallos          Float    @default(0.10) // dato real: 1 de cada 10
+  costoHoraManoObra   Float    @default(200) // dato real de Blas
+  markup              Float    @default(3.0)
+  costoPorKgDefault   Float    @default(330) // dato real: PLA/PETG básico 280–380
+  potenciaWDefault    Float    @default(100) // promedio A1 durante impresión
+  depreciacionPorHora Float    @default(2) // estimado
+  horasProductivasDia Float    @default(20) // dato real de Blas
+  tiempoColaHoras     Float    @default(0)
+  diasEnvio           Int      @default(3)
+  colchonDias         Int      @default(1)
+  // White-label y preferencias (Fase 1D / i18n). `branding` es un override JSON sobre env/defaults
+  // (ver lib/branding.ts); se edita desde el wizard /setup y /config sin redeploy.
+  branding            Json?
+  setupCompletado     Boolean  @default(false) // primer arranque: si es false, /setup guía la config inicial
+  localeUi            String   @default("es") // idioma de la interfaz
+  localeContenido     String   @default("es-MX") // idioma+región del contenido de marketplace (≠ idioma de UI)
+  monedaNegocio       String   @default("MXN") // moneda del negocio (independiente del idioma)
+  updatedAt           DateTime @updatedAt
+}
+
+/// Credenciales/tokens de integraciones externas (Mercado Libre). Fila por proveedor.
+model Integracion {
+  id           String    @id @default(cuid())
+  proveedor    String    @unique // "mercadolibre"
+  mlUserId     String? // id del vendedor (Blas) tras autorizar
+  accessToken  String?
+  refreshToken String?
+  expiraEn     DateTime?
+  conectadoEn  DateTime?
+  actualizado  DateTime  @updatedAt
+}
+
+/// Log de notificaciones (webhooks) recibidas de ML. Patrón "recibir y encolar".
+model Notificacion {
+  id         String   @id @default(cuid())
+  topic      String
+  resource   String
+  mlUserId   String?
+  recibidoEn DateTime @default(now())
+  procesado  Boolean  @default(false)
+  payload    String // JSON crudo
+}
+
+/// Pedido/trabajo con estado de cumplimiento. Alimenta el tablero semáforo.
+/// Pipeline: Vendido → EnCola → Imprimiendo → Impreso → Entregado.
+model Pedido {
+  id                 String    @id @default(cuid())
+  modeloNombre       String
+  tiempoImpresionMin Int       @default(120) // snapshot para calcular carga sin joins
+  estado             String    @default("Vendido") // Vendido | EnCola | Imprimiendo | Impreso | Entregado
+  fechaVenta         DateTime  @default(now())
+  fechaLimite        DateTime? // compromiso de entrega
+  clienteAtendido    Boolean   @default(false) // ¿ya se le respondió/avisó al cliente?
+  mlOrderId          String? // clave de la orden de ML (orderId-itemIdx); null = demo/manual
+  createdAt          DateTime  @default(now())
+}

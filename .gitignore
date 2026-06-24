@@ -1,0 +1,62 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# env files (can opt-in for committing if needed)
+.env*
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+/src/generated/prisma
+
+.vercel
+
+# Datos de negocio / archivos pesados (no son código; se sirven por CDN/Blob).
+# Las fotos importadas de modelos son datos, no parte del open-source.
+/public/pack/
+# Carpetas de trabajo y temporales
+/_qa/
+/_tmp*
+scripts/_tmp*
+*.zip
+
+# Preview del Claude Code / artefactos locales
+/_preview/
+# Navegador aislado para render headless (descargado con @puppeteer/browsers; NO conflige con Edge abierto)
+/chrome-headless-shell/
+# Base SQLite local (datos)
+*.db
+dev.db

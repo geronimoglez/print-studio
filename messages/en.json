@@ -1,0 +1,78 @@
+{
+  "nav": {
+    "dashboard": "Dashboard",
+    "tablero": "Board",
+    "pedidos": "Orders",
+    "saludMl": "ML Health",
+    "notificaciones": "Notifications",
+    "modelos": "Models",
+    "importar": "Import",
+    "revision": "Review",
+    "config": "Settings",
+    "filamentos": "Filaments",
+    "impresoras": "Printers",
+    "integraciones": "Integrations",
+    "menu": "Menu",
+    "cerrarMenu": "Close menu",
+    "idioma": "Language"
+  },
+  "common": {
+    "guardar": "Save",
+    "cancelar": "Cancel",
+    "nuevoModelo": "New model"
+  },
+  "dashboard": {
+    "titulo": "Dashboard",
+    "nuevoModelo": "New model",
+    "kpi": {
+      "total": "Models in catalog",
+      "aptos": "Sellable",
+      "listos": "Ready to publish",
+      "riesgo": "Legal risk",
+      "publicados": "Published on ML"
+    },
+    "topTitulo": "🏆 Top 5 by profit / printer-hour",
+    "sinAptos": "No sellable models yet.",
+    "colModelo": "Model",
+    "colHora": "$/hour",
+    "colPrecio": "Price",
+    "colMargen": "Margin",
+    "topNota": "The machine is the bottleneck: we prioritize what yields most per print hour.",
+    "riesgoTitulo": "⚠️ Legal risk (do not publish)",
+    "sinRiesgo": "No models with license issues. 🎉",
+    "riesgoNota": "Only own or commercially-licensed models are sold. CC-BY-NC and \"Personal\" are blocked."
+  },
+  "config": {
+    "titulo": "Cost settings",
+    "subtitulo": "These parameters govern the WHOLE catalog. Changing them here recalculates all prices instantly.",
+    "marcaTitulo": "Brand & appearance",
+    "marcaDesc": "Customize your instance's name, logo and colors (white-label).",
+    "editarMarca": "Edit brand →",
+    "guardadoOk": "✓ Settings saved. The catalog recalculated prices.",
+    "grupoPrecios": "Price & market",
+    "grupoProduccion": "Production",
+    "grupoEntrega": "Delivery time",
+    "guardar": "Save settings",
+    "campos": {
+      "markup": "Markup (multiplier)",
+      "markupHint": "2.5–3.5x is standard in 3D",
+      "comision": "Marketplace fee (decimal)",
+      "comisionHint": "0.14 = 14%",
+      "envio": "Shipping cost",
+      "tarifaKwh": "Electricity rate (per kWh)",
+      "tarifaKwhHint": "check your bill",
+      "tasaFallos": "Failure rate (decimal)",
+      "tasaFallosHint": "0.10 = 10% of failed prints",
+      "manoObra": "Labor (per hour)",
+      "costoFilamento": "Default filament cost (per kg)",
+      "costoFilamentoHint": "if the filament isn't in the catalog",
+      "potencia": "Default power (W)",
+      "potenciaHint": "if the model has no printer assigned",
+      "depreciacion": "Depreciation per hour",
+      "horasDia": "Productive hours/day",
+      "tiempoCola": "Queue time (hours)",
+      "diasEnvio": "Shipping days",
+      "colchon": "Buffer (days)"
+    }
+  }
+}

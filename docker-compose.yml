@@ -1,0 +1,42 @@
+# Self-host completo: app + PostgreSQL local. Uso:
+#   1) cp .env.example .env   (rellena lo que uses; DATABASE_URL la sobreescribe este compose)
+#   2) docker compose up --build
+#   3) abre http://localhost:3000  → te lleva al asistente /setup
+services:
+  db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: app
+      POSTGRES_PASSWORD: app
+      POSTGRES_DB: app
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U app -d app"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  app:
+    build: .
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    env_file:
+      - .env
+    environment:
+      # Apunta a la DB del compose (sobreescribe lo que venga en .env).
+      DATABASE_URL: "postgresql://app:app@db:5432/app?sslmode=disable"
+      NEXT_PUBLIC_APP_URL: "http://localhost:3000"
+    ports:
+      - "3000:3000"
+    volumes:
+      # Persiste el logo subido (white-label). Para persistir TODAS las imágenes de catálogo,
+      # usa Vercel Blob (BLOB_READ_WRITE_TOKEN) o añade volúmenes para public/import, public/render.
+      - branding:/app/public/branding
+
+volumes:
+  pgdata:
+  branding:

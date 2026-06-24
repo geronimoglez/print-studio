@@ -1,0 +1,78 @@
+{
+  "nav": {
+    "dashboard": "Dashboard",
+    "tablero": "Tablero",
+    "pedidos": "Pedidos",
+    "saludMl": "Salud ML",
+    "notificaciones": "Notificaciones",
+    "modelos": "Modelos",
+    "importar": "Importar",
+    "revision": "Revisión",
+    "config": "Configuración",
+    "filamentos": "Filamentos",
+    "impresoras": "Impresoras",
+    "integraciones": "Integraciones",
+    "menu": "Menú",
+    "cerrarMenu": "Cerrar menú",
+    "idioma": "Idioma"
+  },
+  "common": {
+    "guardar": "Guardar",
+    "cancelar": "Cancelar",
+    "nuevoModelo": "Nuevo modelo"
+  },
+  "dashboard": {
+    "titulo": "Panel",
+    "nuevoModelo": "Nuevo modelo",
+    "kpi": {
+      "total": "Modelos en catálogo",
+      "aptos": "Aptos para venta",
+      "listos": "Listos para publicar",
+      "riesgo": "Riesgo legal",
+      "publicados": "Publicados en ML"
+    },
+    "topTitulo": "🏆 Top 5 por rentabilidad / hora-impresora",
+    "sinAptos": "Sin modelos aptos todavía.",
+    "colModelo": "Modelo",
+    "colHora": "$/hora",
+    "colPrecio": "Precio",
+    "colMargen": "Margen",
+    "topNota": "La máquina es el cuello de botella: se prioriza lo que más rinde por hora de impresión.",
+    "riesgoTitulo": "⚠️ Riesgo legal (no publicar)",
+    "sinRiesgo": "Ningún modelo con problema de licencia. 🎉",
+    "riesgoNota": "Solo se venden modelos propios o con licencia comercial. CC-BY-NC y \"Personal\" quedan bloqueados."
+  },
+  "config": {
+    "titulo": "Configuración de costeo",
+    "subtitulo": "Estos parámetros gobiernan TODO el catálogo. Al cambiarlos aquí, todos los precios se recalculan al instante.",
+    "marcaTitulo": "Marca y apariencia",
+    "marcaDesc": "Personaliza el nombre, el logo y los colores de tu instancia (white-label).",
+    "editarMarca": "Editar marca →",
+    "guardadoOk": "✓ Configuración guardada. El catálogo ya recalculó precios.",
+    "grupoPrecios": "Precio y mercado",
+    "grupoProduccion": "Producción",
+    "grupoEntrega": "Tiempo de entrega",
+    "guardar": "Guardar configuración",
+    "campos": {
+      "markup": "Markup (multiplicador)",
+      "markupHint": "2.5–3.5x es estándar en 3D",
+      "comision": "Comisión del marketplace (decimal)",
+      "comisionHint": "0.14 = 14%",
+      "envio": "Costo de envío",
+      "tarifaKwh": "Tarifa de luz (por kWh)",
+      "tarifaKwhHint": "revisar recibo; ojo tarifa DAC",
+      "tasaFallos": "Tasa de fallos (decimal)",
+      "tasaFallosHint": "0.10 = 10% de impresiones fallidas",
+      "manoObra": "Mano de obra (por hora)",
+      "costoFilamento": "Costo filamento por defecto (por kg)",
+      "costoFilamentoHint": "si el filamento no está en catálogo",
+      "potencia": "Potencia por defecto (W)",
+      "potenciaHint": "si el modelo no tiene impresora asignada",
+      "depreciacion": "Depreciación por hora",
+      "horasDia": "Horas productivas/día",
+      "tiempoCola": "Tiempo de cola (horas)",
+      "diasEnvio": "Días de envío",
+      "colchon": "Colchón (días)"
+    }
+  }
+}
