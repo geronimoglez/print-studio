@@ -1,3 +1,4 @@
+import { getTranslations, getLocale } from "next-intl/server";
 import { prisma } from "@/lib/prisma";
 import { getIntegracion, urlAutorizacion } from "@/lib/mercadolibre";
 import { sincronizarMl } from "@/app/actions";
@@ -10,6 +11,8 @@ export default async function IntegracionesPage({
 }: {
   searchParams: Promise<{ ml?: string }>;
 }) {
+  const t = await getTranslations("integraciones");
+  const locale = await getLocale();
   const { ml } = await searchParams;
   const [integ, notifs, totalVentas] = await Promise.all([
     getIntegracion(),
@@ -22,42 +25,37 @@ export default async function IntegracionesPage({
   return (
     <div className="space-y-4">
       <div>
-        <h1 className="text-2xl font-bold tracking-tight">Integraciones</h1>
-        <p className="text-sm text-slate-500">
-          Conecta Mercado Libre para traer el histórico de ventas (alimenta el forecast) y recibir
-          eventos en tiempo real.
-        </p>
+        <h1 className="text-2xl font-bold tracking-tight">{t("titulo")}</h1>
+        <p className="text-sm text-slate-500">{t("subtitulo")}</p>
       </div>
 
       {ml === "ok" && (
         <div className="rounded-md border border-emerald-200 bg-emerald-50 px-4 py-2 text-sm text-emerald-800">
-          ✓ Mercado Libre conectado.
+          {t("okConectado")}
         </div>
       )}
       {(ml === "fail" || ml === "error") && (
         <div className="rounded-md border border-rose-200 bg-rose-50 px-4 py-2 text-sm text-rose-800">
-          No se pudo conectar Mercado Libre. Revisa que el Redirect URI coincida e inténtalo de nuevo.
+          {t("errorConexion")}
         </div>
       )}
 
       <Card title="Mercado Libre">
         <div className="flex flex-wrap items-center gap-3">
-          <Badge tone={conectado ? "green" : "amber"}>{conectado ? "Conectado" : "No conectado"}</Badge>
+          <Badge tone={conectado ? "green" : "amber"}>{conectado ? t("conectado") : t("noConectado")}</Badge>
           {conectado ? (
             <span className="text-sm text-slate-600">
-              Vendedor #{integ?.mlUserId} · {totalVentas} venta(s) sincronizadas
+              {t("vendedor", { id: integ?.mlUserId ?? "", n: totalVentas })}
             </span>
           ) : (
-            <span className="text-sm text-slate-600">
-              Falta la autorización de la cuenta de Blas (un solo clic).
-            </span>
+            <span className="text-sm text-slate-600">{t("faltaAuth")}</span>
           )}
         </div>
 
         <div className="mt-4 flex flex-wrap items-center gap-3">
           {!conectado && (
             <a href={authUrl} className={btnPrimary}>
-              Conectar Mercado Libre
+              {t("conectar")}
             </a>
           )}
           {conectado && (
@@ -68,33 +66,30 @@ export default async function IntegracionesPage({
               }}
             >
               <button type="submit" className={btnPrimary}>
-                Sincronizar ventas ahora
+                {t("sincronizar")}
               </button>
             </form>
           )}
         </div>
         <p className="mt-3 text-xs text-slate-500">
-          {conectado
-            ? "El sync trae las órdenes pagadas recientes a la base, para el forecast."
-            : "Abre este enlace en la sesión de Mercado Libre de Blas y autoriza la app una vez. La app puede ser tuya; él solo aprueba el acceso a su cuenta de venta."}
+          {conectado ? t("notaConectado") : t("notaNoConectado")}
         </p>
       </Card>
 
-      <Card title="Notificaciones recibidas (webhooks)">
+      <Card title={t("webhooksTitulo")}>
         <p className="mb-3 text-xs text-slate-500">
-          ML envía aquí cada evento (venta, mensaje, pago, envío…). Endpoint:{" "}
-          <code className="rounded bg-slate-100 px-1">/api/ml/callbacknotice</code>
+          {t("webhooksDesc")} <code className="rounded bg-slate-100 px-1">/api/ml/callbacknotice</code>
         </p>
         {notifs.length === 0 ? (
-          <p className="text-sm text-slate-500">Sin notificaciones todavía.</p>
+          <p className="text-sm text-slate-500">{t("sinNotifs")}</p>
         ) : (
           <table className="w-full text-sm">
             <thead>
               <tr className="text-left text-xs uppercase text-slate-400">
-                <th className="pb-2">Tópico</th>
-                <th className="pb-2">Recurso</th>
-                <th className="pb-2">Recibido</th>
-                <th className="pb-2">Estado</th>
+                <th className="pb-2">{t("colTopico")}</th>
+                <th className="pb-2">{t("colRecurso")}</th>
+                <th className="pb-2">{t("colRecibido")}</th>
+                <th className="pb-2">{t("colEstado")}</th>
               </tr>
             </thead>
             <tbody>
@@ -102,10 +97,10 @@ export default async function IntegracionesPage({
                 <tr key={n.id} className="border-t border-slate-100">
                   <td className="py-2 font-medium">{n.topic}</td>
                   <td className="py-2 text-slate-600">{n.resource}</td>
-                  <td className="py-2 text-slate-500">{n.recibidoEn.toLocaleString("es-MX")}</td>
+                  <td className="py-2 text-slate-500">{n.recibidoEn.toLocaleString(locale)}</td>
                   <td className="py-2">
                     <Badge tone={n.procesado ? "green" : "amber"}>
-                      {n.procesado ? "Procesado" : "Pendiente"}
+                      {n.procesado ? t("procesado") : t("pendiente")}
                     </Badge>
                   </td>
                 </tr>

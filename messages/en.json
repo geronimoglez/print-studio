@@ -74,5 +74,28 @@
       "diasEnvio": "Shipping days",
       "colchon": "Buffer (days)"
     }
+  },
+  "integraciones": {
+    "titulo": "Integrations",
+    "subtitulo": "Connect Mercado Libre to import your sales history (feeds the forecast) and receive real-time events.",
+    "okConectado": "✓ Mercado Libre connected.",
+    "errorConexion": "Couldn't connect Mercado Libre. Check that the Redirect URI matches and try again.",
+    "conectado": "Connected",
+    "noConectado": "Not connected",
+    "vendedor": "Seller #{id} · {n} sale(s) synced",
+    "faltaAuth": "Mercado Libre account authorization pending (one click).",
+    "conectar": "Connect Mercado Libre",
+    "sincronizar": "Sync sales now",
+    "notaConectado": "The sync brings recent paid orders into the database, for the forecast.",
+    "notaNoConectado": "Open this link in your Mercado Libre session and authorize the app once.",
+    "webhooksTitulo": "Received notifications (webhooks)",
+    "webhooksDesc": "ML sends every event here (sale, message, payment, shipping…). Endpoint:",
+    "sinNotifs": "No notifications yet.",
+    "colTopico": "Topic",
+    "colRecurso": "Resource",
+    "colRecibido": "Received",
+    "colEstado": "Status",
+    "procesado": "Processed",
+    "pendiente": "Pending"
   }
 }

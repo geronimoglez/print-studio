@@ -74,5 +74,28 @@
       "diasEnvio": "Días de envío",
       "colchon": "Colchón (días)"
     }
+  },
+  "integraciones": {
+    "titulo": "Integraciones",
+    "subtitulo": "Conecta Mercado Libre para traer el histórico de ventas (alimenta el forecast) y recibir eventos en tiempo real.",
+    "okConectado": "✓ Mercado Libre conectado.",
+    "errorConexion": "No se pudo conectar Mercado Libre. Revisa que el Redirect URI coincida e inténtalo de nuevo.",
+    "conectado": "Conectado",
+    "noConectado": "No conectado",
+    "vendedor": "Vendedor #{id} · {n} venta(s) sincronizadas",
+    "faltaAuth": "Falta autorizar la cuenta de Mercado Libre (un solo clic).",
+    "conectar": "Conectar Mercado Libre",
+    "sincronizar": "Sincronizar ventas ahora",
+    "notaConectado": "El sync trae las órdenes pagadas recientes a la base, para el forecast.",
+    "notaNoConectado": "Abre este enlace en tu sesión de Mercado Libre y autoriza la app una vez.",
+    "webhooksTitulo": "Notificaciones recibidas (webhooks)",
+    "webhooksDesc": "ML envía aquí cada evento (venta, mensaje, pago, envío…). Endpoint:",
+    "sinNotifs": "Sin notificaciones todavía.",
+    "colTopico": "Tópico",
+    "colRecurso": "Recurso",
+    "colRecibido": "Recibido",
+    "colEstado": "Estado",
+    "procesado": "Procesado",
+    "pendiente": "Pendiente"
   }
 }
