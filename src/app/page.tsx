@@ -5,7 +5,6 @@ import { getCatalogo, getConfig } from "@/lib/datos";
 import { mxn } from "@/lib/format";
 import { motivoLicencia } from "@/lib/licencias";
 import { Badge, Card, Kpi, EstadoVacio, btnPrimary } from "@/components/ui";
-import { getBranding } from "@/lib/branding";
 
 export const dynamic = "force-dynamic";
 
@@ -43,7 +42,7 @@ export default async function Dashboard() {
       <div className="flex items-end justify-between">
         <div>
           <h1 className="text-2xl font-bold tracking-tight">{t("titulo")}</h1>
-          <p className="text-sm text-slate-500">{getBranding().appDescription}</p>
+          <p className="text-sm text-slate-500">{t("subtitulo")}</p>
         </div>
         <Link href="/modelos/nuevo" className={btnPrimary}>
           + {t("nuevoModelo")}

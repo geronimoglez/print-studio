@@ -19,10 +19,13 @@
   "common": {
     "guardar": "Save",
     "cancelar": "Cancel",
-    "nuevoModelo": "New model"
+    "nuevoModelo": "New model",
+    "appTagline": "3D printing catalog & costing",
+    "appDescription": "Catalog, costing and publishing for 3D printing."
   },
   "dashboard": {
     "titulo": "Dashboard",
+    "subtitulo": "Catalog, costing and publishing for 3D printing.",
     "nuevoModelo": "New model",
     "kpi": {
       "total": "Models in catalog",
@@ -417,5 +420,227 @@
     "vacio": "No printers yet.",
     "agregarTitulo": "Add printer",
     "agregar": "Add"
+  },
+  "setup": {
+    "tituloNuevo": "Welcome! Set up your brand",
+    "tituloEditar": "Brand & appearance",
+    "intro": "Customize your instance's name, logo and colors. Do it by hand or let AI propose a brand (you'll need your own fal.ai, OpenAI or Claude token). Everything is optional and can be changed later.",
+    "previewMarca": "Your brand",
+    "previewTagline": "Your tagline",
+    "previewBoton": "Button",
+    "pasoNegocio": "Business",
+    "pasoMarca": "Brand",
+    "pasoConfirmar": "Confirm",
+    "nombreNegocio": "Business name",
+    "nombreCorto": "Short name (PWA)",
+    "tagline": "Tagline",
+    "descripcion": "Description",
+    "idiomaUi": "Interface language",
+    "idiomaContenido": "Content language (marketplace)",
+    "moneda": "Currency",
+    "aiTitulo": "✨ Want a hand from AI? (optional)",
+    "aiNota": "Paste your own token. It isn't saved: it's used only for this generation.",
+    "aiTokenPlaceholder": "AI token (optional)",
+    "sugerirNombre": "Suggest name, tagline and description",
+    "generando": "Generating…",
+    "logoLabel": "Logo",
+    "logoIa": "✨ Generate logo with AI",
+    "quitar": "remove",
+    "subiendo": "Uploading…",
+    "paletaLabel": "Palette — presets",
+    "paletaIa": "✨ Palette with AI",
+    "colPrimario": "Primary",
+    "colAcento": "Accent",
+    "colFondo": "Dark background",
+    "colTema": "Theme",
+    "preset": {
+      "cian": "Cyan",
+      "violeta": "Violet",
+      "esmeralda": "Emerald",
+      "ambar": "Amber",
+      "rosa": "Rose"
+    },
+    "vendedorMl": "Seller name (on Mercado Libre listings)",
+    "vendedorMlHint": "Appears in the brand and the description signature.",
+    "confirmarNota": "All set. You can change anything later from Settings.",
+    "guardarCambios": "Save changes",
+    "guardarEmpezar": "Save and start",
+    "atras": "Back",
+    "siguiente": "Next",
+    "errSubir": "Couldn't upload",
+    "errSubirGen": "Error uploading the logo",
+    "errIa": "AI failed",
+    "errIaGen": "AI error"
+  },
+  "modeloDetalle": {
+    "modeloDetalle": {
+      "titulo": "Edit model",
+      "avisoMwOk": "✓ MakerWorld data applied (only empty fields were filled in).",
+      "avisoMwFail": "Couldn't read from MakerWorld. Nothing was changed.",
+      "avisoPubOk": "✓ Published on Mercado Libre. Item:",
+      "avisoPubUpd": "✓ Listing updated.",
+      "avisoPubFail": "Couldn't complete the action on Mercado Libre.",
+      "avisoValOk": "✓ Mercado Libre validated the listing: publishing would work. (No listing was created.)",
+      "avisoValFail": "⚠️ ML reports adjustments needed before publishing: {msg}",
+      "publicarTitulo": "🛒 Publish on Mercado Libre",
+      "campoTitulo": "Title:",
+      "campoCategoria": "ML category:",
+      "porDeterminar": "to be determined",
+      "campoPrecio": "Price:",
+      "campoEntrega": "Delivery:",
+      "dias": "{d} days",
+      "fotos": "Photos ({n})",
+      "quitarFoto": "Remove",
+      "fotoPlaceholder": "URL of a photo or render (https://…)",
+      "agregarFoto": "Add photo",
+      "falta": "Missing:",
+      "publicadoItem": "Published · {id}",
+      "verEnMl": "View on Mercado Libre ↗",
+      "noVisibleMl": "Not visible on ML (status: {estado}{sub})",
+      "actualizarPrecioStock": "Update price/stock",
+      "pausar": "Pause",
+      "validarMl": "Validate on ML (without publishing)",
+      "publicarMl": "Publish on Mercado Libre",
+      "resuelvePendientes": "Resolve the pending items to enable.",
+      "guardarCambios": "Save changes",
+      "makerworldTitulo": "MakerWorld (search or paste link)",
+      "makerworldDesc": "Search the model on MakerWorld by name and pick the right one (it brings the cover and data), or paste the URL directly. It only fills empty fields.",
+      "makerworldPlaceholder": "https://makerworld.com/en/models/123456-…",
+      "enriquecerUrl": "Enrich by URL",
+      "catalogoTitulo": "📦 Mercado Libre catalog (optional — exact product only)",
+      "catalogoDesc": "The recommended path for your own prints is the free listing (above). The catalog is the exception: it only links when the model IS exactly a product that already exists on ML (same brand/model). Compare the photos and confirm before linking.",
+      "eliminarModelo": "Delete model"
+    }
+  },
+  "buscarCatalogo": {
+    "buscarCatalogo": {
+      "enganchadoA": "Linked to catalog:",
+      "quitar": "Remove",
+      "buscando": "Searching the catalog…",
+      "buscarCta": "Search the marketplace catalog",
+      "advertencia": "Link to the catalog <b>only if it is exactly the same product</b> (same brand/model). For original prints, use the <b>free listing</b> (above).",
+      "errorBuscar": "The catalog search failed.",
+      "sinResultados": "No catalog products for “{nombre}”.",
+      "tuModelo": "Your model",
+      "catalogo": "Catalog",
+      "sinFoto": "No photo",
+      "marca": "Brand: {marca}",
+      "modelo": "· Model: {modelo}",
+      "esExacto": "This is <b>exactly</b> this product",
+      "enganchar": "Link"
+    }
+  },
+  "buscarMakerworld": {
+    "buscar": "🔎 Search MakerWorld",
+    "buscando": "Searching MakerWorld…",
+    "error": "Couldn't search (Firecrawl). Please try again.",
+    "sinResultados": "No results for “{nombre}”.",
+    "usarEste": "Use this one"
+  },
+  "modeloNuevo": {
+    "modeloNuevo": {
+      "titulo": "New model",
+      "subtitulo": "Add a new model and let the system work out costs, price and profit per hour.",
+      "crear": "Create model"
+    }
+  },
+  "modeloForm": {
+    "seccion": {
+      "general": "General details",
+      "tecnicos": "Technical (from the slicer)",
+      "costos": "Labor and costs",
+      "mercado": "Market and status",
+      "notas": "Notes"
+    },
+    "nombre": "Model name",
+    "fuente": "Source",
+    "creador": "Creator (if third-party)",
+    "urlFuente": "Source URL",
+    "licencia": "License",
+    "licenciaHint": "Determines whether the model can be sold (legal filter).",
+    "categoria": "Category",
+    "nicho": "Niche / tag",
+    "nichoHint": "e.g. Day of the Dead, gaming, spare parts",
+    "tiempoImpresionMin": "Print time (min)",
+    "gramosFilamento": "Filament (grams)",
+    "tipoFilamento": "Filament type",
+    "dificultad": "Difficulty",
+    "impresoraAsignada": "Assigned printer",
+    "impresoraDefault": "— use default values —",
+    "multicolorAms": "AMS / multicolor",
+    "requiereSoportes": "Supports",
+    "tiempoOperacionMin": "Operation time (min)",
+    "tiempoOperacionHint": "slicing + removal + post + packaging",
+    "costoPostproceso": "Post-processing cost (MXN)",
+    "costoLicencia": "License cost (MXN)",
+    "costoLicenciaHint": "prorated commercial membership, if applicable",
+    "rating": "Rating (1–5)",
+    "popularidad": "Popularity (downloads/likes)",
+    "estadoValidacion": "Validation status",
+    "mlItemId": "ML listing ID",
+    "archivoUrl": "File (URL)",
+    "archivoUrlHint": "path to the .3mf / .stl (F3 pipeline)",
+    "archivoTipo": "File type",
+    "publicadoMl": "Published on Mercado Libre",
+    "notas": "Notes",
+    "cancelar": "Cancel"
+  },
+  "filamentoForm": {
+    "tipo": "Type",
+    "marca": "Brand",
+    "color": "Color",
+    "costoPorKg": "Cost/kg (MXN)",
+    "stockGramos": "Stock (g)",
+    "cancelar": "Cancel"
+  },
+  "filamentoDetalle": {
+    "filamentoDetalle": {
+      "titulo": "Edit filament",
+      "subtitulo": "Adjust the cost per kg and stock; this data feeds the costing of every model.",
+      "guardarCambios": "Save changes"
+    }
+  },
+  "impresoraForm": {
+    "impresoraForm": {
+      "modelo": "Model",
+      "modeloHint": "If it has AMS, include it in the name, e.g. \"Bambu Lab A1 (AMS)\"",
+      "modeloPlaceholder": "Bambu Lab A1",
+      "potencia": "Power (W)",
+      "costoEquipo": "Equipment cost (MXN)",
+      "depreciacion": "Depreciation/h (MXN)",
+      "horasUso": "Hours of use",
+      "disponible": "Available",
+      "cancelar": "Cancel"
+    }
+  },
+  "impresoraDetalle": {
+    "titulo": "Edit printer",
+    "subtitulo": "Update the details for {modelo}.",
+    "guardar": "Save changes"
+  },
+  "gestionDatos": {
+    "gestionDatos": {
+      "titulo": "⚠️ Test data management",
+      "descripcion": "Delete the models catalog (and/or sales) when you start loading the real ones. <fuerte>It never touches filaments or printers</fuerte> (those are real data). Before deleting, a <fuerte>JSON backup</fuerte> is automatically downloaded to your device.",
+      "palabraClave": "BORRAR",
+      "placeholderConfirmar": "Type {palabra}",
+      "procesando": "Processing…",
+      "descargarRespaldo": "Download backup (JSON)",
+      "errorDesconocido": "unknown",
+      "modelosTitulo": "Catalog models",
+      "modelosConteo": "{n, plural, one {# model} other {# models}}",
+      "modelosNota": "Currently in the catalog.",
+      "borrarModelos": "Delete the {n} models",
+      "confirmarModelos": "Delete the {n} models? A backup will be downloaded first. Filaments and printers are NOT touched.",
+      "okModelos": "✓ {n} models deleted. Backup downloaded to your device.",
+      "errorModelos": "✗ Error: {detalle}. Nothing was deleted.",
+      "ventasTitulo": "Sales (test data)",
+      "ventasConteo": "{n, plural, one {# sale} other {# sales}}",
+      "ventasNota": "Sales recorded for testing.",
+      "borrarVentas": "Delete sales",
+      "confirmarVentas": "Delete the {n} test sales? A backup will be downloaded first.",
+      "okVentas": "✓ {n} sales deleted.",
+      "errorVentas": "✗ Error: {detalle}."
+    }
   }
 }

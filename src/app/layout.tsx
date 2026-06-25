@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Link from "next/link";
 import { NextIntlClientProvider } from "next-intl";
-import { getLocale, getMessages } from "next-intl/server";
+import { getLocale, getMessages, getTranslations } from "next-intl/server";
 import "./globals.css";
 import { Logo } from "@/components/Logo";
 import { Nav } from "@/components/Nav";
@@ -12,10 +12,10 @@ const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
 
 export async function generateMetadata(): Promise<Metadata> {
-  const b = await getBrandingResuelto();
+  const [b, t] = await Promise.all([getBrandingResuelto(), getTranslations("common")]);
   return {
-    title: `${b.appName} · ${b.tagline}`,
-    description: b.appDescription,
+    title: `${b.appName} · ${t("appTagline")}`,
+    description: t("appDescription"),
     appleWebApp: { capable: true, title: b.appName, statusBarStyle: "black-translucent" },
   };
 }
@@ -25,7 +25,12 @@ export async function generateViewport(): Promise<Viewport> {
 }
 
 export default async function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  const [b, locale, messages] = await Promise.all([getBrandingResuelto(), getLocale(), getMessages()]);
+  const [b, locale, messages, t] = await Promise.all([
+    getBrandingResuelto(),
+    getLocale(),
+    getMessages(),
+    getTranslations("common"),
+  ]);
   // Inyecta los colores de marca como CSS vars (env ahora; Config.branding en runtime — Fase 1D).
   const brandVars = `:root{--brand-primary:${b.colorPrimary};--brand-accent:${b.colorAccent};--brand-dark:${b.colorBgDark};--brand-dark-2:${b.themeColor};}`;
   return (
@@ -43,7 +48,7 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
           </header>
           <main className="mx-auto w-full max-w-7xl flex-1 px-4 py-6">{children}</main>
           <footer className="mx-auto w-full max-w-7xl px-4 py-5 text-xs text-slate-500">
-            <span className="font-medium text-slate-600">{b.appName}</span> · {b.tagline}.
+            <span className="font-medium text-slate-600">{b.appName}</span> · {t("appTagline")}
           </footer>
         </NextIntlClientProvider>
       </body>

@@ -19,10 +19,13 @@
   "common": {
     "guardar": "Guardar",
     "cancelar": "Cancelar",
-    "nuevoModelo": "Nuevo modelo"
+    "nuevoModelo": "Nuevo modelo",
+    "appTagline": "Catálogo y costeo de impresión 3D",
+    "appDescription": "Catálogo, costeo y publicación para impresión 3D."
   },
   "dashboard": {
     "titulo": "Panel",
+    "subtitulo": "Catálogo, costeo y publicación para impresión 3D.",
     "nuevoModelo": "Nuevo modelo",
     "kpi": {
       "total": "Modelos en catálogo",
@@ -417,5 +420,227 @@
     "vacio": "Aún no hay impresoras.",
     "agregarTitulo": "Agregar impresora",
     "agregar": "Agregar"
+  },
+  "setup": {
+    "tituloNuevo": "¡Bienvenido! Configura tu marca",
+    "tituloEditar": "Marca y apariencia",
+    "intro": "Personaliza el nombre, el logo y los colores de tu instancia. Puedes hacerlo a mano o dejar que la IA te proponga una marca (necesitas tu propio token de fal.ai, OpenAI o Claude). Todo es opcional y se puede cambiar luego.",
+    "previewMarca": "Tu marca",
+    "previewTagline": "Tu tagline",
+    "previewBoton": "Botón",
+    "pasoNegocio": "Negocio",
+    "pasoMarca": "Marca",
+    "pasoConfirmar": "Confirmar",
+    "nombreNegocio": "Nombre del negocio",
+    "nombreCorto": "Nombre corto (PWA)",
+    "tagline": "Tagline",
+    "descripcion": "Descripción",
+    "idiomaUi": "Idioma de la interfaz",
+    "idiomaContenido": "Idioma del contenido (marketplace)",
+    "moneda": "Moneda",
+    "aiTitulo": "✨ ¿Te ayudo con la IA? (opcional)",
+    "aiNota": "Pega tu propio token. No se guarda: se usa solo para esta generación.",
+    "aiTokenPlaceholder": "Token de IA (opcional)",
+    "sugerirNombre": "Sugerir nombre, tagline y descripción",
+    "generando": "Generando…",
+    "logoLabel": "Logo",
+    "logoIa": "✨ Generar logo con IA",
+    "quitar": "quitar",
+    "subiendo": "Subiendo…",
+    "paletaLabel": "Paleta — presets",
+    "paletaIa": "✨ Paleta con IA",
+    "colPrimario": "Primario",
+    "colAcento": "Acento",
+    "colFondo": "Fondo oscuro",
+    "colTema": "Tema",
+    "preset": {
+      "cian": "Cian",
+      "violeta": "Violeta",
+      "esmeralda": "Esmeralda",
+      "ambar": "Ámbar",
+      "rosa": "Rosa"
+    },
+    "vendedorMl": "Nombre del vendedor (en publicaciones de Mercado Libre)",
+    "vendedorMlHint": "Aparece en la marca y la firma de las descripciones.",
+    "confirmarNota": "Todo listo. Puedes cambiar cualquier dato más adelante desde Configuración.",
+    "guardarCambios": "Guardar cambios",
+    "guardarEmpezar": "Guardar y empezar",
+    "atras": "Atrás",
+    "siguiente": "Siguiente",
+    "errSubir": "No se pudo subir",
+    "errSubirGen": "Error al subir el logo",
+    "errIa": "Falló la IA",
+    "errIaGen": "Error de IA"
+  },
+  "modeloDetalle": {
+    "modeloDetalle": {
+      "titulo": "Editar modelo",
+      "avisoMwOk": "✓ Datos de MakerWorld aplicados (solo se rellenaron campos vacíos).",
+      "avisoMwFail": "No se pudo leer de MakerWorld. No se cambió nada.",
+      "avisoPubOk": "✓ Publicado en Mercado Libre. Item:",
+      "avisoPubUpd": "✓ Publicación actualizada.",
+      "avisoPubFail": "No se pudo completar la acción en Mercado Libre.",
+      "avisoValOk": "✓ Mercado Libre validó el anuncio: el publicar funcionaría. (No se creó ninguna publicación.)",
+      "avisoValFail": "⚠️ ML reporta ajustes antes de publicar: {msg}",
+      "publicarTitulo": "🛒 Publicar en Mercado Libre",
+      "campoTitulo": "Título:",
+      "campoCategoria": "Categoría ML:",
+      "porDeterminar": "por determinar",
+      "campoPrecio": "Precio:",
+      "campoEntrega": "Entrega:",
+      "dias": "{d} días",
+      "fotos": "Fotos ({n})",
+      "quitarFoto": "Quitar",
+      "fotoPlaceholder": "URL de una foto o render (https://…)",
+      "agregarFoto": "Agregar foto",
+      "falta": "Falta:",
+      "publicadoItem": "Publicado · {id}",
+      "verEnMl": "Ver en Mercado Libre ↗",
+      "noVisibleMl": "No visible en ML (estatus: {estado}{sub})",
+      "actualizarPrecioStock": "Actualizar precio/stock",
+      "pausar": "Pausar",
+      "validarMl": "Validar en ML (sin publicar)",
+      "publicarMl": "Publicar en Mercado Libre",
+      "resuelvePendientes": "Resuelve los pendientes para habilitar.",
+      "guardarCambios": "Guardar cambios",
+      "makerworldTitulo": "MakerWorld (buscar o pegar liga)",
+      "makerworldDesc": "Busca el modelo en MakerWorld por nombre y elige el correcto (trae portada y datos), o pega la URL directo. Solo rellena campos vacíos.",
+      "makerworldPlaceholder": "https://makerworld.com/en/models/123456-…",
+      "enriquecerUrl": "Enriquecer por URL",
+      "catalogoTitulo": "📦 Catálogo de Mercado Libre (opcional — solo producto exacto)",
+      "catalogoDesc": "La vía recomendada para impresiones propias es el anuncio libre (arriba). El catálogo es la excepción: solo engancha cuando el modelo ES exactamente un producto que ya existe en ML (misma marca/modelo). Compara las fotos y confirma antes de enganchar.",
+      "eliminarModelo": "Eliminar modelo"
+    }
+  },
+  "buscarCatalogo": {
+    "buscarCatalogo": {
+      "enganchadoA": "Enganchado al catálogo:",
+      "quitar": "Quitar",
+      "buscando": "Buscando en catálogo…",
+      "buscarCta": "Buscar en catálogo del marketplace",
+      "advertencia": "Engancha al catálogo <b>solo si es exactamente el mismo producto</b> (misma marca/modelo). Para impresiones originales, usa el <b>anuncio libre</b> (arriba).",
+      "errorBuscar": "No se pudo buscar en el catálogo.",
+      "sinResultados": "Sin productos de catálogo para “{nombre}”.",
+      "tuModelo": "Tu modelo",
+      "catalogo": "Catálogo",
+      "sinFoto": "Sin foto",
+      "marca": "Marca: {marca}",
+      "modelo": "· Modelo: {modelo}",
+      "esExacto": "Es <b>exactamente</b> este producto",
+      "enganchar": "Enganchar"
+    }
+  },
+  "buscarMakerworld": {
+    "buscar": "🔎 Buscar en MakerWorld",
+    "buscando": "Buscando en MakerWorld…",
+    "error": "No se pudo buscar (Firecrawl). Intenta de nuevo.",
+    "sinResultados": "Sin resultados para “{nombre}”.",
+    "usarEste": "Usar este"
+  },
+  "modeloNuevo": {
+    "modeloNuevo": {
+      "titulo": "Nuevo modelo",
+      "subtitulo": "Captura un modelo nuevo y deja que el sistema calcule costos, precio y rentabilidad por hora.",
+      "crear": "Crear modelo"
+    }
+  },
+  "modeloForm": {
+    "seccion": {
+      "general": "Datos generales",
+      "tecnicos": "Técnicos (del laminador)",
+      "costos": "Mano de obra y costos",
+      "mercado": "Mercado y estado",
+      "notas": "Notas"
+    },
+    "nombre": "Nombre del modelo",
+    "fuente": "Fuente",
+    "creador": "Creador (si es de terceros)",
+    "urlFuente": "URL de la fuente",
+    "licencia": "Licencia",
+    "licenciaHint": "Define si el modelo se puede vender (filtro legal).",
+    "categoria": "Categoría",
+    "nicho": "Nicho / etiqueta",
+    "nichoHint": "ej. Día de Muertos, gaming, refacciones",
+    "tiempoImpresionMin": "Tiempo de impresión (min)",
+    "gramosFilamento": "Filamento (gramos)",
+    "tipoFilamento": "Tipo de filamento",
+    "dificultad": "Dificultad",
+    "impresoraAsignada": "Impresora asignada",
+    "impresoraDefault": "— usar valores por defecto —",
+    "multicolorAms": "AMS / multicolor",
+    "requiereSoportes": "Soportes",
+    "tiempoOperacionMin": "Tiempo de operación (min)",
+    "tiempoOperacionHint": "laminado + retiro + post + empaque",
+    "costoPostproceso": "Costo post-proceso (MXN)",
+    "costoLicencia": "Costo licencia (MXN)",
+    "costoLicenciaHint": "prorrateo de membresía comercial, si aplica",
+    "rating": "Rating (1–5)",
+    "popularidad": "Popularidad (descargas/likes)",
+    "estadoValidacion": "Estado de validación",
+    "mlItemId": "ID de publicación ML",
+    "archivoUrl": "Archivo (URL)",
+    "archivoUrlHint": "ruta al .3mf / .stl (pipeline F3)",
+    "archivoTipo": "Tipo de archivo",
+    "publicadoMl": "Publicado en Mercado Libre",
+    "notas": "Notas",
+    "cancelar": "Cancelar"
+  },
+  "filamentoForm": {
+    "tipo": "Tipo",
+    "marca": "Marca",
+    "color": "Color",
+    "costoPorKg": "Costo/kg (MXN)",
+    "stockGramos": "Stock (g)",
+    "cancelar": "Cancelar"
+  },
+  "filamentoDetalle": {
+    "filamentoDetalle": {
+      "titulo": "Editar filamento",
+      "subtitulo": "Ajusta el costo por kg y el stock; estos datos alimentan el costeo de cada modelo.",
+      "guardarCambios": "Guardar cambios"
+    }
+  },
+  "impresoraForm": {
+    "impresoraForm": {
+      "modelo": "Modelo",
+      "modeloHint": "Si tiene AMS, ponlo en el nombre, ej. \"Bambu Lab A1 (AMS)\"",
+      "modeloPlaceholder": "Bambu Lab A1",
+      "potencia": "Potencia (W)",
+      "costoEquipo": "Costo equipo (MXN)",
+      "depreciacion": "Depreciación/h (MXN)",
+      "horasUso": "Horas de uso",
+      "disponible": "Disponible",
+      "cancelar": "Cancelar"
+    }
+  },
+  "impresoraDetalle": {
+    "titulo": "Editar impresora",
+    "subtitulo": "Ajusta los datos de {modelo}.",
+    "guardar": "Guardar cambios"
+  },
+  "gestionDatos": {
+    "gestionDatos": {
+      "titulo": "⚠️ Gestión de datos de prueba",
+      "descripcion": "Borra el catálogo de modelos (y/o ventas) cuando empieces a cargar los reales. <fuerte>Nunca toca filamentos ni impresoras</fuerte> (esos son datos reales). Antes de borrar se descarga automáticamente un <fuerte>respaldo en JSON</fuerte> a tu equipo.",
+      "palabraClave": "BORRAR",
+      "placeholderConfirmar": "Escribe {palabra}",
+      "procesando": "Procesando…",
+      "descargarRespaldo": "Descargar respaldo (JSON)",
+      "errorDesconocido": "desconocido",
+      "modelosTitulo": "Modelos del catálogo",
+      "modelosConteo": "{n, plural, one {# modelo} other {# modelos}}",
+      "modelosNota": "Actualmente en el catálogo.",
+      "borrarModelos": "Borrar los {n} modelos",
+      "confirmarModelos": "¿Borrar los {n} modelos? Se descargará un respaldo primero. NO se tocan filamentos ni impresoras.",
+      "okModelos": "✓ {n} modelos borrados. Respaldo descargado a tu equipo.",
+      "errorModelos": "✗ Error: {detalle}. No se borró nada.",
+      "ventasTitulo": "Ventas (datos de prueba)",
+      "ventasConteo": "{n, plural, one {# venta} other {# ventas}}",
+      "ventasNota": "Ventas registradas para pruebas.",
+      "borrarVentas": "Borrar ventas",
+      "confirmarVentas": "¿Borrar las {n} ventas de prueba? Se descargará un respaldo primero.",
+      "okVentas": "✓ {n} ventas borradas.",
+      "errorVentas": "✗ Error: {detalle}."
+    }
   }
 }

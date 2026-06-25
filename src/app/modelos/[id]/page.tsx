@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import { getTranslations, getLocale } from "next-intl/server";
 import { prisma } from "@/lib/prisma";
 import {
   actualizarModelo,
@@ -27,6 +28,8 @@ export default async function EditarModelo({
   params: Promise<{ id: string }>;
   searchParams: Promise<{ mw?: string; pub?: string; msg?: string; item?: string }>;
 }) {
+  const t = await getTranslations("modeloDetalle");
+  const locale = await getLocale();
   const { id } = await params;
   const sp = await searchParams;
   const [modelo, impresoras, prev] = await Promise.all([
@@ -40,72 +43,73 @@ export default async function EditarModelo({
 
   return (
     <div className="space-y-4">
-      <h1 className="text-2xl font-bold tracking-tight">Editar modelo</h1>
+      <h1 className="text-2xl font-bold tracking-tight">{t("titulo")}</h1>
 
       {sp.mw === "ok" && (
-        <div className="rounded-md border border-emerald-200 bg-emerald-50 px-4 py-2 text-sm text-emerald-800">
-          ✓ Datos de MakerWorld aplicados (solo se rellenaron campos vacíos).
+        <div className="rounded-2xl border border-emerald-200 bg-emerald-50 px-4 py-2 text-sm text-emerald-800">
+          {t("avisoMwOk")}
         </div>
       )}
       {sp.mw === "fail" && (
-        <div className="rounded-md border border-amber-200 bg-amber-50 px-4 py-2 text-sm text-amber-800">
-          No se pudo leer de MakerWorld. No se cambió nada.
+        <div className="rounded-2xl border border-amber-200 bg-amber-50 px-4 py-2 text-sm text-amber-800">
+          {t("avisoMwFail")}
         </div>
       )}
       {sp.pub === "ok" && (
-        <div className="rounded-md border border-emerald-200 bg-emerald-50 px-4 py-2 text-sm text-emerald-800">
-          ✓ Publicado en Mercado Libre. Item: <strong>{sp.item}</strong>
+        <div className="rounded-2xl border border-emerald-200 bg-emerald-50 px-4 py-2 text-sm text-emerald-800">
+          {t("avisoPubOk")} <strong>{sp.item}</strong>
         </div>
       )}
       {sp.pub === "upd" && (
-        <div className="rounded-md border border-emerald-200 bg-emerald-50 px-4 py-2 text-sm text-emerald-800">
-          ✓ Publicación actualizada.
+        <div className="rounded-2xl border border-emerald-200 bg-emerald-50 px-4 py-2 text-sm text-emerald-800">
+          {t("avisoPubUpd")}
         </div>
       )}
       {sp.pub === "fail" && (
-        <div className="rounded-md border border-rose-200 bg-rose-50 px-4 py-2 text-sm text-rose-800">
-          ✗ {sp.msg || "No se pudo completar la acción en Mercado Libre."}
+        <div className="rounded-2xl border border-rose-200 bg-rose-50 px-4 py-2 text-sm text-rose-800">
+          ✗ {sp.msg || t("avisoPubFail")}
         </div>
       )}
       {sp.pub === "val_ok" && (
-        <div className="rounded-md border border-emerald-200 bg-emerald-50 px-4 py-2 text-sm text-emerald-800">
-          ✓ Mercado Libre validó el anuncio: el publicar funcionaría. (No se creó ninguna publicación.)
+        <div className="rounded-2xl border border-emerald-200 bg-emerald-50 px-4 py-2 text-sm text-emerald-800">
+          {t("avisoValOk")}
         </div>
       )}
       {sp.pub === "val_fail" && (
-        <div className="rounded-md border border-amber-200 bg-amber-50 px-4 py-2 text-sm text-amber-800">
-          ⚠️ ML reporta ajustes antes de publicar: {sp.msg}
+        <div className="rounded-2xl border border-amber-200 bg-amber-50 px-4 py-2 text-sm text-amber-800">
+          {t("avisoValFail", { msg: sp.msg ?? "" })}
         </div>
       )}
 
       {/* ---------- Publicar en Mercado Libre (copiloto) ---------- */}
-      <Card title="🛒 Publicar en Mercado Libre">
+      <Card title={t("publicarTitulo")}>
         {p && (
           <div className="space-y-4">
             <div className="grid grid-cols-1 gap-3 text-sm md:grid-cols-2">
               <div>
-                <span className="text-slate-500">Título:</span> <strong>{p.title}</strong>
+                <span className="text-slate-500">{t("campoTitulo")}</span> <strong>{p.title}</strong>
               </div>
               <div>
-                <span className="text-slate-500">Categoría ML:</span>{" "}
+                <span className="text-slate-500">{t("campoCategoria")}</span>{" "}
                 {p.categoriaId ? (
                   <strong>{p.categoriaNombre ?? p.categoriaId}</strong>
                 ) : (
-                  <span className="text-amber-700">por determinar</span>
+                  <span className="text-amber-700">{t("porDeterminar")}</span>
                 )}
               </div>
               <div>
-                <span className="text-slate-500">Precio:</span>{" "}
+                <span className="text-slate-500">{t("campoPrecio")}</span>{" "}
                 <strong className="text-emerald-700">{mxn(p.precio)}</strong>
               </div>
               <div>
-                <span className="text-slate-500">Entrega:</span> {p.tiempoEntregaDias} días
+                <span className="text-slate-500">{t("campoEntrega")}</span>{" "}
+                {t("dias", { d: p.tiempoEntregaDias })}
               </div>
             </div>
 
             {/* Imágenes */}
             <div>
-              <div className="mb-1 text-sm font-medium text-slate-700">Fotos ({p.imagenes.length})</div>
+              <div className="mb-1 text-sm font-medium text-slate-700">{t("fotos", { n: p.imagenes.length })}</div>
               {p.imagenes.length > 0 && (
                 <div className="mb-2 flex flex-wrap gap-2">
                   {p.imagenes.map((url) => (
@@ -114,7 +118,11 @@ export default async function EditarModelo({
                       <form action={quitarImagen} className="absolute -right-2 -top-2">
                         <input type="hidden" name="id" defaultValue={modelo.id} />
                         <input type="hidden" name="url" defaultValue={url} />
-                        <button type="submit" title="Quitar" className="h-5 w-5 rounded-full bg-rose-600 text-xs text-white">
+                        <button
+                          type="submit"
+                          title={t("quitarFoto")}
+                          className="h-5 w-5 rounded-full bg-rose-600 text-xs text-white"
+                        >
                           ×
                         </button>
                       </form>
@@ -124,9 +132,9 @@ export default async function EditarModelo({
               )}
               <form action={agregarImagen} className="flex flex-wrap items-center gap-2">
                 <input type="hidden" name="id" defaultValue={modelo.id} />
-                <input name="url" placeholder="URL de una foto o render (https://…)" className={`${inputClass} max-w-md flex-1`} />
+                <input name="url" placeholder={t("fotoPlaceholder")} className={`${inputClass} max-w-md flex-1`} />
                 <button type="submit" className={btnGhost}>
-                  Agregar foto
+                  {t("agregarFoto")}
                 </button>
               </form>
             </div>
@@ -134,7 +142,7 @@ export default async function EditarModelo({
             {/* Faltantes */}
             {p.faltantes.length > 0 && !p.yaPublicado && (
               <div className="flex flex-wrap items-center gap-2">
-                <span className="text-sm text-slate-500">Falta:</span>
+                <span className="text-sm text-slate-500">{t("falta")}</span>
                 {p.faltantes.map((f) => (
                   <Badge key={f} tone="amber">
                     {f}
@@ -146,27 +154,35 @@ export default async function EditarModelo({
             {/* Acciones */}
             {p.yaPublicado ? (
               <div className="flex flex-wrap items-center gap-3">
-                <Badge tone="blue">Publicado · {p.mlItemId}</Badge>
+                <Badge tone="blue">{t("publicadoItem", { id: p.mlItemId ?? "" })}</Badge>
                 {modelo.mlPermalink && modelo.mlEstado === "active" ? (
-                  <a href={modelo.mlPermalink} target="_blank" rel="noopener noreferrer" className="text-sm font-medium text-cyan-700 hover:underline">
-                    Ver en Mercado Libre ↗
+                  <a
+                    href={modelo.mlPermalink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm font-medium text-cyan-700 hover:underline"
+                  >
+                    {t("verEnMl")}
                   </a>
                 ) : modelo.mlEstado && modelo.mlEstado !== "active" ? (
                   <span className="text-xs text-slate-500" title={modelo.mlSubEstado ?? ""}>
-                    No visible en ML (estatus: {modelo.mlEstado}{modelo.mlSubEstado ? ` · ${modelo.mlSubEstado}` : ""})
+                    {t("noVisibleMl", {
+                      estado: modelo.mlEstado,
+                      sub: modelo.mlSubEstado ? ` · ${modelo.mlSubEstado}` : "",
+                    })}
                   </span>
                 ) : null}
                 <form action={actualizarEnMl}>
                   <input type="hidden" name="id" defaultValue={modelo.id} />
                   <button type="submit" className={btnGhost}>
-                    Actualizar precio/stock
+                    {t("actualizarPrecioStock")}
                   </button>
                 </form>
                 <form action={actualizarEnMl}>
                   <input type="hidden" name="id" defaultValue={modelo.id} />
                   <input type="hidden" name="pausar" value="1" />
                   <button type="submit" className="text-sm text-rose-700 hover:underline">
-                    Pausar
+                    {t("pausar")}
                   </button>
                 </form>
               </div>
@@ -175,7 +191,7 @@ export default async function EditarModelo({
                 <form action={validarEnMl}>
                   <input type="hidden" name="id" defaultValue={modelo.id} />
                   <button type="submit" className={btnGhost}>
-                    Validar en ML (sin publicar)
+                    {t("validarMl")}
                   </button>
                 </form>
                 <form action={publicarEnMl}>
@@ -185,11 +201,11 @@ export default async function EditarModelo({
                     disabled={!puedePublicar}
                     className={`${btnPrimary} disabled:cursor-not-allowed disabled:opacity-40`}
                   >
-                    Publicar en Mercado Libre
+                    {t("publicarMl")}
                   </button>
                 </form>
                 {!puedePublicar && (
-                  <span className="text-xs text-slate-500">Resuelve los pendientes para habilitar.</span>
+                  <span className="text-xs text-slate-500">{t("resuelvePendientes")}</span>
                 )}
               </div>
             )}
@@ -198,36 +214,28 @@ export default async function EditarModelo({
       </Card>
 
       <Card>
-        <ModeloForm action={actualizarModelo} modelo={modelo} impresoras={impresoras} submitLabel="Guardar cambios" />
+        <ModeloForm action={actualizarModelo} modelo={modelo} impresoras={impresoras} submitLabel={t("guardarCambios")} />
       </Card>
 
-      <Card title="MakerWorld (buscar o pegar liga)">
-        <p className="mb-3 text-xs text-slate-500">
-          Busca el modelo en MakerWorld por nombre y elige el correcto (trae portada y datos), o pega
-          la URL directo. Solo rellena campos vacíos.
-        </p>
+      <Card title={t("makerworldTitulo")}>
+        <p className="mb-3 text-xs text-slate-500">{t("makerworldDesc")}</p>
         <form action={enriquecerModelo} className="flex flex-wrap items-center gap-2">
           <input type="hidden" name="id" defaultValue={modelo.id} />
           <input
             name="mwUrl"
             defaultValue={modelo.urlFuente ?? ""}
-            placeholder="https://makerworld.com/en/models/123456-…"
+            placeholder={t("makerworldPlaceholder")}
             className={`${inputClass} max-w-md flex-1`}
           />
           <button type="submit" className={btnGhost}>
-            Enriquecer por URL
+            {t("enriquecerUrl")}
           </button>
         </form>
         <BuscarMakerWorld modeloId={modelo.id} nombre={modelo.nombre} />
       </Card>
 
-      <Card title="📦 Catálogo de Mercado Libre (opcional — solo producto exacto)">
-        <p className="mb-3 text-xs text-slate-500">
-          La vía <strong>recomendada para impresiones propias es el anuncio libre</strong> (arriba). El
-          catálogo es <strong>la excepción</strong>: solo engancha cuando el modelo ES exactamente un
-          producto que ya existe en ML (misma marca/modelo). Compara las fotos y confirma antes de
-          enganchar.
-        </p>
+      <Card title={t("catalogoTitulo")}>
+        <p className="mb-3 text-xs text-slate-500">{t("catalogoDesc")}</p>
         <BuscarCatalogo
           modeloId={modelo.id}
           nombre={modelo.nombre}
@@ -239,7 +247,7 @@ export default async function EditarModelo({
       <form action={eliminarModelo}>
         <input type="hidden" name="id" defaultValue={modelo.id} />
         <button type="submit" className="text-sm text-rose-700 hover:underline">
-          Eliminar modelo
+          {t("eliminarModelo")}
         </button>
       </form>
     </div>
