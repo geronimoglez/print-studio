@@ -601,21 +601,17 @@
     }
   },
   "impresoraForm": {
-    "impresoraForm": {
-      "modelo": "Modelo",
-      "modeloHint": "Si tiene AMS, ponlo en el nombre, ej. \"Bambu Lab A1 (AMS)\"",
-      "modeloPlaceholder": "Bambu Lab A1",
-      "potencia": "Potencia (W)",
-      "costoEquipo": "Costo equipo (MXN)",
-      "depreciacion": "Depreciación/h (MXN)",
-      "horasUso": "Horas de uso",
-      "disponible": "Disponible",
-      "cancelar": "Cancelar"
-    }
+    "modelo": "Modelo",
+    "modeloHint": "Si tiene AMS, ponlo en el nombre, ej. \"Bambu Lab A1 (AMS)\"",
+    "potencia": "Potencia (W)",
+    "costoEquipo": "Costo del equipo",
+    "depreciacion": "Depreciación/h",
+    "horasUso": "Horas de uso",
+    "disponible": "Disponible",
+    "cancelar": "Cancelar"
   },
   "impresoraDetalle": {
     "titulo": "Editar impresora",
-    "subtitulo": "Ajusta los datos de {modelo}.",
     "guardar": "Guardar cambios"
   },
   "gestionDatos": {

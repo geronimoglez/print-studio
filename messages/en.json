@@ -601,21 +601,17 @@
     }
   },
   "impresoraForm": {
-    "impresoraForm": {
-      "modelo": "Model",
-      "modeloHint": "If it has AMS, include it in the name, e.g. \"Bambu Lab A1 (AMS)\"",
-      "modeloPlaceholder": "Bambu Lab A1",
-      "potencia": "Power (W)",
-      "costoEquipo": "Equipment cost (MXN)",
-      "depreciacion": "Depreciation/h (MXN)",
-      "horasUso": "Hours of use",
-      "disponible": "Available",
-      "cancelar": "Cancel"
-    }
+    "modelo": "Model",
+    "modeloHint": "If it has AMS, include it in the name, e.g. \"Bambu Lab A1 (AMS)\"",
+    "potencia": "Power (W)",
+    "costoEquipo": "Equipment cost",
+    "depreciacion": "Depreciation/h",
+    "horasUso": "Hours used",
+    "disponible": "Available",
+    "cancelar": "Cancel"
   },
   "impresoraDetalle": {
     "titulo": "Edit printer",
-    "subtitulo": "Update the details for {modelo}.",
     "guardar": "Save changes"
   },
   "gestionDatos": {
