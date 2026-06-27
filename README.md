@@ -4,6 +4,8 @@
 
 [![License: AGPL v3](https://img.shields.io/badge/License-AGPL_v3-blue.svg)](LICENSE)
 
+[![Print Studio](docs/screenshots/hero.jpg)](https://print-studio-sable.vercel.app)
+
 Open-source web platform to run an **on-demand 3D printing** business: import models, compute their real
 **cost & pricing**, manage **legal risk (IP + license)** with a 🟢🟡🔴 traffic light, publish to
 **marketplaces (Mercado Libre)** with AI-generated descriptions, and monitor listing **health** — all
@@ -46,7 +48,7 @@ DB migrations for you — so the first deploy lands on the `/setup` wizard with 
 | AI / Vision | **OpenRouter / OpenAI / Anthropic** (text) · **fal.ai / OpenAI** (images) — all optional |
 | Marketplace | **Mercado Libre API** |
 | Bot | external HTTP gateway (`x-bot-key` header) — see [`docs/BOT_API.md`](./docs/BOT_API.md) |
-| UI | Tailwind CSS v4 · i18n with next-intl (English / Spanish) |
+| UI | Tailwind CSS v4 · i18n with next-intl (English · Spanish · Portuguese · French) |
 
 ## Quick start (Docker)
 
@@ -82,8 +84,9 @@ no alerts). The **brand** (`BRAND_*`) can be set via env or edited in `/setup`.
 - [`docs/legal/`](./docs/legal/) — Terms, Acceptable Use, Disclaimer and Privacy templates.
 
 ## Internationalization
-The UI ships in **English and Spanish** (switch in the header) and is built to add more languages. The
-marketplace **content** language (e.g. listing descriptions) is configurable separately from the UI language.
+The UI ships in **English, Spanish, Portuguese and French** (switch in the header) and is built to add more
+languages — each is a single `messages/<locale>.json` file. The marketplace **content** language (e.g. listing
+descriptions) is configurable separately from the UI language.
 
 ## Open-core architecture
 This public repo is the **single-tenant, self-hostable** app. The **multi-tenant, authentication and
