@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { inputClass, labelClass, btnPrimary, btnGhost } from "@/components/ui";
 import { iniciales } from "@/lib/iniciales";
+import { locales, localeNames } from "@/i18n/config";
 
 type Valores = {
   appName: string;
@@ -101,7 +102,7 @@ export function SetupWizard({
   async function genNombre() {
     const d = await ia(
       "/api/setup/generar-nombre",
-      { brief: `${v.appName} ${v.appDescription}`.trim(), proveedor: provText, token, idioma: v.localeUi === "en" ? "English" : "español" },
+      { brief: `${v.appName} ${v.appDescription}`.trim(), proveedor: provText, token, idioma: localeNames[v.localeUi as keyof typeof localeNames] ?? "español" },
       "nombre",
     );
     if (!d) return;
@@ -213,8 +214,11 @@ export function SetupWizard({
           <label className="block">
             <span className={labelClass}>{t("idiomaUi")}</span>
             <select name="localeUi" className={inputClass} value={v.localeUi} onChange={(e) => set("localeUi", e.target.value)}>
-              <option value="es">Español</option>
-              <option value="en">English</option>
+              {locales.map((l) => (
+                <option key={l} value={l}>
+                  {localeNames[l]}
+                </option>
+              ))}
             </select>
           </label>
           <label className="block">

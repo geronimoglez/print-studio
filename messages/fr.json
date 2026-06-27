@@ -1,0 +1,642 @@
+{
+  "nav": {
+    "dashboard": "Dashboard",
+    "tablero": "Tableau",
+    "pedidos": "Commandes",
+    "saludMl": "Santé ML",
+    "notificaciones": "Notifications",
+    "modelos": "Modèles",
+    "importar": "Importer",
+    "revision": "Révision",
+    "config": "Configuration",
+    "filamentos": "Filaments",
+    "impresoras": "Imprimantes",
+    "integraciones": "Intégrations",
+    "menu": "Menu",
+    "cerrarMenu": "Fermer le menu",
+    "idioma": "Langue"
+  },
+  "common": {
+    "guardar": "Enregistrer",
+    "cancelar": "Annuler",
+    "nuevoModelo": "Nouveau modèle",
+    "appTagline": "Catalogue et chiffrage d'impression 3D",
+    "appDescription": "Catalogue, chiffrage et publication pour l'impression 3D."
+  },
+  "dashboard": {
+    "titulo": "Tableau de bord",
+    "subtitulo": "Catalogue, chiffrage et publication pour l'impression 3D.",
+    "nuevoModelo": "Nouveau modèle",
+    "kpi": {
+      "total": "Modèles au catalogue",
+      "aptos": "Vendables",
+      "listos": "Prêts à publier",
+      "riesgo": "Risque juridique",
+      "publicados": "Publiés sur ML"
+    },
+    "topTitulo": "🏆 Top 5 par rentabilité / heure-imprimante",
+    "sinAptos": "Aucun modèle vendable pour l'instant.",
+    "colModelo": "Modèle",
+    "colHora": "$/heure",
+    "colPrecio": "Prix",
+    "colMargen": "Marge",
+    "topNota": "La machine est le goulot d'étranglement : on priorise ce qui rapporte le plus par heure d'impression.",
+    "riesgoTitulo": "⚠️ Risque juridique (ne pas publier)",
+    "sinRiesgo": "Aucun modèle avec un problème de licence. 🎉",
+    "riesgoNota": "Seuls les modèles propres ou sous licence commerciale sont vendus. CC-BY-NC et « Personal » sont bloqués."
+  },
+  "config": {
+    "titulo": "Configuration du chiffrage",
+    "subtitulo": "Ces paramètres régissent TOUT le catalogue. Si vous les modifiez ici, tous les prix sont recalculés à l'instant.",
+    "marcaTitulo": "Marque et apparence",
+    "marcaDesc": "Personnalisez le nom, le logo et les couleurs de votre instance (white-label).",
+    "editarMarca": "Modifier la marque →",
+    "guardadoOk": "✓ Configuration enregistrée. Le catalogue a déjà recalculé les prix.",
+    "grupoPrecios": "Prix et marché",
+    "grupoProduccion": "Production",
+    "grupoEntrega": "Délai de livraison",
+    "guardar": "Enregistrer la configuration",
+    "campos": {
+      "markup": "Markup (multiplicateur)",
+      "markupHint": "2,5–3,5x est standard en 3D",
+      "comision": "Commission du marketplace (décimale)",
+      "comisionHint": "0,14 = 14 %",
+      "envio": "Coût d'expédition",
+      "tarifaKwh": "Tarif d'électricité (par kWh)",
+      "tarifaKwhHint": "vérifiez votre facture ; attention au tarif DAC",
+      "tasaFallos": "Taux d'échec (décimale)",
+      "tasaFallosHint": "0,10 = 10 % d'impressions ratées",
+      "manoObra": "Main-d'œuvre (par heure)",
+      "costoFilamento": "Coût du filament par défaut (par kg)",
+      "costoFilamentoHint": "si le filament n'est pas au catalogue",
+      "potencia": "Puissance par défaut (W)",
+      "potenciaHint": "si le modèle n'a pas d'imprimante assignée",
+      "depreciacion": "Amortissement par heure",
+      "horasDia": "Heures productives/jour",
+      "tiempoCola": "Temps de file d'attente (heures)",
+      "diasEnvio": "Jours d'expédition",
+      "colchon": "Marge de sécurité (jours)"
+    }
+  },
+  "integraciones": {
+    "titulo": "Intégrations",
+    "subtitulo": "Connectez Mercado Libre pour importer l'historique des ventes (qui alimente la prévision) et recevoir des événements en temps réel.",
+    "okConectado": "✓ Mercado Libre connecté.",
+    "errorConexion": "Impossible de connecter Mercado Libre. Vérifiez que le Redirect URI correspond et réessayez.",
+    "conectado": "Connecté",
+    "noConectado": "Non connecté",
+    "vendedor": "Vendeur #{id} · {n} vente(s) synchronisée(s)",
+    "faltaAuth": "Il reste à autoriser le compte Mercado Libre (un seul clic).",
+    "conectar": "Connecter Mercado Libre",
+    "sincronizar": "Synchroniser les ventes maintenant",
+    "notaConectado": "La synchro importe les commandes payées récentes dans la base, pour la prévision.",
+    "notaNoConectado": "Ouvrez ce lien dans votre session Mercado Libre et autorisez l'application une fois.",
+    "webhooksTitulo": "Notifications reçues (webhooks)",
+    "webhooksDesc": "ML envoie ici chaque événement (vente, message, paiement, expédition…). Endpoint :",
+    "sinNotifs": "Aucune notification pour l'instant.",
+    "colTopico": "Sujet",
+    "colRecurso": "Ressource",
+    "colRecibido": "Reçu",
+    "colEstado": "État",
+    "procesado": "Traité",
+    "pendiente": "En attente"
+  },
+  "modelos": {
+    "titulo": "Catalogue de modèles",
+    "nuevoModelo": "Nouveau modèle",
+    "nicho": "Niche :",
+    "vistas": {
+      "todos": {
+        "label": "Tous",
+        "desc": "Tout le catalogue, trié par rentabilité/heure."
+      },
+      "listos": {
+        "label": "Prêts à publier",
+        "desc": "Éligibles juridiquement + validés + pas encore publiés sur ML."
+      },
+      "rentabilidad": {
+        "label": "Forte rentabilité/heure",
+        "desc": "Ceux qui rapportent le plus par heure d'imprimante."
+      },
+      "rapidos": {
+        "label": "Rapides (<3 h)",
+        "desc": "Impression de moins de 3 heures : plus de rotation, moins de risque."
+      },
+      "riesgo": {
+        "label": "Risque juridique",
+        "desc": "🔴 MARQUE/PI de tiers — ne pas publier sans décision explicite."
+      },
+      "nicho": {
+        "label": "Par niche",
+        "desc": "Filtrer par niche / saisonnalité pour les campagnes."
+      }
+    }
+  },
+  "tabla": {
+    "buscarPlaceholder": "Rechercher un modèle, une niche…",
+    "filtroRiesgoTodos": "Risque : tous",
+    "riesgoVerde": "🟢 Propre",
+    "riesgoAmarillo": "🟡 Risque de licence",
+    "riesgoRojo": "🔴 Marque/PI",
+    "filtroLicenciaTodas": "Licence : toutes",
+    "filtroCategoriaTodas": "Catégorie : toutes",
+    "filtroFilamentoTodos": "Filament : tous",
+    "filtroEstadoTodos": "État : tous",
+    "soloAptos": "Vendables uniquement",
+    "limpiar": "Effacer",
+    "resultados": "{n} résultat(s)",
+    "col": {
+      "nombre": "Modèle",
+      "riesgo": "Risque",
+      "licencia": "Licence",
+      "categoria": "Catégorie",
+      "tiempoMin": "t. impr.",
+      "gramos": "Filament",
+      "costoTotal": "Coût",
+      "precioVenta": "Prix ML",
+      "margenPct": "Marge",
+      "rentabilidadHora": "$/heure ★",
+      "tiempoEntregaDias": "Livraison",
+      "estadoValidacion": "État"
+    },
+    "riesgoLabel": {
+      "verde": "Propre",
+      "amarillo": "Risque de licence",
+      "rojo": "Marque/PI"
+    },
+    "riesgoTitulo": {
+      "verde": "Sans problème de PI + licence qui autorise la vente (CC-BY/CC0/Comercial/Propia).",
+      "amarillo": "Sans problème de PI, mais la licence du fichier est restreinte (Personal/NC). Publiable à vos risques (niveau 2).",
+      "rojo": "Contient une MARQUE ou un PERSONNAGE de tiers. Ne pas publier sans décision explicite."
+    },
+    "sinFoto": "sans photo",
+    "gramosFilamento": "{g} g · {filamento}",
+    "dias": "{d} j",
+    "abrirAnuncio": "Ouvrir l'annonce sur Mercado Libre",
+    "enMlLink": "Sur ML ↗",
+    "enMl": "Sur ML",
+    "estatusMl": "Statut sur ML : {estado} (non visible publiquement)",
+    "publicado": "Publié",
+    "mlEnRevision": "en révision",
+    "mlPausado": "en pause",
+    "editar": "Modifier",
+    "vacio": "Aucun modèle ne correspond aux filtres."
+  },
+  "salud": {
+    "titulo": "Santé de Mercado Libre",
+    "resumen": "{anuncios} annonces publiées · {pedidos} commande(s).",
+    "ultimaSync": "Dernière synchronisation : {fecha}.",
+    "sinSync": "Pas encore synchronisé.",
+    "buscarPlaceholder": "Rechercher une annonce…",
+    "buscar": "Rechercher",
+    "limpiar": "Effacer",
+    "refrescar": "Actualiser",
+    "vendidosPedidos": "Vendus / Commandes",
+    "abrirEnMl": "Ouvrir sur Mercado Libre",
+    "verMotivo": "voir le motif / modifier",
+    "verMotivoTitle": "Ouvrir sur Mercado Libre pour voir le motif exact et modifier l'annonce",
+    "noVisible": "non visible",
+    "noVisibleTitle": "Non visible sur ML tant qu'elle n'est pas active",
+    "vacio": "Aucune annonce publiée pour l'instant.",
+    "guia": {
+      "titulo": "📘 Qu'est-ce que c'est et que dois-je faire ? (guide rapide)",
+      "intro": "Ici vous voyez l'état de vos annonces sur Mercado Libre. Ouvrez cette page quand vous avez un moment et passez-les en revue par lot. Cliquez sur <b>« Actualiser le statut »</b> pour voir les dernières infos. Touchez n'importe quelle annonce pour ouvrir sa fiche et la gérer.",
+      "problema": "🛑 <b>Avec un problème :</b> Mercado Libre les a rejetées. Ouvrez-les et corrigez (c'est parfois un mot de marque dans le titre, ex. « Durlock ») ou mettez l'annonce en pause.",
+      "revision": "🟠 <b>En révision par ML :</b> ML est en train de les vérifier. Elles s'activent normalement seules en quelques heures — <b>ne faites rien</b>, attendez simplement.",
+      "pausado": "⏸️ <b>En pause :</b> elles ne se vendent pas (parce que vous ou ML les avez mises en pause).",
+      "activo": "🟢 <b>Actives :</b> en ligne et vendables. Tout va bien.",
+      "vendidos": "🛒 <b>Vendus / Commandes :</b> ce qui a déjà été vendu — là vous voyez les commandes à imprimer et à livrer.",
+      "nota": "Vous n'avez pas besoin d'y être à tout moment : entrez quand vous avez du temps libre et traitez-en plusieurs d'un coup."
+    },
+    "cat": {
+      "problema": {
+        "titulo": "Avec un problème",
+        "desc": "ML les a rejetées (forbidden/closed) — il faut corriger ou mettre en pause."
+      },
+      "revision": {
+        "titulo": "En révision par ML",
+        "desc": "ML est en train de les modérer/traiter — elles se résolvent généralement seules."
+      },
+      "pausado": {
+        "titulo": "En pause",
+        "desc": "Non visibles à la vente (mises en pause par nous ou par ML)."
+      },
+      "activo": {
+        "titulo": "Actives",
+        "desc": "En ligne et vendables."
+      },
+      "sin": {
+        "titulo": "Non synchronisées",
+        "desc": "Nous n'avons pas encore consulté leur état — cliquez sur Actualiser."
+      }
+    },
+    "razon": {
+      "forbidden": "ML l'a interdite. C'est presque toujours : une marque de tiers dans le titre, une catégorie non autorisée, ou une annonce quasi dupliquée. Ouvrez-la sur ML pour voir le motif exact et corriger.",
+      "fichaYFotos": "Il reste à compléter la fiche et ML est encore en train de traiter les photos. Ouvrez-la sur ML et complétez ce qui est demandé.",
+      "fichaTecnica": "Il reste à compléter la fiche technique (une donnée obligatoire de la catégorie). Ouvrez-la sur ML et complétez ce qui est signalé.",
+      "fotos": "ML est encore en train de télécharger/valider les photos. Cela se résout généralement seul.",
+      "denuncia": "Elle a reçu un signalement. Vérifiez le motif sur ML.",
+      "sinStock": "En rupture de stock : remontez-le à 1 ou plus pour réactiver.",
+      "pausado": "En pause (par vous ou par ML)."
+    }
+  },
+  "pedidos": {
+    "titulo": "Commandes",
+    "subtitulo": "Faites avancer le statut au fur et à mesure que vous imprimez et livrez ; le tableau se met à jour tout seul.",
+    "kpi": {
+      "activos": "Actives",
+      "total": "Au total",
+      "entregados": "Livrées"
+    },
+    "vacio": "Aucune commande pour l'instant. Elles arrivent automatiquement lors de la synchronisation des ventes de Mercado Libre.",
+    "vendidoEl": "Vendu {fecha}",
+    "entregarAntes": "à livrer avant le {fecha}",
+    "clienteAtendido": "Client traité",
+    "sinAtender": "Non traité",
+    "marcarAtendido": "Marquer comme traité",
+    "estado": {
+      "Vendido": "Vendu",
+      "EnCola": "En file d'attente",
+      "Imprimiendo": "En impression",
+      "Impreso": "Imprimé",
+      "Entregado": "Livré"
+    },
+    "paso": {
+      "Vendido": "Envoyer à l'impression",
+      "EnCola": "En file d'attente",
+      "Imprimiendo": "En impression",
+      "Impreso": "Imprimé",
+      "Entregado": "Livré"
+    }
+  },
+  "tablero": {
+    "estadoGeneral": "État général",
+    "etiqueta": {
+      "verde": "VERT · sans urgence",
+      "amarillo": "JAUNE · à activer",
+      "rojo": "ROUGE · agir maintenant"
+    },
+    "impresionTitulo": "🖨️ Impression",
+    "porImprimir": "à imprimer",
+    "impresionResumen": "{enProceso} en cours · {horasRequeridas} h requises / {capacidad} h disponibles ({dias} jours)",
+    "faltanImpresoras": "⚠️ Il manque {n} imprimante(s)",
+    "clientesTitulo": "🙋 Clients",
+    "porAtender": "à traiter",
+    "urgentes": "{n} urgent(s)",
+    "ayuda": "Vert = vous êtes dans les temps (même avec plusieurs). Jaune = il faut s'activer. Rouge = agir maintenant. Se met à jour tout seul. Pour un écran de focus/intelligent :",
+    "ayudaCola": "renvoie la couleur."
+  },
+  "importar": {
+    "titulo": "Importer un pack",
+    "subtitulo": "Téléversez le ZIP d'un pack (dossiers par modèle, avec photos). Le système crée les modèles tout seul et les laisse en <revision>Révision</revision> pour approbation. Vous n'avez rien à installer.",
+    "guiaTitulo": "📘 Comment importer un pack ? (guide rapide)",
+    "guiaPaso1": "Ayez sous la main le <b>ZIP du pack</b> (il doit contenir un dossier par modèle, avec les photos à l'intérieur).",
+    "guiaPaso2": "Cliquez sur <b>« Fichier ZIP du pack »</b> et choisissez-le.",
+    "guiaPaso3": "Saisissez la <b>Catégorie</b> (ex. Pots, Lampes, Organiseurs) et la <b>Source</b> (d'où vient le pack).",
+    "guiaPaso4": "Cliquez sur <b>« Importer le pack »</b> et patientez. Les gros packs prennent un peu de temps — ne fermez pas la page.",
+    "guiaPaso5": "Voilà : les modèles apparaissent en <revision>Révision</revision> en 🟡 jaune. C'est là que vous décidez lesquels publier.",
+    "guiaNota": "Ils sont créés en <b>🟡 « à réviser »</b> exprès, pour que vous choisissiez. Le système vérifie la marque/PI à partir de la photo ensuite. Si un pack est très volumineux (> 1,2 Go), répartissez-le en moins de catégories et téléversez-le par parties.",
+    "campoArchivo": "Fichier ZIP du pack",
+    "campoCategoria": "Catégorie",
+    "campoFuente": "Source / pack",
+    "trabajando": "En cours…",
+    "importarPack": "Importer le pack",
+    "subiendoArchivo": "Téléversement de {nombre} ({mb} Mo)…",
+    "procesandoPack": "Traitement du pack (extraction des photos et création des modèles)…",
+    "errorProcesando": "Erreur lors du traitement",
+    "errorSubiendo": "Erreur lors du téléversement du fichier",
+    "listo": "✅ Terminé",
+    "resumenCreados": "{creados} modèle(s) créé(s) sur {encontrados} trouvé(s)",
+    "resumenSaltados": "({saltados} existaient déjà/sans photo)",
+    "irRevision": "Aller à Révision →",
+    "notaPie": "Note : ils sont créés en 🟡 jaune (licence « à réviser ») pour que vous décidiez. La détection de marque/PI par photo et le maillage 3D pour l'impression sont traités ensuite. Les très gros packs (>1,2 Go) gagnent à être répartis par catégorie."
+  },
+  "revision": {
+    "titulo": "Salle de révision",
+    "subtitulo": "Lot en attente d'approbation · {n} modèles ({verde} {verdes} vert · {amarillo} {amarillos} jaune).",
+    "subtituloAccion": {
+      "antes": "Sélectionnez et",
+      "publica": "Publiez",
+      "o": "ou",
+      "descarta": "Rejetez",
+      "despues": "; ou approuvez-les sur Telegram avec le bot."
+    },
+    "nivel": {
+      "verde": "Vert · publiable",
+      "amarillo": "Jaune · avec votre OK",
+      "rojo": "Rouge · PI"
+    },
+    "resultado": {
+      "publicados": "✅ {n} publié(s)",
+      "descartados": "🗑 {n} rejeté(s)",
+      "fallidos": "⚠️ {n} n'a/n'ont pas pu être publié(s) (vérifiez le modèle)",
+      "ninguno": "Aucun modèle n'a été sélectionné."
+    },
+    "vacio": "Aucun modèle en attente de révision. Importez un lot pour qu'il apparaisse ici.",
+    "barra": {
+      "instruccion": "Cochez ceux que vous voulez et choisissez une action :",
+      "publicar": "✅ Publier la sélection",
+      "descartar": "🗑 Rejeter la sélection"
+    },
+    "sinFoto": "sans photo",
+    "licenciaTitle": "Licence du fichier"
+  },
+  "notificaciones": {
+    "titulo": "Notifications",
+    "subtitulo": "À quels e-mails nous envoyons des alertes et quelles alertes de Mercado Libre arrivent.",
+    "kpi": {
+      "recientes": "Alertes récentes",
+      "sinLeer": "Non lues"
+    },
+    "guia": {
+      "titulo": "📘 Comment ça marche ? (guide rapide)",
+      "parte1": "Mercado Libre envoie les alertes (rejets, ventes, questions) par e-mail au compte. Cet e-mail est transféré vers votre Gmail et un petit script l'envoie ici, qui en extrait le motif et l'annonce et l'affiche. Ainsi le motif du rejet apparaît aussi dans ",
+      "enlaceSalud": "Santé ML",
+      "parte2": ", pas seulement le code.",
+      "nota": "Ci-dessous vous gérez à quels e-mails nous envoyons des alertes (pour le suivi). La configuration des e-mails que Mercado Libre reçoit se règle dans le compte ML ; ici nous ne faisons que l'enregistrer et voir ce qui arrive."
+    },
+    "destinos": {
+      "titulo": "📤 E-mails que nous alertons / surveillons",
+      "vacio": "Aucun e-mail enregistré pour l'instant."
+    },
+    "estado": {
+      "activo": "actif",
+      "pausado": "en pause"
+    },
+    "accion": {
+      "pausar": "mettre en pause",
+      "activar": "activer"
+    },
+    "tipo": {
+      "adicional": "supplémentaire",
+      "cuentaMl": "cuenta-ml",
+      "reenvio": "transfert"
+    },
+    "form": {
+      "emailPlaceholder": "courriel@domaine.com",
+      "etiquetaPlaceholder": "étiquette (ex. équipe)",
+      "agregar": "Ajouter"
+    },
+    "avisos": {
+      "titulo": "📥 Alertes de Mercado Libre reçues",
+      "vacio": "Aucune alerte n'est encore arrivée. Quand ML enverra un e-mail (rejet, vente…) et que le transfert sera configuré, il apparaîtra ici avec son motif."
+    }
+  },
+  "filamentos": {
+    "titulo": "Filaments",
+    "subtitulo": "Le coût par kg alimente le chiffrage de chaque modèle (croisé par type de filament).",
+    "colTipo": "Type",
+    "colMarca": "Marque",
+    "colColor": "Couleur",
+    "colCostoKg": "Coût/kg",
+    "colStock": "Stock (g)",
+    "editar": "Modifier",
+    "eliminar": "Supprimer",
+    "vacio": "Aucun filament.",
+    "agregarTitulo": "Ajouter un filament",
+    "agregarBoton": "Ajouter"
+  },
+  "impresoras": {
+    "titulo": "Imprimantes",
+    "subtitulo": "La puissance et l'amortissement alimentent le chiffrage ; la capacité détermine quand acheter d'autres machines.",
+    "kpi": {
+      "horasDiaTotal": "heures-imprimante / jour",
+      "disponibles": "imprimantes disponibles",
+      "horasDiaAms": "h/jour avec AMS (multicolore)",
+      "horasDiaSinAms": "h/jour sans AMS"
+    },
+    "notaCapacidad": "Capacité = imprimantes disponibles × {horas} h/jour (depuis la Configuration). En Phase D, elle est croisée avec la demande prévue pour vous indiquer quand il vaut mieux acheter une autre imprimante.",
+    "listaTitulo": "Vos imprimantes",
+    "colModelo": "Modèle",
+    "colPotencia": "Puissance (W)",
+    "colCostoEquipo": "Coût de l'équipement",
+    "colDepreciacion": "Amort./h",
+    "colHorasUso": "Heures d'utilisation",
+    "colEstado": "État",
+    "disponible": "Disponible",
+    "noDisponible": "Non disponible",
+    "editar": "Modifier",
+    "eliminar": "Supprimer",
+    "vacio": "Aucune imprimante pour l'instant.",
+    "agregarTitulo": "Ajouter une imprimante",
+    "agregar": "Ajouter"
+  },
+  "setup": {
+    "tituloNuevo": "Bienvenue ! Configurez votre marque",
+    "tituloEditar": "Marque et apparence",
+    "intro": "Personnalisez le nom, le logo et les couleurs de votre instance. Vous pouvez le faire à la main ou laisser l'IA vous proposer une marque (vous avez besoin de votre propre token fal.ai, OpenAI ou Claude). Tout est facultatif et peut être modifié plus tard.",
+    "previewMarca": "Votre marque",
+    "previewTagline": "Votre tagline",
+    "previewBoton": "Bouton",
+    "pasoNegocio": "Activité",
+    "pasoMarca": "Marque",
+    "pasoConfirmar": "Confirmer",
+    "nombreNegocio": "Nom de l'entreprise",
+    "nombreCorto": "Nom court (PWA)",
+    "tagline": "Tagline",
+    "descripcion": "Description",
+    "idiomaUi": "Langue de l'interface",
+    "idiomaContenido": "Langue du contenu (marketplace)",
+    "moneda": "Devise",
+    "aiTitulo": "✨ Un coup de main de l'IA ? (facultatif)",
+    "aiNota": "Collez votre propre token. Il n'est pas enregistré : il sert uniquement à cette génération.",
+    "aiTokenPlaceholder": "Token d'IA (facultatif)",
+    "sugerirNombre": "Suggérer un nom, une tagline et une description",
+    "generando": "Génération…",
+    "logoLabel": "Logo",
+    "logoIa": "✨ Générer un logo avec l'IA",
+    "quitar": "retirer",
+    "subiendo": "Téléversement…",
+    "paletaLabel": "Palette — préréglages",
+    "paletaIa": "✨ Palette avec l'IA",
+    "colPrimario": "Primaire",
+    "colAcento": "Accent",
+    "colFondo": "Fond sombre",
+    "colTema": "Thème",
+    "preset": {
+      "cian": "Cyan",
+      "violeta": "Violet",
+      "esmeralda": "Émeraude",
+      "ambar": "Ambre",
+      "rosa": "Rose"
+    },
+    "vendedorMl": "Nom du vendeur (sur les publications de Mercado Libre)",
+    "vendedorMlHint": "Apparaît dans la marque et la signature des descriptions.",
+    "confirmarNota": "Tout est prêt. Vous pouvez modifier n'importe quelle donnée plus tard depuis la Configuration.",
+    "guardarCambios": "Enregistrer les modifications",
+    "guardarEmpezar": "Enregistrer et commencer",
+    "atras": "Retour",
+    "siguiente": "Suivant",
+    "errSubir": "Impossible de téléverser",
+    "errSubirGen": "Erreur lors du téléversement du logo",
+    "errIa": "L'IA a échoué",
+    "errIaGen": "Erreur d'IA"
+  },
+  "modeloDetalle": {
+    "modeloDetalle": {
+      "titulo": "Modifier le modèle",
+      "avisoMwOk": "✓ Données de MakerWorld appliquées (seuls les champs vides ont été remplis).",
+      "avisoMwFail": "Impossible de lire depuis MakerWorld. Rien n'a été modifié.",
+      "avisoPubOk": "✓ Publié sur Mercado Libre. Item :",
+      "avisoPubUpd": "✓ Publication mise à jour.",
+      "avisoPubFail": "Impossible de terminer l'action sur Mercado Libre.",
+      "avisoValOk": "✓ Mercado Libre a validé l'annonce : la publication fonctionnerait. (Aucune publication n'a été créée.)",
+      "avisoValFail": "⚠️ ML signale des ajustements avant de publier : {msg}",
+      "publicarTitulo": "🛒 Publier sur Mercado Libre",
+      "campoTitulo": "Titre :",
+      "campoCategoria": "Catégorie ML :",
+      "porDeterminar": "à déterminer",
+      "campoPrecio": "Prix :",
+      "campoEntrega": "Livraison :",
+      "dias": "{d} jours",
+      "fotos": "Photos ({n})",
+      "quitarFoto": "Retirer",
+      "fotoPlaceholder": "URL d'une photo ou d'un rendu (https://…)",
+      "agregarFoto": "Ajouter une photo",
+      "falta": "Manque :",
+      "publicadoItem": "Publié · {id}",
+      "verEnMl": "Voir sur Mercado Libre ↗",
+      "noVisibleMl": "Non visible sur ML (statut : {estado}{sub})",
+      "actualizarPrecioStock": "Mettre à jour le prix/stock",
+      "pausar": "Mettre en pause",
+      "validarMl": "Valider sur ML (sans publier)",
+      "publicarMl": "Publier sur Mercado Libre",
+      "resuelvePendientes": "Réglez les points en attente pour activer.",
+      "guardarCambios": "Enregistrer les modifications",
+      "makerworldTitulo": "MakerWorld (rechercher ou coller le lien)",
+      "makerworldDesc": "Recherchez le modèle sur MakerWorld par nom et choisissez le bon (il importe la couverture et les données), ou collez l'URL directement. Il ne remplit que les champs vides.",
+      "makerworldPlaceholder": "https://makerworld.com/en/models/123456-…",
+      "enriquecerUrl": "Enrichir par URL",
+      "catalogoTitulo": "📦 Catalogue de Mercado Libre (facultatif — uniquement produit exact)",
+      "catalogoDesc": "La voie recommandée pour les impressions propres est l'annonce libre (ci-dessus). Le catalogue est l'exception : il ne s'accroche que lorsque le modèle EST exactement un produit qui existe déjà sur ML (même marque/modèle). Comparez les photos et confirmez avant de l'accrocher.",
+      "eliminarModelo": "Supprimer le modèle"
+    }
+  },
+  "buscarCatalogo": {
+    "buscarCatalogo": {
+      "enganchadoA": "Accroché au catalogue :",
+      "quitar": "Retirer",
+      "buscando": "Recherche dans le catalogue…",
+      "buscarCta": "Rechercher dans le catalogue du marketplace",
+      "advertencia": "Accrochez au catalogue <b>uniquement si c'est exactement le même produit</b> (même marque/modèle). Pour les impressions originales, utilisez l'<b>annonce libre</b> (ci-dessus).",
+      "errorBuscar": "Impossible de rechercher dans le catalogue.",
+      "sinResultados": "Aucun produit de catalogue pour « {nombre} ».",
+      "tuModelo": "Votre modèle",
+      "catalogo": "Catalogue",
+      "sinFoto": "Sans photo",
+      "marca": "Marque : {marca}",
+      "modelo": "· Modèle : {modelo}",
+      "esExacto": "C'est <b>exactement</b> ce produit",
+      "enganchar": "Accrocher"
+    }
+  },
+  "buscarMakerworld": {
+    "buscar": "🔎 Rechercher sur MakerWorld",
+    "buscando": "Recherche sur MakerWorld…",
+    "error": "Impossible de rechercher (Firecrawl). Réessayez.",
+    "sinResultados": "Aucun résultat pour « {nombre} ».",
+    "usarEste": "Utiliser celui-ci"
+  },
+  "modeloNuevo": {
+    "modeloNuevo": {
+      "titulo": "Nouveau modèle",
+      "subtitulo": "Saisissez un nouveau modèle et laissez le système calculer les coûts, le prix et la rentabilité par heure.",
+      "crear": "Créer le modèle"
+    }
+  },
+  "modeloForm": {
+    "seccion": {
+      "general": "Données générales",
+      "tecnicos": "Techniques (du trancheur)",
+      "costos": "Main-d'œuvre et coûts",
+      "mercado": "Marché et état",
+      "notas": "Notes"
+    },
+    "nombre": "Nom du modèle",
+    "fuente": "Source",
+    "creador": "Créateur (si c'est un tiers)",
+    "urlFuente": "URL de la source",
+    "licencia": "Licence",
+    "licenciaHint": "Détermine si le modèle peut être vendu (filtre juridique).",
+    "categoria": "Catégorie",
+    "nicho": "Niche / étiquette",
+    "nichoHint": "ex. Jour des Morts, gaming, pièces de rechange",
+    "tiempoImpresionMin": "Temps d'impression (min)",
+    "gramosFilamento": "Filament (grammes)",
+    "tipoFilamento": "Type de filament",
+    "dificultad": "Difficulté",
+    "impresoraAsignada": "Imprimante assignée",
+    "impresoraDefault": "— utiliser les valeurs par défaut —",
+    "multicolorAms": "AMS / multicolore",
+    "requiereSoportes": "Supports",
+    "tiempoOperacionMin": "Temps d'opération (min)",
+    "tiempoOperacionHint": "tranchage + retrait + post + emballage",
+    "costoPostproceso": "Coût de post-traitement (MXN)",
+    "costoLicencia": "Coût de licence (MXN)",
+    "costoLicenciaHint": "prorata de l'abonnement commercial, le cas échéant",
+    "rating": "Note (1–5)",
+    "popularidad": "Popularité (téléchargements/likes)",
+    "estadoValidacion": "État de validation",
+    "mlItemId": "ID de publication ML",
+    "archivoUrl": "Fichier (URL)",
+    "archivoUrlHint": "chemin vers le .3mf / .stl (pipeline F3)",
+    "archivoTipo": "Type de fichier",
+    "publicadoMl": "Publié sur Mercado Libre",
+    "notas": "Notes",
+    "cancelar": "Annuler"
+  },
+  "filamentoForm": {
+    "tipo": "Type",
+    "marca": "Marque",
+    "color": "Couleur",
+    "costoPorKg": "Coût/kg (MXN)",
+    "stockGramos": "Stock (g)",
+    "cancelar": "Annuler"
+  },
+  "filamentoDetalle": {
+    "filamentoDetalle": {
+      "titulo": "Modifier le filament",
+      "subtitulo": "Ajustez le coût par kg et le stock ; ces données alimentent le chiffrage de chaque modèle.",
+      "guardarCambios": "Enregistrer les modifications"
+    }
+  },
+  "impresoraForm": {
+    "modelo": "Modèle",
+    "modeloHint": "S'il a un AMS, indiquez-le dans le nom, ex. \"Bambu Lab A1 (AMS)\"",
+    "potencia": "Puissance (W)",
+    "costoEquipo": "Coût de l'équipement",
+    "depreciacion": "Amortissement/h",
+    "horasUso": "Heures d'utilisation",
+    "disponible": "Disponible",
+    "cancelar": "Annuler"
+  },
+  "impresoraDetalle": {
+    "titulo": "Modifier l'imprimante",
+    "guardar": "Enregistrer les modifications"
+  },
+  "gestionDatos": {
+    "gestionDatos": {
+      "titulo": "⚠️ Gestion des données de test",
+      "descripcion": "Supprime le catalogue de modèles (et/ou les ventes) quand vous commencez à charger les vraies données. <fuerte>Ne touche jamais aux filaments ni aux imprimantes</fuerte> (ce sont des données réelles). Avant la suppression, une <fuerte>sauvegarde en JSON</fuerte> est automatiquement téléchargée sur votre appareil.",
+      "palabraClave": "BORRAR",
+      "placeholderConfirmar": "Tapez {palabra}",
+      "procesando": "Traitement…",
+      "descargarRespaldo": "Télécharger la sauvegarde (JSON)",
+      "errorDesconocido": "inconnu",
+      "modelosTitulo": "Modèles du catalogue",
+      "modelosConteo": "{n, plural, one {# modèle} other {# modèles}}",
+      "modelosNota": "Actuellement au catalogue.",
+      "borrarModelos": "Supprimer les {n} modèles",
+      "confirmarModelos": "Supprimer les {n} modèles ? Une sauvegarde sera téléchargée d'abord. Les filaments et les imprimantes ne sont PAS touchés.",
+      "okModelos": "✓ {n} modèles supprimés. Sauvegarde téléchargée sur votre appareil.",
+      "errorModelos": "✗ Erreur : {detalle}. Rien n'a été supprimé.",
+      "ventasTitulo": "Ventes (données de test)",
+      "ventasConteo": "{n, plural, one {# vente} other {# ventes}}",
+      "ventasNota": "Ventes enregistrées pour les tests.",
+      "borrarVentas": "Supprimer les ventes",
+      "confirmarVentas": "Supprimer les {n} ventes de test ? Une sauvegarde sera téléchargée d'abord.",
+      "okVentas": "✓ {n} ventes supprimées.",
+      "errorVentas": "✗ Erreur : {detalle}."
+    }
+  }
+}

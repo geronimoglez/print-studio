@@ -1,0 +1,642 @@
+{
+  "nav": {
+    "dashboard": "Dashboard",
+    "tablero": "Painel",
+    "pedidos": "Pedidos",
+    "saludMl": "Saúde ML",
+    "notificaciones": "Notificações",
+    "modelos": "Modelos",
+    "importar": "Importar",
+    "revision": "Revisão",
+    "config": "Configuração",
+    "filamentos": "Filamentos",
+    "impresoras": "Impressoras",
+    "integraciones": "Integrações",
+    "menu": "Menu",
+    "cerrarMenu": "Fechar menu",
+    "idioma": "Idioma"
+  },
+  "common": {
+    "guardar": "Salvar",
+    "cancelar": "Cancelar",
+    "nuevoModelo": "Novo modelo",
+    "appTagline": "Catálogo e precificação de impressão 3D",
+    "appDescription": "Catálogo, precificação e publicação para impressão 3D."
+  },
+  "dashboard": {
+    "titulo": "Painel",
+    "subtitulo": "Catálogo, precificação e publicação para impressão 3D.",
+    "nuevoModelo": "Novo modelo",
+    "kpi": {
+      "total": "Modelos no catálogo",
+      "aptos": "Aptos para venda",
+      "listos": "Prontos para publicar",
+      "riesgo": "Risco legal",
+      "publicados": "Publicados no ML"
+    },
+    "topTitulo": "🏆 Top 5 por rentabilidade / hora-impressora",
+    "sinAptos": "Nenhum modelo apto ainda.",
+    "colModelo": "Modelo",
+    "colHora": "$/hora",
+    "colPrecio": "Preço",
+    "colMargen": "Margem",
+    "topNota": "A máquina é o gargalo: prioriza-se o que mais rende por hora de impressão.",
+    "riesgoTitulo": "⚠️ Risco legal (não publicar)",
+    "sinRiesgo": "Nenhum modelo com problema de licença. 🎉",
+    "riesgoNota": "Só se vendem modelos próprios ou com licença comercial. CC-BY-NC e \"Personal\" ficam bloqueados."
+  },
+  "config": {
+    "titulo": "Configuração de precificação",
+    "subtitulo": "Esses parâmetros governam TODO o catálogo. Ao alterá-los aqui, todos os preços são recalculados na hora.",
+    "marcaTitulo": "Marca e aparência",
+    "marcaDesc": "Personalize o nome, o logo e as cores da sua instância (white-label).",
+    "editarMarca": "Editar marca →",
+    "guardadoOk": "✓ Configuração salva. O catálogo já recalculou os preços.",
+    "grupoPrecios": "Preço e mercado",
+    "grupoProduccion": "Produção",
+    "grupoEntrega": "Prazo de entrega",
+    "guardar": "Salvar configuração",
+    "campos": {
+      "markup": "Markup (multiplicador)",
+      "markupHint": "2.5–3.5x é o padrão em 3D",
+      "comision": "Comissão do marketplace (decimal)",
+      "comisionHint": "0.14 = 14%",
+      "envio": "Custo de envio",
+      "tarifaKwh": "Tarifa de energia (por kWh)",
+      "tarifaKwhHint": "confira a conta; atenção à tarifa DAC",
+      "tasaFallos": "Taxa de falhas (decimal)",
+      "tasaFallosHint": "0.10 = 10% de impressões com falha",
+      "manoObra": "Mão de obra (por hora)",
+      "costoFilamento": "Custo de filamento padrão (por kg)",
+      "costoFilamentoHint": "se o filamento não estiver no catálogo",
+      "potencia": "Potência padrão (W)",
+      "potenciaHint": "se o modelo não tiver impressora atribuída",
+      "depreciacion": "Depreciação por hora",
+      "horasDia": "Horas produtivas/dia",
+      "tiempoCola": "Tempo de fila (horas)",
+      "diasEnvio": "Dias de envio",
+      "colchon": "Margem de segurança (dias)"
+    }
+  },
+  "integraciones": {
+    "titulo": "Integrações",
+    "subtitulo": "Conecte o Mercado Libre para trazer o histórico de vendas (alimenta o forecast) e receber eventos em tempo real.",
+    "okConectado": "✓ Mercado Libre conectado.",
+    "errorConexion": "Não foi possível conectar o Mercado Libre. Verifique se o Redirect URI coincide e tente novamente.",
+    "conectado": "Conectado",
+    "noConectado": "Não conectado",
+    "vendedor": "Vendedor #{id} · {n} venda(s) sincronizada(s)",
+    "faltaAuth": "Falta autorizar a conta do Mercado Libre (um único clique).",
+    "conectar": "Conectar Mercado Libre",
+    "sincronizar": "Sincronizar vendas agora",
+    "notaConectado": "A sincronização traz os pedidos pagos recentes para a base, para o forecast.",
+    "notaNoConectado": "Abra este link na sua sessão do Mercado Libre e autorize o app uma vez.",
+    "webhooksTitulo": "Notificações recebidas (webhooks)",
+    "webhooksDesc": "O ML envia aqui cada evento (venda, mensagem, pagamento, envio…). Endpoint:",
+    "sinNotifs": "Nenhuma notificação ainda.",
+    "colTopico": "Tópico",
+    "colRecurso": "Recurso",
+    "colRecibido": "Recebido",
+    "colEstado": "Estado",
+    "procesado": "Processado",
+    "pendiente": "Pendente"
+  },
+  "modelos": {
+    "titulo": "Catálogo de modelos",
+    "nuevoModelo": "Novo modelo",
+    "nicho": "Nicho:",
+    "vistas": {
+      "todos": {
+        "label": "Todos",
+        "desc": "Todo o catálogo, ordenado por rentabilidade/hora."
+      },
+      "listos": {
+        "label": "Prontos para publicar",
+        "desc": "Aptos legalmente + validados + ainda não publicados no ML."
+      },
+      "rentabilidad": {
+        "label": "Alta rentabilidade/hora",
+        "desc": "Os que mais rendem por hora de impressora."
+      },
+      "rapidos": {
+        "label": "Rápidos (<3h)",
+        "desc": "Impressão menor que 3 horas: mais giro, menos risco."
+      },
+      "riesgo": {
+        "label": "Risco legal",
+        "desc": "🔴 MARCA/IP de terceiros — não publicar sem decisão explícita."
+      },
+      "nicho": {
+        "label": "Por nicho",
+        "desc": "Filtrar por nicho / sazonalidade para campanhas."
+      }
+    }
+  },
+  "tabla": {
+    "buscarPlaceholder": "Buscar modelo, nicho…",
+    "filtroRiesgoTodos": "Risco: todos",
+    "riesgoVerde": "🟢 Limpo",
+    "riesgoAmarillo": "🟡 Risco de licença",
+    "riesgoRojo": "🔴 Marca/IP",
+    "filtroLicenciaTodas": "Licença: todas",
+    "filtroCategoriaTodas": "Categoria: todas",
+    "filtroFilamentoTodos": "Filamento: todos",
+    "filtroEstadoTodos": "Estado: todos",
+    "soloAptos": "Apenas aptos",
+    "limpiar": "Limpar",
+    "resultados": "{n} resultado(s)",
+    "col": {
+      "nombre": "Modelo",
+      "riesgo": "Risco",
+      "licencia": "Licença",
+      "categoria": "Categoria",
+      "tiempoMin": "t. impr.",
+      "gramos": "Filamento",
+      "costoTotal": "Custo",
+      "precioVenta": "Preço ML",
+      "margenPct": "Margem",
+      "rentabilidadHora": "$/hora ★",
+      "tiempoEntregaDias": "Entrega",
+      "estadoValidacion": "Estado"
+    },
+    "riesgoLabel": {
+      "verde": "Limpo",
+      "amarillo": "Risco de licença",
+      "rojo": "Marca/IP"
+    },
+    "riesgoTitulo": {
+      "verde": "IP-limpo + licença que permite venda (CC-BY/CC0/Comercial/Propia).",
+      "amarillo": "IP-limpo, mas a licença do arquivo é restrita (Personal/NC). Publicável por sua conta e risco (camada 2).",
+      "rojo": "Tem MARCA ou PERSONAGEM de terceiros. Não publicar sem decisão explícita."
+    },
+    "sinFoto": "sem foto",
+    "gramosFilamento": "{g} g · {filamento}",
+    "dias": "{d} d",
+    "abrirAnuncio": "Abrir o anúncio no Mercado Libre",
+    "enMlLink": "No ML ↗",
+    "enMl": "No ML",
+    "estatusMl": "Status no ML: {estado} (não visível publicamente)",
+    "publicado": "Publicado",
+    "mlEnRevision": "em revisão",
+    "mlPausado": "pausado",
+    "editar": "Editar",
+    "vacio": "Não há modelos que correspondam aos filtros."
+  },
+  "salud": {
+    "titulo": "Saúde do Mercado Libre",
+    "resumen": "{anuncios} anúncios publicados · {pedidos} pedido(s).",
+    "ultimaSync": "Última sincronização: {fecha}.",
+    "sinSync": "Ainda sem sincronizar.",
+    "buscarPlaceholder": "Buscar anúncio…",
+    "buscar": "Buscar",
+    "limpiar": "Limpar",
+    "refrescar": "Atualizar",
+    "vendidosPedidos": "Vendidos / Pedidos",
+    "abrirEnMl": "Abrir no Mercado Libre",
+    "verMotivo": "ver motivo / editar",
+    "verMotivoTitle": "Abrir no Mercado Libre para ver o motivo exato e editar o anúncio",
+    "noVisible": "não visível",
+    "noVisibleTitle": "Não visível no ML até estar ativo",
+    "vacio": "Ainda não há anúncios publicados.",
+    "guia": {
+      "titulo": "📘 O que é isso e o que eu faço? (guia rápido)",
+      "intro": "Aqui você vê como estão os seus anúncios no Mercado Libre. Abra quando tiver um tempo e revise-os em lote. Clique em <b>“Atualizar status”</b> para ver o mais recente. Toque em qualquer anúncio para abrir a ficha e gerenciá-lo.",
+      "problema": "🛑 <b>Com problema:</b> o Mercado Libre os rejeitou. Abra-os e corrija (às vezes é uma palavra de marca no título, ex. “Durlock”) ou pause o anúncio.",
+      "revision": "🟠 <b>Em revisão do ML:</b> o ML está conferindo-os. Normalmente eles são ativados sozinhos em algumas horas — <b>não faça nada</b>, apenas aguarde.",
+      "pausado": "⏸️ <b>Pausados:</b> não estão sendo vendidos (porque você ou o ML os pausou).",
+      "activo": "🟢 <b>Ativos:</b> no ar e vendáveis. Tudo certo.",
+      "vendidos": "🛒 <b>Vendidos / Pedidos:</b> o que já foi vendido — ali você vê os pedidos a imprimir e entregar.",
+      "nota": "Você não precisa ficar aqui o tempo todo: entre quando tiver tempo livre e cuide de vários de uma vez."
+    },
+    "cat": {
+      "problema": {
+        "titulo": "Com problema",
+        "desc": "O ML os rejeitou (forbidden/closed) — é preciso corrigir ou pausar."
+      },
+      "revision": {
+        "titulo": "Em revisão do ML",
+        "desc": "O ML está moderando/processando-os — costumam se resolver sozinhos."
+      },
+      "pausado": {
+        "titulo": "Pausados",
+        "desc": "Não visíveis para vender (pausados por nós ou pelo ML)."
+      },
+      "activo": {
+        "titulo": "Ativos",
+        "desc": "No ar e vendáveis."
+      },
+      "sin": {
+        "titulo": "Sem sincronizar",
+        "desc": "Ainda não consultamos o estado deles — clique em Atualizar."
+      }
+    },
+    "razon": {
+      "forbidden": "O ML o proibiu. Quase sempre é: uma marca de terceiros no título, uma categoria não permitida ou um anúncio quase duplicado. Abra-o no ML para ver o motivo exato e corrigir.",
+      "fichaYFotos": "Falta completar a ficha e o ML ainda está processando as fotos. Abra-o no ML e complete o que for pedido.",
+      "fichaTecnica": "Falta completar a ficha técnica (um dado obrigatório da categoria). Abra-o no ML e complete o que for indicado.",
+      "fotos": "O ML ainda está baixando/validando as fotos. Costuma se resolver sozinho.",
+      "denuncia": "Recebeu uma denúncia. Verifique o motivo no ML.",
+      "sinStock": "Sem estoque: aumente para 1 ou mais para reativar.",
+      "pausado": "Pausado (por você ou pelo ML)."
+    }
+  },
+  "pedidos": {
+    "titulo": "Pedidos",
+    "subtitulo": "Avance o estado conforme imprime e entrega; o painel se atualiza sozinho.",
+    "kpi": {
+      "activos": "Ativos",
+      "total": "No total",
+      "entregados": "Entregues"
+    },
+    "vacio": "Ainda não há pedidos. Eles entram sozinhos ao sincronizar as vendas do Mercado Libre.",
+    "vendidoEl": "Vendido em {fecha}",
+    "entregarAntes": "entregar antes de {fecha}",
+    "clienteAtendido": "Cliente atendido",
+    "sinAtender": "Sem atendimento",
+    "marcarAtendido": "Marcar como atendido",
+    "estado": {
+      "Vendido": "Vendido",
+      "EnCola": "Na fila",
+      "Imprimiendo": "Imprimindo",
+      "Impreso": "Impresso",
+      "Entregado": "Entregue"
+    },
+    "paso": {
+      "Vendido": "Mandar imprimir",
+      "EnCola": "Na fila",
+      "Imprimiendo": "Imprimindo",
+      "Impreso": "Impresso",
+      "Entregado": "Entregue"
+    }
+  },
+  "tablero": {
+    "estadoGeneral": "Estado geral",
+    "etiqueta": {
+      "verde": "VERDE · sem pressa",
+      "amarillo": "AMARELO · mexa-se",
+      "rojo": "VERMELHO · agir já"
+    },
+    "impresionTitulo": "🖨️ Impressão",
+    "porImprimir": "a imprimir",
+    "impresionResumen": "{enProceso} em andamento · {horasRequeridas} h necessárias / {capacidad} h disponíveis ({dias} dias)",
+    "faltanImpresoras": "⚠️ Falta(m) {n} impressora(s)",
+    "clientesTitulo": "🙋 Clientes",
+    "porAtender": "a atender",
+    "urgentes": "{n} urgente(s)",
+    "ayuda": "Verde = você está no prazo (mesmo com vários). Amarelo = é preciso se mexer. Vermelho = agir já. Atualiza-se sozinho. Para foco/painel inteligente:",
+    "ayudaCola": "retorna a cor."
+  },
+  "importar": {
+    "titulo": "Importar um pack",
+    "subtitulo": "Suba o ZIP de um pack (pastas por modelo, com fotos). O sistema cria os modelos sozinho e os deixa em <revision>Revisão</revision> para aprovar. Você não precisa instalar nada.",
+    "guiaTitulo": "📘 Como importar um pack? (guia rápido)",
+    "guiaPaso1": "Tenha à mão o <b>ZIP do pack</b> (deve ter uma pasta por modelo, e dentro as fotos).",
+    "guiaPaso2": "Clique em <b>“Arquivo ZIP do pack”</b> e selecione-o.",
+    "guiaPaso3": "Escreva a <b>Categoria</b> (ex. Vasos, Luminárias, Organizadores) e a <b>Fonte</b> (de onde veio o pack).",
+    "guiaPaso4": "Clique em <b>“Importar pack”</b> e aguarde. Packs grandes demoram um pouco — não feche a página.",
+    "guiaPaso5": "Pronto: os modelos aparecem em <revision>Revisão</revision> em 🟡 amarelo. Ali você decide quais publicar.",
+    "guiaNota": "Eles são criados como <b>🟡 “a revisar”</b> de propósito, para que você escolha. O sistema verifica marca/IP pela foto depois. Se um pack for muito grande (> 1.2 GB), divida-o em menos categorias e suba por partes.",
+    "campoArchivo": "Arquivo ZIP do pack",
+    "campoCategoria": "Categoria",
+    "campoFuente": "Fonte / pack",
+    "trabajando": "Trabalhando…",
+    "importarPack": "Importar pack",
+    "subiendoArchivo": "Enviando {nombre} ({mb} MB)…",
+    "procesandoPack": "Processando o pack (extraindo fotos e criando modelos)…",
+    "errorProcesando": "Erro ao processar",
+    "errorSubiendo": "Erro ao enviar o arquivo",
+    "listo": "✅ Pronto",
+    "resumenCreados": "{creados} modelo(s) criado(s) de {encontrados} encontrado(s)",
+    "resumenSaltados": "({saltados} já existiam/sem foto)",
+    "irRevision": "Ir para Revisão →",
+    "notaPie": "Nota: são criados em 🟡 amarelo (licença «a revisar») para que você decida. A detecção de marca/IP pela foto e a malha 3D para imprimir são processadas depois. Packs muito grandes (>1.2 GB) convém dividi-los por categoria."
+  },
+  "revision": {
+    "titulo": "Sala de revisão",
+    "subtitulo": "Lote pendente de aprovação · {n} modelos ({verde} {verdes} verde · {amarillo} {amarillos} amarelo).",
+    "subtituloAccion": {
+      "antes": "Selecione e",
+      "publica": "Publique",
+      "o": "ou",
+      "descarta": "Descarte",
+      "despues": "; ou aprove-os pelo Telegram com o bot."
+    },
+    "nivel": {
+      "verde": "Verde · publicável",
+      "amarillo": "Amarelo · com o seu OK",
+      "rojo": "Vermelho · IP"
+    },
+    "resultado": {
+      "publicados": "✅ {n} publicado(s)",
+      "descartados": "🗑 {n} descartado(s)",
+      "fallidos": "⚠️ {n} não foi(ram) possível publicar (revise o modelo)",
+      "ninguno": "Nenhum modelo foi selecionado."
+    },
+    "vacio": "Não há modelos pendentes de revisão. Importe um lote para que apareça aqui.",
+    "barra": {
+      "instruccion": "Marque os que quiser e escolha uma ação:",
+      "publicar": "✅ Publicar selecionados",
+      "descartar": "🗑 Descartar selecionados"
+    },
+    "sinFoto": "sem foto",
+    "licenciaTitle": "Licença do arquivo"
+  },
+  "notificaciones": {
+    "titulo": "Notificações",
+    "subtitulo": "Para quais e-mails avisamos e quais avisos do Mercado Libre vão chegando.",
+    "kpi": {
+      "recientes": "Avisos recentes",
+      "sinLeer": "Não lidos"
+    },
+    "guia": {
+      "titulo": "📘 Como funciona? (guia rápido)",
+      "parte1": "O Mercado Libre envia os avisos (rejeições, vendas, perguntas) por e-mail para a conta. Esse e-mail é encaminhado para o seu Gmail e um pequeno script o envia para cá, que extrai o motivo e o anúncio e o exibe. Assim o motivo da rejeição aparece também em ",
+      "enlaceSalud": "Saúde ML",
+      "parte2": ", não apenas o código.",
+      "nota": "Abaixo você gerencia para quais e-mails avisamos (para monitoramento). A config de quais e-mails o Mercado Libre recebe é ajustada na conta do ML; aqui apenas registramos e vemos o que chega."
+    },
+    "destinos": {
+      "titulo": "📤 E-mails que avisamos / monitoramos",
+      "vacio": "Ainda não há e-mails registrados."
+    },
+    "estado": {
+      "activo": "ativo",
+      "pausado": "pausado"
+    },
+    "accion": {
+      "pausar": "pausar",
+      "activar": "ativar"
+    },
+    "tipo": {
+      "adicional": "adicional",
+      "cuentaMl": "conta-ml",
+      "reenvio": "encaminhamento"
+    },
+    "form": {
+      "emailPlaceholder": "email@dominio.com",
+      "etiquetaPlaceholder": "etiqueta (ex. equipe)",
+      "agregar": "Adicionar"
+    },
+    "avisos": {
+      "titulo": "📥 Avisos do Mercado Libre recebidos",
+      "vacio": "Ainda não chegou nenhum aviso. Quando o ML enviar um e-mail (rejeição, venda…) e o encaminhamento estiver configurado, ele aparecerá aqui com seu motivo."
+    }
+  },
+  "filamentos": {
+    "titulo": "Filamentos",
+    "subtitulo": "O custo por kg alimenta a precificação de cada modelo (é cruzado por tipo de filamento).",
+    "colTipo": "Tipo",
+    "colMarca": "Marca",
+    "colColor": "Cor",
+    "colCostoKg": "Custo/kg",
+    "colStock": "Estoque (g)",
+    "editar": "Editar",
+    "eliminar": "Excluir",
+    "vacio": "Sem filamentos.",
+    "agregarTitulo": "Adicionar filamento",
+    "agregarBoton": "Adicionar"
+  },
+  "impresoras": {
+    "titulo": "Impressoras",
+    "subtitulo": "Potência e depreciação alimentam a precificação; a capacidade decide quando comprar mais máquinas.",
+    "kpi": {
+      "horasDiaTotal": "horas-impressora / dia",
+      "disponibles": "impressoras disponíveis",
+      "horasDiaAms": "h/dia com AMS (multicolor)",
+      "horasDiaSinAms": "h/dia sem AMS"
+    },
+    "notaCapacidad": "Capacidade = impressoras disponíveis × {horas} h/dia (de Configuração). Na Fase D isso é cruzado com a demanda prevista para avisar quando vale a pena comprar outra impressora.",
+    "listaTitulo": "Suas impressoras",
+    "colModelo": "Modelo",
+    "colPotencia": "Potência (W)",
+    "colCostoEquipo": "Custo do equipamento",
+    "colDepreciacion": "Deprec./h",
+    "colHorasUso": "Horas de uso",
+    "colEstado": "Estado",
+    "disponible": "Disponível",
+    "noDisponible": "Não disponível",
+    "editar": "Editar",
+    "eliminar": "Excluir",
+    "vacio": "Ainda não há impressoras.",
+    "agregarTitulo": "Adicionar impressora",
+    "agregar": "Adicionar"
+  },
+  "setup": {
+    "tituloNuevo": "Bem-vindo! Configure a sua marca",
+    "tituloEditar": "Marca e aparência",
+    "intro": "Personalize o nome, o logo e as cores da sua instância. Você pode fazer isso manualmente ou deixar que a IA proponha uma marca (você precisa do seu próprio token do fal.ai, OpenAI ou Claude). Tudo é opcional e pode ser alterado depois.",
+    "previewMarca": "Sua marca",
+    "previewTagline": "Seu tagline",
+    "previewBoton": "Botão",
+    "pasoNegocio": "Negócio",
+    "pasoMarca": "Marca",
+    "pasoConfirmar": "Confirmar",
+    "nombreNegocio": "Nome do negócio",
+    "nombreCorto": "Nome curto (PWA)",
+    "tagline": "Tagline",
+    "descripcion": "Descrição",
+    "idiomaUi": "Idioma da interface",
+    "idiomaContenido": "Idioma do conteúdo (marketplace)",
+    "moneda": "Moeda",
+    "aiTitulo": "✨ Quer ajuda da IA? (opcional)",
+    "aiNota": "Cole o seu próprio token. Ele não é salvo: é usado apenas para esta geração.",
+    "aiTokenPlaceholder": "Token de IA (opcional)",
+    "sugerirNombre": "Sugerir nome, tagline e descrição",
+    "generando": "Gerando…",
+    "logoLabel": "Logo",
+    "logoIa": "✨ Gerar logo com IA",
+    "quitar": "remover",
+    "subiendo": "Enviando…",
+    "paletaLabel": "Paleta — presets",
+    "paletaIa": "✨ Paleta com IA",
+    "colPrimario": "Primária",
+    "colAcento": "Destaque",
+    "colFondo": "Fundo escuro",
+    "colTema": "Tema",
+    "preset": {
+      "cian": "Ciano",
+      "violeta": "Violeta",
+      "esmeralda": "Esmeralda",
+      "ambar": "Âmbar",
+      "rosa": "Rosa"
+    },
+    "vendedorMl": "Nome do vendedor (nas publicações do Mercado Libre)",
+    "vendedorMlHint": "Aparece na marca e na assinatura das descrições.",
+    "confirmarNota": "Tudo pronto. Você pode alterar qualquer dado mais tarde em Configuração.",
+    "guardarCambios": "Salvar alterações",
+    "guardarEmpezar": "Salvar e começar",
+    "atras": "Voltar",
+    "siguiente": "Avançar",
+    "errSubir": "Não foi possível enviar",
+    "errSubirGen": "Erro ao enviar o logo",
+    "errIa": "A IA falhou",
+    "errIaGen": "Erro de IA"
+  },
+  "modeloDetalle": {
+    "modeloDetalle": {
+      "titulo": "Editar modelo",
+      "avisoMwOk": "✓ Dados do MakerWorld aplicados (só foram preenchidos campos vazios).",
+      "avisoMwFail": "Não foi possível ler do MakerWorld. Nada foi alterado.",
+      "avisoPubOk": "✓ Publicado no Mercado Libre. Item:",
+      "avisoPubUpd": "✓ Publicação atualizada.",
+      "avisoPubFail": "Não foi possível concluir a ação no Mercado Libre.",
+      "avisoValOk": "✓ O Mercado Libre validou o anúncio: a publicação funcionaria. (Nenhuma publicação foi criada.)",
+      "avisoValFail": "⚠️ O ML aponta ajustes antes de publicar: {msg}",
+      "publicarTitulo": "🛒 Publicar no Mercado Libre",
+      "campoTitulo": "Título:",
+      "campoCategoria": "Categoria ML:",
+      "porDeterminar": "a definir",
+      "campoPrecio": "Preço:",
+      "campoEntrega": "Entrega:",
+      "dias": "{d} dias",
+      "fotos": "Fotos ({n})",
+      "quitarFoto": "Remover",
+      "fotoPlaceholder": "URL de uma foto ou render (https://…)",
+      "agregarFoto": "Adicionar foto",
+      "falta": "Falta:",
+      "publicadoItem": "Publicado · {id}",
+      "verEnMl": "Ver no Mercado Libre ↗",
+      "noVisibleMl": "Não visível no ML (status: {estado}{sub})",
+      "actualizarPrecioStock": "Atualizar preço/estoque",
+      "pausar": "Pausar",
+      "validarMl": "Validar no ML (sem publicar)",
+      "publicarMl": "Publicar no Mercado Libre",
+      "resuelvePendientes": "Resolva os pendentes para habilitar.",
+      "guardarCambios": "Salvar alterações",
+      "makerworldTitulo": "MakerWorld (buscar ou colar link)",
+      "makerworldDesc": "Busque o modelo no MakerWorld pelo nome e escolha o correto (traz capa e dados), ou cole a URL direto. Só preenche campos vazios.",
+      "makerworldPlaceholder": "https://makerworld.com/en/models/123456-…",
+      "enriquecerUrl": "Enriquecer por URL",
+      "catalogoTitulo": "📦 Catálogo do Mercado Libre (opcional — só produto exato)",
+      "catalogoDesc": "A via recomendada para impressões próprias é o anúncio livre (acima). O catálogo é a exceção: só vincula quando o modelo É exatamente um produto que já existe no ML (mesma marca/modelo). Compare as fotos e confirme antes de vincular.",
+      "eliminarModelo": "Excluir modelo"
+    }
+  },
+  "buscarCatalogo": {
+    "buscarCatalogo": {
+      "enganchadoA": "Vinculado ao catálogo:",
+      "quitar": "Remover",
+      "buscando": "Buscando no catálogo…",
+      "buscarCta": "Buscar no catálogo do marketplace",
+      "advertencia": "Vincule ao catálogo <b>somente se for exatamente o mesmo produto</b> (mesma marca/modelo). Para impressões originais, use o <b>anúncio livre</b> (acima).",
+      "errorBuscar": "Não foi possível buscar no catálogo.",
+      "sinResultados": "Sem produtos de catálogo para “{nombre}”.",
+      "tuModelo": "Seu modelo",
+      "catalogo": "Catálogo",
+      "sinFoto": "Sem foto",
+      "marca": "Marca: {marca}",
+      "modelo": "· Modelo: {modelo}",
+      "esExacto": "É <b>exatamente</b> este produto",
+      "enganchar": "Vincular"
+    }
+  },
+  "buscarMakerworld": {
+    "buscar": "🔎 Buscar no MakerWorld",
+    "buscando": "Buscando no MakerWorld…",
+    "error": "Não foi possível buscar (Firecrawl). Tente novamente.",
+    "sinResultados": "Sem resultados para “{nombre}”.",
+    "usarEste": "Usar este"
+  },
+  "modeloNuevo": {
+    "modeloNuevo": {
+      "titulo": "Novo modelo",
+      "subtitulo": "Cadastre um modelo novo e deixe o sistema calcular custos, preço e rentabilidade por hora.",
+      "crear": "Criar modelo"
+    }
+  },
+  "modeloForm": {
+    "seccion": {
+      "general": "Dados gerais",
+      "tecnicos": "Técnicos (do fatiador)",
+      "costos": "Mão de obra e custos",
+      "mercado": "Mercado e estado",
+      "notas": "Notas"
+    },
+    "nombre": "Nome do modelo",
+    "fuente": "Fonte",
+    "creador": "Criador (se for de terceiros)",
+    "urlFuente": "URL da fonte",
+    "licencia": "Licença",
+    "licenciaHint": "Define se o modelo pode ser vendido (filtro legal).",
+    "categoria": "Categoria",
+    "nicho": "Nicho / etiqueta",
+    "nichoHint": "ex. Dia dos Mortos, gaming, peças de reposição",
+    "tiempoImpresionMin": "Tempo de impressão (min)",
+    "gramosFilamento": "Filamento (gramas)",
+    "tipoFilamento": "Tipo de filamento",
+    "dificultad": "Dificuldade",
+    "impresoraAsignada": "Impressora atribuída",
+    "impresoraDefault": "— usar valores padrão —",
+    "multicolorAms": "AMS / multicolor",
+    "requiereSoportes": "Suportes",
+    "tiempoOperacionMin": "Tempo de operação (min)",
+    "tiempoOperacionHint": "fatiamento + retirada + pós + embalagem",
+    "costoPostproceso": "Custo de pós-processo (MXN)",
+    "costoLicencia": "Custo de licença (MXN)",
+    "costoLicenciaHint": "rateio da assinatura comercial, se aplicável",
+    "rating": "Avaliação (1–5)",
+    "popularidad": "Popularidade (downloads/likes)",
+    "estadoValidacion": "Estado de validação",
+    "mlItemId": "ID de publicação ML",
+    "archivoUrl": "Arquivo (URL)",
+    "archivoUrlHint": "caminho do .3mf / .stl (pipeline F3)",
+    "archivoTipo": "Tipo de arquivo",
+    "publicadoMl": "Publicado no Mercado Libre",
+    "notas": "Notas",
+    "cancelar": "Cancelar"
+  },
+  "filamentoForm": {
+    "tipo": "Tipo",
+    "marca": "Marca",
+    "color": "Cor",
+    "costoPorKg": "Custo/kg (MXN)",
+    "stockGramos": "Estoque (g)",
+    "cancelar": "Cancelar"
+  },
+  "filamentoDetalle": {
+    "filamentoDetalle": {
+      "titulo": "Editar filamento",
+      "subtitulo": "Ajuste o custo por kg e o estoque; esses dados alimentam a precificação de cada modelo.",
+      "guardarCambios": "Salvar alterações"
+    }
+  },
+  "impresoraForm": {
+    "modelo": "Modelo",
+    "modeloHint": "Se tiver AMS, coloque no nome, ex. \"Bambu Lab A1 (AMS)\"",
+    "potencia": "Potência (W)",
+    "costoEquipo": "Custo do equipamento",
+    "depreciacion": "Depreciação/h",
+    "horasUso": "Horas de uso",
+    "disponible": "Disponível",
+    "cancelar": "Cancelar"
+  },
+  "impresoraDetalle": {
+    "titulo": "Editar impressora",
+    "guardar": "Salvar alterações"
+  },
+  "gestionDatos": {
+    "gestionDatos": {
+      "titulo": "⚠️ Gestão de dados de teste",
+      "descripcion": "Apaga o catálogo de modelos (e/ou vendas) quando você começar a carregar os reais. <fuerte>Nunca toca em filamentos nem impressoras</fuerte> (esses são dados reais). Antes de apagar, é baixado automaticamente um <fuerte>backup em JSON</fuerte> para o seu computador.",
+      "palabraClave": "APAGAR",
+      "placeholderConfirmar": "Escreva {palabra}",
+      "procesando": "Processando…",
+      "descargarRespaldo": "Baixar backup (JSON)",
+      "errorDesconocido": "desconhecido",
+      "modelosTitulo": "Modelos do catálogo",
+      "modelosConteo": "{n, plural, one {# modelo} other {# modelos}}",
+      "modelosNota": "Atualmente no catálogo.",
+      "borrarModelos": "Apagar os {n} modelos",
+      "confirmarModelos": "Apagar os {n} modelos? Um backup será baixado primeiro. NÃO se tocam filamentos nem impressoras.",
+      "okModelos": "✓ {n} modelos apagados. Backup baixado para o seu computador.",
+      "errorModelos": "✗ Erro: {detalle}. Nada foi apagado.",
+      "ventasTitulo": "Vendas (dados de teste)",
+      "ventasConteo": "{n, plural, one {# venda} other {# vendas}}",
+      "ventasNota": "Vendas registradas para testes.",
+      "borrarVentas": "Apagar vendas",
+      "confirmarVentas": "Apagar as {n} vendas de teste? Um backup será baixado primeiro.",
+      "okVentas": "✓ {n} vendas apagadas.",
+      "errorVentas": "✗ Erro: {detalle}."
+    }
+  }
+}
