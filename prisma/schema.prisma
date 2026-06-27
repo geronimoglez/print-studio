@@ -170,6 +170,10 @@ model Config {
   localeUi            String   @default("es") // idioma de la interfaz
   localeContenido     String   @default("es-MX") // idioma+región del contenido de marketplace (≠ idioma de UI)
   monedaNegocio       String   @default("MXN") // moneda del negocio (independiente del idioma)
+  // Tablero: auto-refresco opcional (pantalla de pared). Apagado por defecto: mantener la BD activa
+  // puede aumentar su consumo/costo. Ver src/app/tablero/AutoRefresh.tsx.
+  tableroAutoRefresh         Boolean @default(false)
+  tableroAutoRefreshSegundos Int     @default(300)
   updatedAt           DateTime @updatedAt
 }
 

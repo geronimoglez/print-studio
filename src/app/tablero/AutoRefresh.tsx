@@ -7,9 +7,10 @@ import { useRouter } from "next/navigation";
 // base de datos despierta 24/7: el polling se pausa cuando la pestaña no está
 // visible (o el equipo está sin conexión). Así Neon puede dormir (scale-to-zero)
 // y no se consume cómputo cuando nadie está mirando el tablero.
-export function AutoRefresh({ segundos = 120 }: { segundos?: number }) {
+export function AutoRefresh({ segundos = 300 }: { segundos?: number }) {
   const router = useRouter();
   const timer = useRef<ReturnType<typeof setInterval> | null>(null);
+  const ms = Math.max(60, segundos) * 1000; // mínimo 60s para no martillar la BD
 
   useEffect(() => {
     const activo = () =>
@@ -28,7 +29,7 @@ export function AutoRefresh({ segundos = 120 }: { segundos?: number }) {
       if (timer.current || !activo()) return;
       timer.current = setInterval(() => {
         if (activo()) router.refresh();
-      }, segundos * 1000);
+      }, ms);
     };
 
     // Al volver a la pestaña (o recuperar conexión): refresca al instante y reanuda.
@@ -52,7 +53,7 @@ export function AutoRefresh({ segundos = 120 }: { segundos?: number }) {
       window.removeEventListener("online", onReanudar);
       window.removeEventListener("offline", parar);
     };
-  }, [router, segundos]);
+  }, [router, ms]);
 
   return null;
 }

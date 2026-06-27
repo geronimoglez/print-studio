@@ -76,7 +76,11 @@
       "tiempoCola": "Tempo de fila (horas)",
       "diasEnvio": "Dias de envio",
       "colchon": "Margem de segurança (dias)"
-    }
+    },
+    "tableroTitulo": "Painel (tela de parede)",
+    "tableroAuto": "Atualizar o painel automaticamente",
+    "tableroCada": "Atualizar a cada",
+    "tableroAutoNota": "Mantém o painel atualizado sozinho, para deixá-lo numa tela. Aviso: atualizar com frequência mantém o banco de dados ativo e pode aumentar seu consumo (e custo)."
   },
   "integraciones": {
     "titulo": "Integrações",
@@ -470,7 +474,11 @@
     "errSubir": "Não foi possível enviar",
     "errSubirGen": "Erro ao enviar o logo",
     "errIa": "A IA falhou",
-    "errIaGen": "Erro de IA"
+    "errIaGen": "Erro de IA",
+    "tableroTitulo": "Painel (tela de parede)",
+    "tableroAuto": "Atualizar o painel automaticamente",
+    "tableroCada": "Atualizar a cada",
+    "tableroAutoNota": "Mantém o painel atualizado sozinho, para deixá-lo numa tela. Aviso: atualizar com frequência mantém o banco de dados ativo e pode aumentar seu consumo (e custo)."
   },
   "modeloDetalle": {
     "modeloDetalle": {

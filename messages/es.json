@@ -76,7 +76,11 @@
       "tiempoCola": "Tiempo de cola (horas)",
       "diasEnvio": "Días de envío",
       "colchon": "Colchón (días)"
-    }
+    },
+    "tableroTitulo": "Tablero (pantalla de pared)",
+    "tableroAuto": "Auto-refrescar el tablero",
+    "tableroCada": "Refrescar cada",
+    "tableroAutoNota": "Mantiene el tablero al día solo, para dejarlo en una pantalla. Aviso: refrescar seguido mantiene la base de datos activa y puede aumentar su consumo (y costo)."
   },
   "integraciones": {
     "titulo": "Integraciones",
@@ -470,7 +474,11 @@
     "errSubir": "No se pudo subir",
     "errSubirGen": "Error al subir el logo",
     "errIa": "Falló la IA",
-    "errIaGen": "Error de IA"
+    "errIaGen": "Error de IA",
+    "tableroTitulo": "Tablero (pantalla de pared)",
+    "tableroAuto": "Auto-refrescar el tablero",
+    "tableroCada": "Refrescar cada",
+    "tableroAutoNota": "Mantiene el tablero al día solo, para dejarlo en una pantalla. Aviso: refrescar seguido mantiene la base de datos activa y puede aumentar su consumo (y costo)."
   },
   "modeloDetalle": {
     "modeloDetalle": {

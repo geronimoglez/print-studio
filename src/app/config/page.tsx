@@ -94,6 +94,28 @@ export default async function ConfigPage({
             <Campo label={t("campos.colchon")}>{numInput("colchonDias", c.colchonDias, "1")}</Campo>
           </fieldset>
 
+          <fieldset className="space-y-3 border-t border-slate-100 pt-4">
+            <legend className="mb-1 text-sm font-semibold text-slate-600">{t("tableroTitulo")}</legend>
+            <label className="flex items-center gap-2 text-sm text-slate-700">
+              <input type="checkbox" name="tableroAutoRefresh" defaultChecked={c.tableroAutoRefresh} />
+              {t("tableroAuto")}
+            </label>
+            <div className="flex items-center gap-2 text-sm text-slate-700">
+              <span>{t("tableroCada")}</span>
+              <select
+                name="tableroAutoRefreshSegundos"
+                defaultValue={c.tableroAutoRefreshSegundos}
+                className={inputClass + " w-auto"}
+              >
+                <option value={300}>5 min</option>
+                <option value={900}>15 min</option>
+                <option value={1800}>30 min</option>
+                <option value={3600}>1 h</option>
+              </select>
+            </div>
+            <p className="text-xs text-amber-700">{t("tableroAutoNota")}</p>
+          </fieldset>
+
           <button type="submit" className={btnPrimary}>
             {t("guardar")}
           </button>

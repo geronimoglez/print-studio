@@ -29,7 +29,7 @@ export default async function TableroPage() {
 
   return (
     <div className="space-y-5">
-      <AutoRefresh />
+      {config.tableroAutoRefresh && <AutoRefresh segundos={config.tableroAutoRefreshSegundos} />}
 
       {/* Estado global */}
       <div

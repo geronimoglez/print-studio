@@ -76,7 +76,11 @@
       "tiempoCola": "Temps de file d'attente (heures)",
       "diasEnvio": "Jours d'expédition",
       "colchon": "Marge de sécurité (jours)"
-    }
+    },
+    "tableroTitulo": "Tableau (écran mural)",
+    "tableroAuto": "Rafraîchir le tableau automatiquement",
+    "tableroCada": "Rafraîchir toutes les",
+    "tableroAutoNota": "Garde le tableau à jour tout seul, pour un écran mural. Note : un rafraîchissement fréquent garde la base de données active et peut augmenter sa consommation (et son coût)."
   },
   "integraciones": {
     "titulo": "Intégrations",
@@ -470,7 +474,11 @@
     "errSubir": "Impossible de téléverser",
     "errSubirGen": "Erreur lors du téléversement du logo",
     "errIa": "L'IA a échoué",
-    "errIaGen": "Erreur d'IA"
+    "errIaGen": "Erreur d'IA",
+    "tableroTitulo": "Tableau (écran mural)",
+    "tableroAuto": "Rafraîchir le tableau automatiquement",
+    "tableroCada": "Rafraîchir toutes les",
+    "tableroAutoNota": "Garde le tableau à jour tout seul, pour un écran mural. Note : un rafraîchissement fréquent garde la base de données active et peut augmenter sa consommation (et son coût)."
   },
   "modeloDetalle": {
     "modeloDetalle": {

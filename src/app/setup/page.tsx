@@ -23,6 +23,8 @@ export default async function SetupPage() {
     localeUi: cfg.localeUi,
     localeContenido: cfg.localeContenido,
     monedaNegocio: cfg.monedaNegocio,
+    tableroAutoRefresh: cfg.tableroAutoRefresh,
+    tableroAutoRefreshSegundos: cfg.tableroAutoRefreshSegundos,
   };
   return (
     <div className="mx-auto max-w-3xl space-y-6">

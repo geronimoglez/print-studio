@@ -76,7 +76,11 @@
       "tiempoCola": "Queue time (hours)",
       "diasEnvio": "Shipping days",
       "colchon": "Buffer (days)"
-    }
+    },
+    "tableroTitulo": "Dashboard (wall display)",
+    "tableroAuto": "Auto-refresh the dashboard",
+    "tableroCada": "Refresh every",
+    "tableroAutoNota": "Keeps the dashboard up to date on its own, for a wall screen. Note: frequent refresh keeps the database active and can raise its usage (and cost)."
   },
   "integraciones": {
     "titulo": "Integrations",
@@ -470,7 +474,11 @@
     "errSubir": "Couldn't upload",
     "errSubirGen": "Error uploading the logo",
     "errIa": "AI failed",
-    "errIaGen": "AI error"
+    "errIaGen": "AI error",
+    "tableroTitulo": "Dashboard (wall display)",
+    "tableroAuto": "Auto-refresh the dashboard",
+    "tableroCada": "Refresh every",
+    "tableroAutoNota": "Keeps the dashboard up to date on its own, for a wall screen. Note: frequent refresh keeps the database active and can raise its usage (and cost)."
   },
   "modeloDetalle": {
     "modeloDetalle": {

@@ -20,6 +20,8 @@ type Valores = {
   localeUi: string;
   localeContenido: string;
   monedaNegocio: string;
+  tableroAutoRefresh: boolean;
+  tableroAutoRefreshSegundos: number;
 };
 
 type ProvText = "openrouter" | "openai" | "anthropic";
@@ -235,6 +237,38 @@ export function SetupWizard({
             <span className={labelClass}>{t("moneda")}</span>
             <input name="monedaNegocio" className={inputClass} value={v.monedaNegocio} onChange={(e) => set("monedaNegocio", e.target.value)} />
           </label>
+        </div>
+
+        <div className="rounded-xl border border-slate-200 p-4">
+          <label className="flex items-start gap-2 text-sm text-slate-700">
+            <input
+              type="checkbox"
+              name="tableroAutoRefresh"
+              checked={v.tableroAutoRefresh}
+              onChange={(e) => set("tableroAutoRefresh", e.target.checked)}
+              className="mt-0.5"
+            />
+            <span>
+              <span className="font-medium">{t("tableroAuto")}</span>
+              <span className="block text-xs text-amber-700">{t("tableroAutoNota")}</span>
+            </span>
+          </label>
+          {v.tableroAutoRefresh && (
+            <label className="mt-3 flex items-center gap-2 text-sm text-slate-700">
+              <span>{t("tableroCada")}</span>
+              <select
+                name="tableroAutoRefreshSegundos"
+                value={v.tableroAutoRefreshSegundos}
+                onChange={(e) => set("tableroAutoRefreshSegundos", Number(e.target.value))}
+                className={inputClass + " w-auto"}
+              >
+                <option value={300}>5 min</option>
+                <option value={900}>15 min</option>
+                <option value={1800}>30 min</option>
+                <option value={3600}>1 h</option>
+              </select>
+            </label>
+          )}
         </div>
 
         <div className="rounded-xl border border-slate-200 bg-slate-50 p-4">

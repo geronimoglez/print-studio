@@ -89,10 +89,19 @@ export async function eliminarModelo(fd: FormData) {
   redirect("/modelos");
 }
 
+// Preferencias del tablero (auto-refresco opcional). El checkbox ausente = apagado.
+function datosTablero(fd: FormData) {
+  return {
+    tableroAutoRefresh: fd.get("tableroAutoRefresh") === "on",
+    tableroAutoRefreshSegundos: Math.max(60, Math.round(num(fd, "tableroAutoRefreshSegundos", 300))),
+  };
+}
+
 export async function guardarConfig(fd: FormData) {
   await prisma.config.update({
     where: { id: 1 },
     data: {
+      ...datosTablero(fd),
       tarifaKwh: num(fd, "tarifaKwh", 2.5),
       comisionMlPct: num(fd, "comisionMlPct", 0.15),
       costoEnvio: num(fd, "costoEnvio", 70),
@@ -151,7 +160,7 @@ export async function guardarBranding(fd: FormData) {
 export async function completarSetup(fd: FormData) {
   await prisma.config.update({
     where: { id: 1 },
-    data: { ...datosBranding(fd), setupCompletado: true },
+    data: { ...datosBranding(fd), ...datosTablero(fd), setupCompletado: true },
   });
   revalidatePath("/", "layout");
   redirect("/");
