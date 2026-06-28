@@ -636,5 +636,11 @@
     "confirmarVentas": "Delete {n} sales? This cannot be undone.",
     "okVentas": "{n} sales deleted.",
     "errorVentas": "Error: {detalle}"
+  },
+  "login": {
+    "subtitulo": "Restricted access to this instance.",
+    "password": "Password",
+    "entrar": "Sign in",
+    "error": "Incorrect password."
   }
 }

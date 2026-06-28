@@ -636,5 +636,11 @@
     "confirmarVentas": "¿Borrar {n} ventas? Esta acción no se puede deshacer.",
     "okVentas": "{n} ventas borradas.",
     "errorVentas": "Error: {detalle}"
+  },
+  "login": {
+    "subtitulo": "Acceso restringido a esta instancia.",
+    "password": "Contraseña",
+    "entrar": "Entrar",
+    "error": "Contraseña incorrecta."
   }
 }

@@ -636,5 +636,11 @@
     "confirmarVentas": "Supprimer {n} ventes ? Action irréversible.",
     "okVentas": "{n} ventes supprimées.",
     "errorVentas": "Erreur : {detalle}"
+  },
+  "login": {
+    "subtitulo": "Accès restreint à cette instance.",
+    "password": "Mot de passe",
+    "entrar": "Se connecter",
+    "error": "Mot de passe incorrect."
   }
 }

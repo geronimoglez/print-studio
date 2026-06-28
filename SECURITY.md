@@ -8,9 +8,14 @@ de reproducción y el impacto. Procuraremos responder en un plazo razonable y co
 
 ## Nota importante sobre el modo self-host
 
-La interfaz web de este software **no incluye autenticación** en su versión auto-hospedable (single-tenant):
-está pensada para que un único negocio la opere. **No expongas la UI directamente a internet.** Despliégala
-detrás de una red privada, VPN o un reverse proxy con autenticación (Basic Auth / OAuth proxy / Cloudflare Access).
+La interfaz web de este software **no incluye autenticación multi-usuario** en su versión auto-hospedable
+(single-tenant): está pensada para que un único negocio la opere.
+
+- **Gate por contraseña (incluido).** Define `APP_PASSWORD` y **toda la instancia** queda detrás de una sola
+  contraseña compartida (cookie firmada; ver `src/proxy.ts` y `src/lib/gate.ts`). Es la forma rápida de que la
+  UI **no quede abierta a cualquiera**. Si lo dejas vacío, la app queda abierta (útil para una demo).
+- Para entornos más exigentes, despliégala además detrás de una red privada, VPN o un reverse proxy con
+  autenticación (Basic Auth / OAuth proxy / Cloudflare Access). **No expongas la UI sensible sin alguna de estas.**
 
 - Los endpoints del bot (`/api/bot/*`) sí se protegen con el header `x-bot-key` == `BOT_API_KEY`.
 - Los webhooks de Mercado Libre (`/api/ml/callbacknotice`) reciben sin auth por diseño (patrón

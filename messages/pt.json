@@ -636,5 +636,11 @@
     "confirmarVentas": "Apagar {n} vendas? Esta ação não pode ser desfeita.",
     "okVentas": "{n} vendas apagadas.",
     "errorVentas": "Erro: {detalle}"
+  },
+  "login": {
+    "subtitulo": "Acesso restrito a esta instância.",
+    "password": "Senha",
+    "entrar": "Entrar",
+    "error": "Senha incorreta."
   }
 }
