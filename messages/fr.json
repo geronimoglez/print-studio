@@ -481,62 +481,58 @@
     "tableroAutoNota": "Garde le tableau à jour tout seul, pour un écran mural. Note : un rafraîchissement fréquent garde la base de données active et peut augmenter sa consommation (et son coût)."
   },
   "modeloDetalle": {
-    "modeloDetalle": {
-      "titulo": "Modifier le modèle",
-      "avisoMwOk": "✓ Données de MakerWorld appliquées (seuls les champs vides ont été remplis).",
-      "avisoMwFail": "Impossible de lire depuis MakerWorld. Rien n'a été modifié.",
-      "avisoPubOk": "✓ Publié sur Mercado Libre. Item :",
-      "avisoPubUpd": "✓ Publication mise à jour.",
-      "avisoPubFail": "Impossible de terminer l'action sur Mercado Libre.",
-      "avisoValOk": "✓ Mercado Libre a validé l'annonce : la publication fonctionnerait. (Aucune publication n'a été créée.)",
-      "avisoValFail": "⚠️ ML signale des ajustements avant de publier : {msg}",
-      "publicarTitulo": "🛒 Publier sur Mercado Libre",
-      "campoTitulo": "Titre :",
-      "campoCategoria": "Catégorie ML :",
-      "porDeterminar": "à déterminer",
-      "campoPrecio": "Prix :",
-      "campoEntrega": "Livraison :",
-      "dias": "{d} jours",
-      "fotos": "Photos ({n})",
-      "quitarFoto": "Retirer",
-      "fotoPlaceholder": "URL d'une photo ou d'un rendu (https://…)",
-      "agregarFoto": "Ajouter une photo",
-      "falta": "Manque :",
-      "publicadoItem": "Publié · {id}",
-      "verEnMl": "Voir sur Mercado Libre ↗",
-      "noVisibleMl": "Non visible sur ML (statut : {estado}{sub})",
-      "actualizarPrecioStock": "Mettre à jour le prix/stock",
-      "pausar": "Mettre en pause",
-      "validarMl": "Valider sur ML (sans publier)",
-      "publicarMl": "Publier sur Mercado Libre",
-      "resuelvePendientes": "Réglez les points en attente pour activer.",
-      "guardarCambios": "Enregistrer les modifications",
-      "makerworldTitulo": "MakerWorld (rechercher ou coller le lien)",
-      "makerworldDesc": "Recherchez le modèle sur MakerWorld par nom et choisissez le bon (il importe la couverture et les données), ou collez l'URL directement. Il ne remplit que les champs vides.",
-      "makerworldPlaceholder": "https://makerworld.com/en/models/123456-…",
-      "enriquecerUrl": "Enrichir par URL",
-      "catalogoTitulo": "📦 Catalogue de Mercado Libre (facultatif — uniquement produit exact)",
-      "catalogoDesc": "La voie recommandée pour les impressions propres est l'annonce libre (ci-dessus). Le catalogue est l'exception : il ne s'accroche que lorsque le modèle EST exactement un produit qui existe déjà sur ML (même marque/modèle). Comparez les photos et confirmez avant de l'accrocher.",
-      "eliminarModelo": "Supprimer le modèle"
-    }
+    "titulo": "Modifier le modèle",
+    "avisoMwOk": "✓ Données de MakerWorld appliquées (seuls les champs vides ont été remplis).",
+    "avisoMwFail": "Impossible de lire depuis MakerWorld. Rien n'a été modifié.",
+    "avisoPubOk": "✓ Publié sur Mercado Libre. Item :",
+    "avisoPubUpd": "✓ Publication mise à jour.",
+    "avisoPubFail": "Impossible de terminer l'action sur Mercado Libre.",
+    "avisoValOk": "✓ Mercado Libre a validé l'annonce : la publication fonctionnerait. (Aucune publication n'a été créée.)",
+    "avisoValFail": "⚠️ ML signale des ajustements avant de publier : {msg}",
+    "publicarTitulo": "🛒 Publier sur Mercado Libre",
+    "campoTitulo": "Titre :",
+    "campoCategoria": "Catégorie ML :",
+    "porDeterminar": "à déterminer",
+    "campoPrecio": "Prix :",
+    "campoEntrega": "Livraison :",
+    "dias": "{d} jours",
+    "fotos": "Photos ({n})",
+    "quitarFoto": "Retirer",
+    "fotoPlaceholder": "URL d'une photo ou d'un rendu (https://…)",
+    "agregarFoto": "Ajouter une photo",
+    "falta": "Manque :",
+    "publicadoItem": "Publié · {id}",
+    "verEnMl": "Voir sur Mercado Libre ↗",
+    "noVisibleMl": "Non visible sur ML (statut : {estado}{sub})",
+    "actualizarPrecioStock": "Mettre à jour le prix/stock",
+    "pausar": "Mettre en pause",
+    "validarMl": "Valider sur ML (sans publier)",
+    "publicarMl": "Publier sur Mercado Libre",
+    "resuelvePendientes": "Réglez les points en attente pour activer.",
+    "guardarCambios": "Enregistrer les modifications",
+    "makerworldTitulo": "MakerWorld (rechercher ou coller le lien)",
+    "makerworldDesc": "Recherchez le modèle sur MakerWorld par nom et choisissez le bon (il importe la couverture et les données), ou collez l'URL directement. Il ne remplit que les champs vides.",
+    "makerworldPlaceholder": "https://makerworld.com/en/models/123456-…",
+    "enriquecerUrl": "Enrichir par URL",
+    "catalogoTitulo": "📦 Catalogue de Mercado Libre (facultatif — uniquement produit exact)",
+    "catalogoDesc": "La voie recommandée pour les impressions propres est l'annonce libre (ci-dessus). Le catalogue est l'exception : il ne s'accroche que lorsque le modèle EST exactement un produit qui existe déjà sur ML (même marque/modèle). Comparez les photos et confirmez avant de l'accrocher.",
+    "eliminarModelo": "Supprimer le modèle"
   },
   "buscarCatalogo": {
-    "buscarCatalogo": {
-      "enganchadoA": "Accroché au catalogue :",
-      "quitar": "Retirer",
-      "buscando": "Recherche dans le catalogue…",
-      "buscarCta": "Rechercher dans le catalogue du marketplace",
-      "advertencia": "Accrochez au catalogue <b>uniquement si c'est exactement le même produit</b> (même marque/modèle). Pour les impressions originales, utilisez l'<b>annonce libre</b> (ci-dessus).",
-      "errorBuscar": "Impossible de rechercher dans le catalogue.",
-      "sinResultados": "Aucun produit de catalogue pour « {nombre} ».",
-      "tuModelo": "Votre modèle",
-      "catalogo": "Catalogue",
-      "sinFoto": "Sans photo",
-      "marca": "Marque : {marca}",
-      "modelo": "· Modèle : {modelo}",
-      "esExacto": "C'est <b>exactement</b> ce produit",
-      "enganchar": "Accrocher"
-    }
+    "enganchadoA": "Accroché au catalogue :",
+    "quitar": "Retirer",
+    "buscando": "Recherche dans le catalogue…",
+    "buscarCta": "Rechercher dans le catalogue du marketplace",
+    "advertencia": "Accrochez au catalogue <b>uniquement si c'est exactement le même produit</b> (même marque/modèle). Pour les impressions originales, utilisez l'<b>annonce libre</b> (ci-dessus).",
+    "errorBuscar": "Impossible de rechercher dans le catalogue.",
+    "sinResultados": "Aucun produit de catalogue pour « {nombre} ».",
+    "tuModelo": "Votre modèle",
+    "catalogo": "Catalogue",
+    "sinFoto": "Sans photo",
+    "marca": "Marque : {marca}",
+    "modelo": "· Modèle : {modelo}",
+    "esExacto": "C'est <b>exactement</b> ce produit",
+    "enganchar": "Accrocher"
   },
   "buscarMakerworld": {
     "buscar": "🔎 Rechercher sur MakerWorld",
@@ -546,11 +542,9 @@
     "usarEste": "Utiliser celui-ci"
   },
   "modeloNuevo": {
-    "modeloNuevo": {
-      "titulo": "Nouveau modèle",
-      "subtitulo": "Saisissez un nouveau modèle et laissez le système calculer les coûts, le prix et la rentabilité par heure.",
-      "crear": "Créer le modèle"
-    }
+    "titulo": "Nouveau modèle",
+    "subtitulo": "Saisissez un nouveau modèle et laissez le système calculer les coûts, le prix et la rentabilité par heure.",
+    "crear": "Créer le modèle"
   },
   "modeloForm": {
     "seccion": {
@@ -602,11 +596,9 @@
     "cancelar": "Annuler"
   },
   "filamentoDetalle": {
-    "filamentoDetalle": {
-      "titulo": "Modifier le filament",
-      "subtitulo": "Ajustez le coût par kg et le stock ; ces données alimentent le chiffrage de chaque modèle.",
-      "guardarCambios": "Enregistrer les modifications"
-    }
+    "titulo": "Modifier le filament",
+    "subtitulo": "Ajustez le coût par kg et le stock ; ces données alimentent le chiffrage de chaque modèle.",
+    "guardarCambios": "Enregistrer les modifications"
   },
   "impresoraForm": {
     "modelo": "Modèle",
@@ -623,28 +615,26 @@
     "guardar": "Enregistrer les modifications"
   },
   "gestionDatos": {
-    "gestionDatos": {
-      "titulo": "⚠️ Gestion des données de test",
-      "descripcion": "Supprime le catalogue de modèles (et/ou les ventes) quand vous commencez à charger les vraies données. <fuerte>Ne touche jamais aux filaments ni aux imprimantes</fuerte> (ce sont des données réelles). Avant la suppression, une <fuerte>sauvegarde en JSON</fuerte> est automatiquement téléchargée sur votre appareil.",
-      "palabraClave": "BORRAR",
-      "placeholderConfirmar": "Tapez {palabra}",
-      "procesando": "Traitement…",
-      "descargarRespaldo": "Télécharger la sauvegarde (JSON)",
-      "errorDesconocido": "inconnu",
-      "modelosTitulo": "Modèles du catalogue",
-      "modelosConteo": "{n, plural, one {# modèle} other {# modèles}}",
-      "modelosNota": "Actuellement au catalogue.",
-      "borrarModelos": "Supprimer les {n} modèles",
-      "confirmarModelos": "Supprimer les {n} modèles ? Une sauvegarde sera téléchargée d'abord. Les filaments et les imprimantes ne sont PAS touchés.",
-      "okModelos": "✓ {n} modèles supprimés. Sauvegarde téléchargée sur votre appareil.",
-      "errorModelos": "✗ Erreur : {detalle}. Rien n'a été supprimé.",
-      "ventasTitulo": "Ventes (données de test)",
-      "ventasConteo": "{n, plural, one {# vente} other {# ventes}}",
-      "ventasNota": "Ventes enregistrées pour les tests.",
-      "borrarVentas": "Supprimer les ventes",
-      "confirmarVentas": "Supprimer les {n} ventes de test ? Une sauvegarde sera téléchargée d'abord.",
-      "okVentas": "✓ {n} ventes supprimées.",
-      "errorVentas": "✗ Erreur : {detalle}."
-    }
+    "titulo": "Gestion des données",
+    "descripcion": "Actions <fuerte>irréversibles</fuerte>. Une sauvegarde est téléchargée automatiquement avant la suppression.",
+    "palabraClave": "SUPPRIMER",
+    "modelosTitulo": "Modèles du catalogue",
+    "modelosConteo": "{n} modèles",
+    "modelosNota": "Supprime tous les modèles du catalogue. Une sauvegarde est téléchargée d abord.",
+    "descargarRespaldo": "Télécharger la sauvegarde",
+    "placeholderConfirmar": "Tapez {palabra}",
+    "borrarModelos": "Supprimer {n} modèles",
+    "procesando": "Traitement…",
+    "confirmarModelos": "Supprimer {n} modèles ? Action irréversible.",
+    "okModelos": "{n} modèles supprimés.",
+    "errorModelos": "Erreur : {detalle}",
+    "errorDesconocido": "erreur inconnue",
+    "ventasTitulo": "Ventes de test",
+    "ventasConteo": "{n} ventes",
+    "ventasNota": "Supprime les ventes enregistrées (utile pour nettoyer les données de test).",
+    "borrarVentas": "Supprimer les ventes",
+    "confirmarVentas": "Supprimer {n} ventes ? Action irréversible.",
+    "okVentas": "{n} ventes supprimées.",
+    "errorVentas": "Erreur : {detalle}"
   }
 }

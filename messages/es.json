@@ -481,62 +481,58 @@
     "tableroAutoNota": "Mantiene el tablero al día solo, para dejarlo en una pantalla. Aviso: refrescar seguido mantiene la base de datos activa y puede aumentar su consumo (y costo)."
   },
   "modeloDetalle": {
-    "modeloDetalle": {
-      "titulo": "Editar modelo",
-      "avisoMwOk": "✓ Datos de MakerWorld aplicados (solo se rellenaron campos vacíos).",
-      "avisoMwFail": "No se pudo leer de MakerWorld. No se cambió nada.",
-      "avisoPubOk": "✓ Publicado en Mercado Libre. Item:",
-      "avisoPubUpd": "✓ Publicación actualizada.",
-      "avisoPubFail": "No se pudo completar la acción en Mercado Libre.",
-      "avisoValOk": "✓ Mercado Libre validó el anuncio: el publicar funcionaría. (No se creó ninguna publicación.)",
-      "avisoValFail": "⚠️ ML reporta ajustes antes de publicar: {msg}",
-      "publicarTitulo": "🛒 Publicar en Mercado Libre",
-      "campoTitulo": "Título:",
-      "campoCategoria": "Categoría ML:",
-      "porDeterminar": "por determinar",
-      "campoPrecio": "Precio:",
-      "campoEntrega": "Entrega:",
-      "dias": "{d} días",
-      "fotos": "Fotos ({n})",
-      "quitarFoto": "Quitar",
-      "fotoPlaceholder": "URL de una foto o render (https://…)",
-      "agregarFoto": "Agregar foto",
-      "falta": "Falta:",
-      "publicadoItem": "Publicado · {id}",
-      "verEnMl": "Ver en Mercado Libre ↗",
-      "noVisibleMl": "No visible en ML (estatus: {estado}{sub})",
-      "actualizarPrecioStock": "Actualizar precio/stock",
-      "pausar": "Pausar",
-      "validarMl": "Validar en ML (sin publicar)",
-      "publicarMl": "Publicar en Mercado Libre",
-      "resuelvePendientes": "Resuelve los pendientes para habilitar.",
-      "guardarCambios": "Guardar cambios",
-      "makerworldTitulo": "MakerWorld (buscar o pegar liga)",
-      "makerworldDesc": "Busca el modelo en MakerWorld por nombre y elige el correcto (trae portada y datos), o pega la URL directo. Solo rellena campos vacíos.",
-      "makerworldPlaceholder": "https://makerworld.com/en/models/123456-…",
-      "enriquecerUrl": "Enriquecer por URL",
-      "catalogoTitulo": "📦 Catálogo de Mercado Libre (opcional — solo producto exacto)",
-      "catalogoDesc": "La vía recomendada para impresiones propias es el anuncio libre (arriba). El catálogo es la excepción: solo engancha cuando el modelo ES exactamente un producto que ya existe en ML (misma marca/modelo). Compara las fotos y confirma antes de enganchar.",
-      "eliminarModelo": "Eliminar modelo"
-    }
+    "titulo": "Editar modelo",
+    "avisoMwOk": "✓ Datos de MakerWorld aplicados (solo se rellenaron campos vacíos).",
+    "avisoMwFail": "No se pudo leer de MakerWorld. No se cambió nada.",
+    "avisoPubOk": "✓ Publicado en Mercado Libre. Item:",
+    "avisoPubUpd": "✓ Publicación actualizada.",
+    "avisoPubFail": "No se pudo completar la acción en Mercado Libre.",
+    "avisoValOk": "✓ Mercado Libre validó el anuncio: el publicar funcionaría. (No se creó ninguna publicación.)",
+    "avisoValFail": "⚠️ ML reporta ajustes antes de publicar: {msg}",
+    "publicarTitulo": "🛒 Publicar en Mercado Libre",
+    "campoTitulo": "Título:",
+    "campoCategoria": "Categoría ML:",
+    "porDeterminar": "por determinar",
+    "campoPrecio": "Precio:",
+    "campoEntrega": "Entrega:",
+    "dias": "{d} días",
+    "fotos": "Fotos ({n})",
+    "quitarFoto": "Quitar",
+    "fotoPlaceholder": "URL de una foto o render (https://…)",
+    "agregarFoto": "Agregar foto",
+    "falta": "Falta:",
+    "publicadoItem": "Publicado · {id}",
+    "verEnMl": "Ver en Mercado Libre ↗",
+    "noVisibleMl": "No visible en ML (estatus: {estado}{sub})",
+    "actualizarPrecioStock": "Actualizar precio/stock",
+    "pausar": "Pausar",
+    "validarMl": "Validar en ML (sin publicar)",
+    "publicarMl": "Publicar en Mercado Libre",
+    "resuelvePendientes": "Resuelve los pendientes para habilitar.",
+    "guardarCambios": "Guardar cambios",
+    "makerworldTitulo": "MakerWorld (buscar o pegar liga)",
+    "makerworldDesc": "Busca el modelo en MakerWorld por nombre y elige el correcto (trae portada y datos), o pega la URL directo. Solo rellena campos vacíos.",
+    "makerworldPlaceholder": "https://makerworld.com/en/models/123456-…",
+    "enriquecerUrl": "Enriquecer por URL",
+    "catalogoTitulo": "📦 Catálogo de Mercado Libre (opcional — solo producto exacto)",
+    "catalogoDesc": "La vía recomendada para impresiones propias es el anuncio libre (arriba). El catálogo es la excepción: solo engancha cuando el modelo ES exactamente un producto que ya existe en ML (misma marca/modelo). Compara las fotos y confirma antes de enganchar.",
+    "eliminarModelo": "Eliminar modelo"
   },
   "buscarCatalogo": {
-    "buscarCatalogo": {
-      "enganchadoA": "Enganchado al catálogo:",
-      "quitar": "Quitar",
-      "buscando": "Buscando en catálogo…",
-      "buscarCta": "Buscar en catálogo del marketplace",
-      "advertencia": "Engancha al catálogo <b>solo si es exactamente el mismo producto</b> (misma marca/modelo). Para impresiones originales, usa el <b>anuncio libre</b> (arriba).",
-      "errorBuscar": "No se pudo buscar en el catálogo.",
-      "sinResultados": "Sin productos de catálogo para “{nombre}”.",
-      "tuModelo": "Tu modelo",
-      "catalogo": "Catálogo",
-      "sinFoto": "Sin foto",
-      "marca": "Marca: {marca}",
-      "modelo": "· Modelo: {modelo}",
-      "esExacto": "Es <b>exactamente</b> este producto",
-      "enganchar": "Enganchar"
-    }
+    "enganchadoA": "Enganchado al catálogo:",
+    "quitar": "Quitar",
+    "buscando": "Buscando en catálogo…",
+    "buscarCta": "Buscar en catálogo del marketplace",
+    "advertencia": "Engancha al catálogo <b>solo si es exactamente el mismo producto</b> (misma marca/modelo). Para impresiones originales, usa el <b>anuncio libre</b> (arriba).",
+    "errorBuscar": "No se pudo buscar en el catálogo.",
+    "sinResultados": "Sin productos de catálogo para “{nombre}”.",
+    "tuModelo": "Tu modelo",
+    "catalogo": "Catálogo",
+    "sinFoto": "Sin foto",
+    "marca": "Marca: {marca}",
+    "modelo": "· Modelo: {modelo}",
+    "esExacto": "Es <b>exactamente</b> este producto",
+    "enganchar": "Enganchar"
   },
   "buscarMakerworld": {
     "buscar": "🔎 Buscar en MakerWorld",
@@ -546,11 +542,9 @@
     "usarEste": "Usar este"
   },
   "modeloNuevo": {
-    "modeloNuevo": {
-      "titulo": "Nuevo modelo",
-      "subtitulo": "Captura un modelo nuevo y deja que el sistema calcule costos, precio y rentabilidad por hora.",
-      "crear": "Crear modelo"
-    }
+    "titulo": "Nuevo modelo",
+    "subtitulo": "Captura un modelo nuevo y deja que el sistema calcule costos, precio y rentabilidad por hora.",
+    "crear": "Crear modelo"
   },
   "modeloForm": {
     "seccion": {
@@ -602,11 +596,9 @@
     "cancelar": "Cancelar"
   },
   "filamentoDetalle": {
-    "filamentoDetalle": {
-      "titulo": "Editar filamento",
-      "subtitulo": "Ajusta el costo por kg y el stock; estos datos alimentan el costeo de cada modelo.",
-      "guardarCambios": "Guardar cambios"
-    }
+    "titulo": "Editar filamento",
+    "subtitulo": "Ajusta el costo por kg y el stock; estos datos alimentan el costeo de cada modelo.",
+    "guardarCambios": "Guardar cambios"
   },
   "impresoraForm": {
     "modelo": "Modelo",
@@ -623,28 +615,26 @@
     "guardar": "Guardar cambios"
   },
   "gestionDatos": {
-    "gestionDatos": {
-      "titulo": "⚠️ Gestión de datos de prueba",
-      "descripcion": "Borra el catálogo de modelos (y/o ventas) cuando empieces a cargar los reales. <fuerte>Nunca toca filamentos ni impresoras</fuerte> (esos son datos reales). Antes de borrar se descarga automáticamente un <fuerte>respaldo en JSON</fuerte> a tu equipo.",
-      "palabraClave": "BORRAR",
-      "placeholderConfirmar": "Escribe {palabra}",
-      "procesando": "Procesando…",
-      "descargarRespaldo": "Descargar respaldo (JSON)",
-      "errorDesconocido": "desconocido",
-      "modelosTitulo": "Modelos del catálogo",
-      "modelosConteo": "{n, plural, one {# modelo} other {# modelos}}",
-      "modelosNota": "Actualmente en el catálogo.",
-      "borrarModelos": "Borrar los {n} modelos",
-      "confirmarModelos": "¿Borrar los {n} modelos? Se descargará un respaldo primero. NO se tocan filamentos ni impresoras.",
-      "okModelos": "✓ {n} modelos borrados. Respaldo descargado a tu equipo.",
-      "errorModelos": "✗ Error: {detalle}. No se borró nada.",
-      "ventasTitulo": "Ventas (datos de prueba)",
-      "ventasConteo": "{n, plural, one {# venta} other {# ventas}}",
-      "ventasNota": "Ventas registradas para pruebas.",
-      "borrarVentas": "Borrar ventas",
-      "confirmarVentas": "¿Borrar las {n} ventas de prueba? Se descargará un respaldo primero.",
-      "okVentas": "✓ {n} ventas borradas.",
-      "errorVentas": "✗ Error: {detalle}."
-    }
+    "titulo": "Gestión de datos",
+    "descripcion": "Acciones <fuerte>irreversibles</fuerte>. Se descarga un respaldo automático antes de borrar.",
+    "palabraClave": "BORRAR",
+    "modelosTitulo": "Modelos del catálogo",
+    "modelosConteo": "{n} modelos",
+    "modelosNota": "Borra todos los modelos del catálogo. Primero se descarga un respaldo.",
+    "descargarRespaldo": "Descargar respaldo",
+    "placeholderConfirmar": "Escribe {palabra}",
+    "borrarModelos": "Borrar {n} modelos",
+    "procesando": "Procesando…",
+    "confirmarModelos": "¿Borrar {n} modelos? Esta acción no se puede deshacer.",
+    "okModelos": "{n} modelos borrados.",
+    "errorModelos": "Error: {detalle}",
+    "errorDesconocido": "error desconocido",
+    "ventasTitulo": "Ventas de prueba",
+    "ventasConteo": "{n} ventas",
+    "ventasNota": "Borra las ventas registradas (útil para limpiar datos de prueba).",
+    "borrarVentas": "Borrar ventas",
+    "confirmarVentas": "¿Borrar {n} ventas? Esta acción no se puede deshacer.",
+    "okVentas": "{n} ventas borradas.",
+    "errorVentas": "Error: {detalle}"
   }
 }
