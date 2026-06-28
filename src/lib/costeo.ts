@@ -43,7 +43,7 @@ export type CosteoResultado = {
   precioBase: number; // costoTotal * markup
   precioVenta: number; // con envío y comisión ML despejada
   costoEnvioVendedor: number; // envío que absorbe el vendedor (0 si lo paga el comprador)
-  envioGratis: boolean; // true = envío gratis obligatorio (lo paga Blas)
+  envioGratis: boolean; // true = envío gratis obligatorio (lo pagal operador)
   comisionMl: number; // $ de comisión ML sobre el precio
   margen: number; // utilidad neta tras comisión ML y envío
   margenPct: number;

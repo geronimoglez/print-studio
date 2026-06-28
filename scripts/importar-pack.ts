@@ -1,10 +1,10 @@
-// Importa ~50 modelos curados del pack de Blas (FUNCIONALES / URBAN / ARTICULADO)
+// Importa ~50 modelos curados del pack curado (FUNCIONALES / URBAN / ARTICULADO)
 // con sus FOTOS REALES (las del pack, ya extraídas en ../pack-muestra/fotos).
 //
 // - Copia las fotos a public/pack/<slug>/ (Vercel las sirve estáticas, sin token de Blob).
 // - Crea/actualiza la ficha Modelo con metadatos estimados por categoría.
 // - Infiere licencia: personajes con IP de terceros → "Personal" (NO apto venta);
-//   genéricos/originales → "Comercial" (apto venta). Geronimo confirma luego.
+//   genéricos/originales → "Comercial" (apto venta). El operador confirma luego.
 // - Idempotente: si el modelo ya existe (por nombre), actualiza fotos/clasificación.
 //
 // Correr: npx tsx scripts/importar-pack.ts

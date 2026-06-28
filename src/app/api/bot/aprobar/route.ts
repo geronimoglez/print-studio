@@ -1,4 +1,4 @@
-// Aprobación por LOTE (el ✅ de Blas vía Telegram). Recibe ids a publicar y/o descartar.
+// Aprobación por LOTE (el ✅ del operador vía Telegram). Recibe ids a publicar y/o descartar.
 //   publicarIds  → publicarModelo() cada uno (el gate IP/licencia bloquea 🔴 aunque venga en la lista).
 //   descartarIds → estadoValidacion = "Rechazado" (queda fuera, no se borra).
 // Regla fail-closed: un id 🔴 NUNCA se publica; se reporta como bloqueado. Auth: x-bot-key.
@@ -23,7 +23,7 @@ export async function POST(req: Request) {
   for (const id of publicarIds) {
     const m = await prisma.modelo.findUnique({ where: { id } });
     if (!m) { publicados.push({ id, ok: false, error: "no existe" }); continue; }
-    // fail-closed: aunque Blas lo haya incluido, si es 🔴 IP no se publica.
+    // fail-closed: aunque el operador lo haya incluido, si es 🔴 IP no se publica.
     if (!esPublicable(m.marcaIp, m.licencia)) {
       publicados.push({ id, nombre: m.nombre, ok: false, bloqueado: true, nivel: nivelRiesgo(m.marcaIp, m.licencia), error: "🔴 MARCA/IP — no se publica" });
       continue;

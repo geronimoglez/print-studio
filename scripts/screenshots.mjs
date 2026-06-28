@@ -8,7 +8,7 @@ import puppeteer from "puppeteer-core";
 const EDGE =
   process.env.EDGE_PATH ||
   "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe";
-const BASE = process.env.BASE_URL || "https://lab3d.apps.minka.one";
+const BASE = process.env.BASE_URL || "http://localhost:3000";
 const MODELO_ID = process.env.MODELO_ID || "cmq5szcuy0009zkfef3mwstxa"; // Soporte de Vino - Dragon
 const OUT = path.join(process.cwd(), "..", "materiales", "screenshots");
 

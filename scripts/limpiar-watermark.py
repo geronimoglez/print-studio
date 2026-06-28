@@ -4,7 +4,7 @@
 # Idempotente: re-correr es seguro. Se encadena DESPUÉS de fondos-blancos.py.
 #
 # NO sirve para marcas en el centro de la foto (ej. botella Kahlúa) → esas requieren
-# reshoot de Blas (foto propia del print) o inpainting con IA.
+# reshoot (foto propia del print) o inpainting con IA.
 #
 # Correr: python scripts/limpiar-watermark.py
 import os

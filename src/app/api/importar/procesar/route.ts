@@ -1,7 +1,7 @@
 // Procesa un ZIP de pack ya subido a Blob (por /importar): descomprime SOLO las imágenes (no las mallas,
 // para no saturar memoria), agrupa por modelo (carpeta hoja), sube las fotos a Blob y crea los modelos en
 // estado Pendiente → caen en /revisión. marcaIp se calcula por NOMBRE; la licencia queda "Revisar" (=🟡
-// amarillo, publicable con OK de Blas) y la visión de IP/calidad se puede correr después.
+// amarillo, publicable con OK del operador) y la visión de IP/calidad se puede correr después.
 // Self-serve y en la nube: NO necesita scripts locales ni redeploy (las fotos van a Blob).
 import { unzip } from "fflate";
 import { prisma } from "@/lib/prisma";

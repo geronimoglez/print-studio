@@ -1,4 +1,4 @@
-// Genera un PDF de costeo (para revisar con Blas): actualiza comisión a 15%, costea N modelos
+// Genera un PDF de costeo (para revisar): actualiza comisión a 15%, costea N modelos
 // y arma un reporte con el desglose real (costo → precio → comisión ML 15% → envío → margen neto).
 // Render del PDF con Edge (puppeteer-core). Sube a Blob y deja copia local.
 //
@@ -59,13 +59,13 @@ async function main() {
     .tag{display:inline-block;background:#0f766e;color:#fff;border-radius:6px;padding:2px 8px;font-size:11px}
   </style></head><body>
     <h1>Lab 3D Brothers — Costeo real por modelo</h1>
-    <p class="sub">Para revisar con Blas · valores en pesos mexicanos (MXN) · generado por el sistema</p>
+    <p class="sub">Para revisar · valores en pesos mexicanos (MXN) · generado por el sistema</p>
     <div class="box">
       <b>Cómo se calcula el precio:</b> costo de producción (filamento + energía + desgaste de impresora +
       mano de obra + postproceso, ajustado por <b>${(config.tasaFallos * 100).toFixed(0)}%</b> de fallos) ×
       <b>markup ${config.markup}×</b>, y se "despeja" para que después de la
       <b>comisión de Mercado Libre (${(config.comisionMlPct * 100).toFixed(0)}%)</b> y el
-      <b>envío</b> aún quede utilidad. <span class="tag">Envío gratis obligatorio arriba de $299 → lo paga Blas (~${mxn(config.costoEnvio)}, real ~$60)</span>
+      <b>envío</b> aún quede utilidad. <span class="tag">Envío gratis obligatorio arriba de $299 → lo paga el vendedor (~${mxn(config.costoEnvio)}, real ~$60)</span>
     </div>
     <table>
       <thead><tr>
@@ -75,7 +75,7 @@ async function main() {
       <tbody>${rows}</tbody>
     </table>
     <p class="foot">
-      <b>Notas:</b> "Margen neto" = lo que le queda a Blas por pieza tras pagar producción, la comisión de ML y el envío.
+      <b>Notas:</b> "Margen neto" = lo que queda por pieza tras pagar producción, la comisión de ML y el envío.
       "Utilidad/hora" = margen ÷ horas de impresión (métrica para priorizar qué imprimir).
       El costo de envío real de Mercado Envíos para estos paquetes es ~$60 (subsidiado); en el costeo usamos
       ${mxn(config.costoEnvio)} como colchón. Si un precio quedara debajo de $299, el comprador paga el envío.
@@ -88,9 +88,9 @@ async function main() {
   await page.setContent(html, { waitUntil: "load" });
   const pdf = await page.pdf({ format: "A4", landscape: true, printBackground: true, margin: { top: "10mm", bottom: "10mm", left: "8mm", right: "8mm" } });
   await browser.close();
-  const local = path.join(process.cwd(), "_preview", "costeo-blas.pdf");
+  const local = path.join(process.cwd(), "_preview", "costeo.pdf");
   fs.writeFileSync(local, pdf);
-  const r = await subirImagen("docs/costeo-blas.pdf", Buffer.from(pdf), { contentType: "application/pdf" });
+  const r = await subirImagen("docs/costeo.pdf", Buffer.from(pdf), { contentType: "application/pdf" });
   console.log(`✅ PDF: ${filas.length} modelos · local: ${local}`);
   console.log(`   compartible: ${r.url}`);
   await prisma.$disconnect();

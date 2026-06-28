@@ -1,4 +1,4 @@
-// Datos de ejemplo (placeholder hasta los datos reales de Blas).
+// Datos de ejemplo para probar el sistema (catálogo, costeo y filtro legal).
 // Cubre categorías y una MEZCLA de licencias para demostrar el filtro legal:
 // algunos modelos quedan bloqueados (CC-BY-NC, Personal) y no se podrán publicar.
 // Corre con: npm run seed
@@ -19,8 +19,7 @@ async function main() {
   await prisma.impresora.deleteMany();
   await prisma.config.deleteMany();
 
-  // Config: DATOS REALES de Blas (luz $4/kWh, mano de obra $200/h, fallos 1/10, 20 h/día,
-  // PLA/PETG básico ~$330/kg). Comisión ML, envío y depreciación son estimados a confirmar.
+  // Config: valores de ejemplo. Edítalos en el wizard /setup o en /config (rigen todo el costeo).
   await prisma.config.create({
     data: {
       id: 1,
@@ -40,7 +39,7 @@ async function main() {
     },
   });
 
-  // Filamentos — PLA y PETG básico en el rango real de Blas ($280–$380/kg)
+  // Filamentos — PLA y PETG básico (rango de ejemplo $280–$380/kg)
   await prisma.filamento.createMany({
     data: [
       { tipo: "PLA", marca: "Básico", color: "Negro", costoPorKg: 300, densidad: 1.24, stockGramos: 3000 },
@@ -49,7 +48,7 @@ async function main() {
     ],
   });
 
-  // Impresoras — parque REAL de Blas: 2 A1 con AMS, 2 A1, 1 A1 mini.
+  // Impresoras — parque de ejemplo: 2 A1 con AMS, 2 A1, 1 A1 mini.
   // (costoEquipo y depreciación son estimados; potencia = promedio durante impresión.)
   const a1ams1 = await prisma.impresora.create({
     data: { modelo: "Bambu Lab A1 (AMS) #1", potenciaW: 100, costoEquipo: 9500, depreciacionPorHora: 2, horasUso: 0, disponible: true },

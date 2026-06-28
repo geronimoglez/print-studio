@@ -1,6 +1,6 @@
 // Lote de REVISIÓN para aprobar por Telegram (skill-revisar-aprobar-telegram). Devuelve los modelos
 // PENDIENTES + publicables (no rojo) que aún no están en ML, numerados y con su nivel 🟢🟡🔴, para que
-// el bot se los muestre a Blas. Blas responde "publica 3,7 / descarta 5" → el bot mapea número→id y
+// el bot se los muestre al operador. El operador responde "publica 3,7 / descarta 5" → el bot mapea número→id y
 // llama a /api/bot/aprobar con esos ids. Auth: x-bot-key. Solo LECTURA.
 import { prisma } from "@/lib/prisma";
 import { nivelRiesgo, esPublicable, ETIQUETA } from "@/lib/riesgo";

@@ -30,7 +30,7 @@ function redirectUri() {
   return process.env.ML_REDIRECT_URI ?? "";
 }
 
-/** URL a la que se manda al vendedor para autorizar la app (clic de Blas). */
+/** URL a la que se manda al vendedor para autorizar la app (clic del operador). */
 export function urlAutorizacion(state = "lab3d"): string {
   const p = new URLSearchParams({
     response_type: "code",
@@ -787,7 +787,7 @@ export async function diagnosticarCategorias(q: string): Promise<{
   return { ok: true, categorias };
 }
 
-/** Diagnóstico: trae las publicaciones reales de Blas para ver cómo están armadas (categoría, catálogo, tipo). */
+/** Diagnóstico: trae las publicaciones reales del operador para ver cómo están armadas (categoría, catálogo, tipo). */
 export async function misItems(): Promise<{
   ok: boolean;
   items?: Array<Record<string, unknown>>;

@@ -66,7 +66,7 @@ export async function POST(req: Request) {
     }
   }
 
-  // Defaults sensatos (Blas/el bot los confirman/ajustan luego).
+  // Defaults sensatos (el operador/el bot los confirman/ajustan luego).
   const num = (v: unknown, d: number) => (typeof v === "number" && isFinite(v) ? v : d);
   try {
     const modelo = await prisma.modelo.create({

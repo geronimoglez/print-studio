@@ -14,7 +14,7 @@ import { PrismaPg } from "@prisma/adapter-pg";
 import { getAccessTokenValido } from "../src/lib/mercadolibre";
 
 const prisma = new PrismaClient({ adapter: new PrismaPg(process.env.DATABASE_URL!) });
-const APP_URL = (process.env.NEXT_PUBLIC_APP_URL ?? "https://lab3d.apps.minka.one").replace(/\/+$/, "");
+const APP_URL = (process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000").replace(/\/+$/, "");
 function arg(n: string, d?: string) { const i = process.argv.indexOf(`--${n}`); return i >= 0 && process.argv[i + 1] ? process.argv[i + 1] : d; }
 const UMBRAL = parseFloat(arg("umbral", "0.06")!);
 const DRY = process.argv.includes("--dry");

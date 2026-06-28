@@ -2,10 +2,10 @@
 // Llama la API del sistema (sync-then-report) y arma un reporte legible del estado.
 // Es solo lectura: NO reimplementa lógica, NO toca la DB ni los tokens de ML.
 //
-// Uso:  SISTEMA_URL=https://lab3d.apps.minka.one BOT_API_KEY=xxxx node scripts/hermes-monitor.mjs
+// Uso:  SISTEMA_URL=http://localhost:3000 BOT_API_KEY=xxxx node scripts/hermes-monitor.mjs
 import "dotenv/config";
 
-const BASE = (process.env.SISTEMA_URL || "https://lab3d.apps.minka.one").replace(/\/+$/, "");
+const BASE = (process.env.SISTEMA_URL || "http://localhost:3000").replace(/\/+$/, "");
 const KEY = process.env.BOT_API_KEY;
 const H = { "x-bot-key": KEY ?? "" };
 const EMOJI = { verde: "🟢", amarillo: "🟡", rojo: "🔴" };

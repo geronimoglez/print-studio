@@ -18,7 +18,7 @@ export const STOCK_ML_DEFAULT = 5;
 // producción+envío+colchón (≈5 días), lo que inflaba el plazo al doble. Bajo demanda: 2 días de preparación.
 export const DIAS_FABRICACION_ML = 2;
 
-// Tamaño base del producto (cm) cuando no tenemos la malla para medirlo. Blas escala sus impresiones a
+// Tamaño base del producto (cm) cuando no tenemos la malla para medirlo. el operador escala sus impresiones a
 // ~12 cm de dimensión máxima; las piezas con malla traen su medida real (alto×ancho×largo) calculada.
 export const DIM_BASE_CM = { alto: 12, ancho: 12, largo: 12 };
 

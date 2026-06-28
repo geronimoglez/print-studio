@@ -209,7 +209,7 @@ export async function eliminarImpresora(fd: FormData) {
 }
 
 // --- Gestión de datos de prueba ---
-// Borran SOLO datos de catálogo/ventas. NUNCA tocan filamentos ni impresoras (infra real de Blas).
+// Borran SOLO datos de catálogo/ventas. NUNCA tocan filamentos ni impresoras (infra del negocio).
 // El respaldo se descarga como archivo desde el cliente ANTES de borrar (ver GestionDatos.tsx).
 
 export async function borrarTodosLosModelos() {

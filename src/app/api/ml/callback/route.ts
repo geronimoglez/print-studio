@@ -2,7 +2,7 @@ import { intercambiarCodigo } from "@/lib/mercadolibre";
 
 export const dynamic = "force-dynamic";
 
-// OAuth: ML regresa aquí con ?code=... tras la autorización de Blas.
+// OAuth: ML regresa aquí con ?code=... tras la autorización del operador.
 export async function GET(req: Request) {
   const url = new URL(req.url);
   const code = url.searchParams.get("code");

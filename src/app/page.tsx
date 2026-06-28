@@ -10,7 +10,7 @@ export const dynamic = "force-dynamic";
 
 export default async function Dashboard() {
   // Primer arranque: si aún no se configuró la marca, guiar al wizard.
-  // SKIP_SETUP=1 lo desactiva (p.ej. un despliegue ya en uso que migra al código nuevo, como el de Blas).
+  // SKIP_SETUP=1 lo desactiva (p.ej. un despliegue ya en uso que migra al código nuevo, como el del operador).
   const cfg = await getConfig();
   if (!cfg.setupCompletado && process.env.SKIP_SETUP !== "1") redirect("/setup");
   const t = await getTranslations("dashboard");

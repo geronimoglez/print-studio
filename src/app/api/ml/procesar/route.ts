@@ -16,7 +16,7 @@ function autorizado(req: Request) {
   return !!process.env.CRON_SECRET && auth === `Bearer ${process.env.CRON_SECRET}`;
 }
 
-/** Manda una alerta por Telegram a Blas y Geronimo (si hay token+chats configurados). */
+/** Manda una alerta por Telegram a el operador (si hay token+chats configurados). */
 async function alertarTelegram(texto: string) {
   const token = process.env.TELEGRAM_ALERT_TOKEN || process.env.TELEGRAM_BOT_TOKEN_LAB3D;
   const chats = (process.env.TELEGRAM_ALERT_CHATS || process.env.TELEGRAM_ALLOWED_IDS_LAB3D || "")

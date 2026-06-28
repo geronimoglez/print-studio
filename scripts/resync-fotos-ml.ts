@@ -12,7 +12,7 @@ import { esPublicable } from "../src/lib/riesgo";
 import { getAccessTokenValido } from "../src/lib/mercadolibre";
 
 const prisma = new PrismaClient({ adapter: new PrismaPg(process.env.DATABASE_URL!) });
-const BASE = process.env.NEXT_PUBLIC_APP_URL ?? "https://lab3d.apps.minka.one";
+const BASE = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
 function arg(name: string) { const i = process.argv.indexOf(`--${name}`); return i >= 0 ? process.argv[i + 1] : undefined; }
 const abs = (u: string) => (u.startsWith("http") ? u : `${BASE}${u}`);
 

@@ -1,5 +1,5 @@
 // Mide el tamaño real de cada pieza leyendo el bounding box de su malla (STL/3MF) y lo ESCALA al tamaño
-// base (~12 cm de dimensión máxima — Blas escala sus impresiones a eso). Guarda alto/ancho/largo (cm) en
+// base (~12 cm de dimensión máxima — se escalan las impresiones a eso). Guarda alto/ancho/largo (cm) en
 // el Modelo, que luego van en la descripción y en el empaque (SELLER_PACKAGE_*) para el costo de envío.
 //
 // Uso: npx tsx scripts/medir-mallas.ts [--max 12] [--solo slug1,slug2] [--dry]

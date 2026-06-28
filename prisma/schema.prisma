@@ -104,7 +104,7 @@ model AvisoCorreo {
 model NotificacionDestino {
   id       String   @id @default(cuid())
   email    String   @unique
-  etiqueta String? // "Cuenta ML (Blas)", "Simón", etc.
+  etiqueta String? // "Cuenta ML", "Simón", etc.
   tipo     String   @default("adicional") // cuenta-ml | adicional | reenvio
   activo   Boolean  @default(true)
   nota     String?
@@ -147,19 +147,19 @@ model Venta {
 }
 
 /// Parámetros globales de costeo. Fila única (id = 1).
-/// Valores por defecto = ejemplo del doc 04 (placeholder hasta datos reales de Blas).
+/// Valores por defecto = ejemplo (edítalos en /setup o /config).
 model Config {
   id                  Int      @id @default(1)
-  tarifaKwh           Float    @default(4) // dato real de Blas
+  tarifaKwh           Float    @default(4) // ejemplo
   comisionMlPct       Float    @default(0.14) // estimado: confirmar categoría real en ML
   costoEnvio          Float    @default(70) // estimado: confirmar
   tasaFallos          Float    @default(0.10) // dato real: 1 de cada 10
-  costoHoraManoObra   Float    @default(200) // dato real de Blas
+  costoHoraManoObra   Float    @default(200) // ejemplo
   markup              Float    @default(3.0)
   costoPorKgDefault   Float    @default(330) // dato real: PLA/PETG básico 280–380
   potenciaWDefault    Float    @default(100) // promedio A1 durante impresión
   depreciacionPorHora Float    @default(2) // estimado
-  horasProductivasDia Float    @default(20) // dato real de Blas
+  horasProductivasDia Float    @default(20) // ejemplo
   tiempoColaHoras     Float    @default(0)
   diasEnvio           Int      @default(3)
   colchonDias         Int      @default(1)
@@ -181,7 +181,7 @@ model Config {
 model Integracion {
   id           String    @id @default(cuid())
   proveedor    String    @unique // "mercadolibre"
-  mlUserId     String? // id del vendedor (Blas) tras autorizar
+  mlUserId     String? // id del vendedor tras autorizar
   accessToken  String?
   refreshToken String?
   expiraEn     DateTime?

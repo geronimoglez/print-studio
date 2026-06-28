@@ -1,7 +1,7 @@
 // Detecta (con IA/VLM) qué FOTOS reales tienen MARCA DE AGUA del creador y las REPORTA para revisión.
 // NO modifica imágenes automáticamente: probamos parchar/borrar, pero (a) el parche blanco solo sirve en
 // fondo blanco —estas fotos tienen fondos reales (jardín/mesa)— y (b) el VLM tiene falsos positivos, así
-// que borrar fotos automáticamente puede tirar fotos buenas. Mejor: listar las sospechosas para que Blas
+// que borrar fotos automáticamente puede tirar fotos buenas. Mejor: listar las sospechosas para que el operador
 // las revise (reshoot, quitar la foto, o la función "crear imagen con IA" de Mercado Libre).
 // Corre en Vercel (OPENROUTER_API_KEY). Solo lectura: no cambia BD ni ML.
 //
