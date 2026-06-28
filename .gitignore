@@ -63,3 +63,4 @@ dev.db
 
 .vercel
 .env*
+!.env.example
